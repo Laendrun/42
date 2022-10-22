@@ -11,41 +11,55 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <limits.h>
 
-static int	int_len(int nbr);
+static int	int_len(long nbr);
 
 char	*ft_itoa(int n)
 {
 	int		len;
 	int		i;
 	char	*result;
+	int		s;
+	long	nbr;
 
-	len = int_len(n);
+	nbr = n;
+	len = int_len(nbr);
 	result = malloc((len + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
-	if (n == -2147483648)
-		return ("-2147483648");
-	if (n == 2147483647)
-		return ("2147483647");
-	if (n == 0)
-		return ("0");
-	i = len - 1;
-	while (n != 0)
+	result[0] = '0';
+	if (nbr < 0)
 	{
-		result[i] = ((n % 10) + 48);
-		n = n / 10;
+		s = 1;
+		nbr = -nbr;
+	}
+	else
+		s = 0;
+	i = len - 1;
+	while (nbr != 0)
+	{
+		result[i] = ((nbr % 10) + 48);
+		nbr = nbr / 10;
 		i--;
 	}
+	if (s)
+		result[0] = '-';
 	result[len] = '\0';
 	return (result);
 }
 
-static int	int_len(int nbr)
+static int	int_len(long nbr)
 {
 	int	count;
-
+	
 	count = 0;
+	if (nbr < 0)
+	{
+		count++;
+		nbr = -nbr;
+	}
 	if (nbr == 0)
 		count++;
 	while (nbr != 0)

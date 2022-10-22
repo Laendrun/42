@@ -21,7 +21,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	res = (char *) malloc((s1_len + s2_len + 1) * sizeof(char));
 	if (!res)
 		return (NULL);
-	ft_strcat(res, s1);
-	ft_strcat(res, s2);
+	ft_strlcat(res, s1, s1_len + s2_len);
+	ft_strlcat(res, s2, s1_len + s2_len);
 	return (res);
 }

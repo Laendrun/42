@@ -10,15 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+// 16711568 => maximum allocation size possible with malloc
+
+//#include "libft.h"
+#include <stdlib.h>
+//#include <limits.h>
+#include <stdio.h>
 
 void	*ft_calloc(size_t count, size_t size)
 {
 	unsigned char	*tmp;
-	unsigned int	i;
+	unsigned long	i;
 
 	i = 0;
 	tmp = malloc(count * size);
+	if (!tmp)
+		return (NULL);
 	while (i < size)
 	{
 		tmp[i] = 0;

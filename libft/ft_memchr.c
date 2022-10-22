@@ -20,10 +20,11 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	unsigned int	i;
 
 	str = (unsigned char *) s;
+	unsigned char uc = (unsigned char) c;
 	i = 0;
 	while (i < n)
 	{
-		if (str[i] == c)
+		if (str[i] == uc)
 			return ((void *) &str[i]);
 		i++;
 	}

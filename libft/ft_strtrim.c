@@ -23,6 +23,8 @@ char	*ft_strtrim(const char *s1, const char *set)
 	res = malloc((ft_strlen(s1) + 1) * sizeof(char));
 	i = 0;
 	j = 0;
+	if (ft_strlen(s1) == 0)
+		res[0] = 0;
 	while (s1[i])
 	{
 		if (!(to_trim(set, s1[i])))
@@ -32,6 +34,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 		}
 		i++;
 	}
+	res[i] = 0;
 	return (res);
 }
 

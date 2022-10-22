@@ -8,4 +8,4 @@ Here's a list of all projects available in this repository with a status (Finish
 
 | Project | Finished ?         | Marked  | Comments |
 | ------- | ------------------ | ------- | -------- |
-| Libft   | :white_check_mark: | Not yet | Bonnus should be working too |
+| Libft   | :white_check_mark: | Not yet | Bonus should be working too |

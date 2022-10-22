@@ -17,6 +17,8 @@ t_list	*ft_lstlast(t_list *lst)
 	t_list			*tmp;
 	unsigned int	i;
 
+	if (!lst)
+		return (NULL);
 	tmp = lst;
 	i = 0;
 	while (tmp->next)
