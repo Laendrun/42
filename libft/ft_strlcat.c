@@ -6,13 +6,14 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 23:08:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/09/27 13:35:08 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/23 13:57:47 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//https://opensource.apple.com/source/Libc/Libc-997.1.1/string/strlcat.c.auto.html
+//https://opensource.apple.com/source/Libc/Libc-997.1.1/
+//string/strlcat.c.auto.html
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {

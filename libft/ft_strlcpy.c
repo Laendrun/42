@@ -6,13 +6,14 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:34:15 by saeby             #+#    #+#             */
-/*   Updated: 2022/09/27 14:38:09 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/23 13:53:42 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// https://opensource.apple.com/source/xnu/xnu-4570.1.46/osfmk/arm/strlcpy.c.auto.html
+// https://opensource.apple.com/source/xnu/xnu-4570.1.46/osfmk/arm
+// /strlcpy.c.auto.html
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
@@ -33,5 +34,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (src_len);
 }
 
-// if -> dans le cas où il y a de la place pour terminé la string complète par NUL
-// else if -> dans le cas ou il font tronquer la source pour terminer la string par NUL
+// if -> dans le cas où il y a de la place pour terminé 
+// la string complète par NUL
+// else if -> dans le cas ou il font tronquer la source 
+// pour terminer la string par NUL

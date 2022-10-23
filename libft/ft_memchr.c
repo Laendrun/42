@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:50:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/09/26 22:51:30 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/23 13:56:01 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	*str;
 	unsigned int	i;
+	unsigned char	uc;
 
 	str = (unsigned char *) s;
-	unsigned char uc = (unsigned char) c;
+	uc = (unsigned char) c;
 	i = 0;
 	while (i < n)
 	{

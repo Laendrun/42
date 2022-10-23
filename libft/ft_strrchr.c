@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:29:07 by saeby             #+#    #+#             */
-/*   Updated: 2022/09/27 14:39:49 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/23 13:55:21 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	*ft_strrchr(const char *s, int c)
 	char			cc;
 
 	cc = (char) c;
-
 	res = NULL;
 	i = 0;
 	while (s[i])

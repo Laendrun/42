@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 23:07:19 by saeby             #+#    #+#             */
-/*   Updated: 2022/09/26 23:08:02 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/23 13:59:22 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_atoi(const char *str)
 	return (result);
 }
 
-static int 	ft_isspace(int c)
+static int	ft_isspace(int c)
 {
 	if (c == 9 || c == 10 || c == 11 || c == 12 || c == 13 || c == 32)
 		return (1);

@@ -6,12 +6,11 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 09:27:07 by saeby             #+#    #+#             */
-/*   Updated: 2022/09/27 09:35:21 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/23 13:56:43 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdlib.h>
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
@@ -25,7 +24,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	{
 		res[0] = 0;
 		return (res);
-	} 
+	}
 	i = 0;
 	while (i < len && s[start + i])
 	{
@@ -35,4 +34,3 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	res[i] = 0;
 	return (res);
 }
-

@@ -6,16 +6,11 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 23:49:55 by saeby             #+#    #+#             */
-/*   Updated: 2022/09/27 09:48:33 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/23 13:58:50 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// 16711568 => maximum allocation size possible with malloc
-
-//#include "libft.h"
-#include <stdlib.h>
-//#include <limits.h>
-#include <stdio.h>
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
