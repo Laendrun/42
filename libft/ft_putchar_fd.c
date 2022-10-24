@@ -6,14 +6,13 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 10:59:55 by saeby             #+#    #+#             */
-/*   Updated: 2022/09/27 11:28:30 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/24 13:10:09 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	ft_putchar_fd(char c, int fd)
 {
-	printf("%zd\n", write(fd, &c, 1));
+	write(fd, &c, 1);
 }

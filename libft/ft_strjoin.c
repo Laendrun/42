@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:32:15 by saeby             #+#    #+#             */
-/*   Updated: 2022/09/26 22:34:07 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/24 15:15:38 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	ft_strlcat(res, s1, s1_len + s2_len);
 	ft_strlcat(res, s2, s1_len + s2_len);
+	res[s1_len + s2_len] = '\0';
 	return (res);
 }

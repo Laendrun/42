@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 23:49:55 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/23 13:58:50 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/24 14:06:04 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_calloc(size_t count, size_t size)
 	tmp = malloc(count * size);
 	if (!tmp)
 		return (NULL);
-	while (i < size)
+	while (i < count * size)
 	{
 		tmp[i] = 0;
 		i++;

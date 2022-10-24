@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 23:08:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/23 13:57:47 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/24 13:38:23 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	else
 	{
 		ft_memcpy(dst + dst_len, src, dstsize - dst_len - 1);
-		dst[dstsize - 1] = 0;
+		dst[dstsize - 1] = '\0';
 	}
 	return (dst_len + src_len);
 }

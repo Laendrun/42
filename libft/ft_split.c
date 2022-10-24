@@ -6,38 +6,38 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 09:58:01 by saeby             #+#    #+#             */
-/*   Updated: 2022/09/27 10:24:21 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/24 17:30:27 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	word_count(const char *str, char c);
-static char	*ft_fill_new_word(const char *str, int start, int end);
-
-// i_word is the index of the start of each word in the complete *s
+static char	*fill_word(const char *str, int start, int end);
 
 char	**ft_split(const char *s, char c)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	i_word;
-	char			**res;
+	char	**res;
+	int		i;
+	int		j;
+	int		s_word;
 
-	res = malloc((word_count(s, c) + 1) * sizeof(char *));
-	if (!s || !res)
-		return (NULL);
 	i = 0;
 	j = 0;
-	i_word = -1;
+	s_word = -1;
+	res = malloc((word_count(s, c) + 1) * sizeof(char *));
+	if (!res)
+		return (NULL);
 	while (i <= ft_strlen(s))
 	{
-		if (s[i] != c && i_word < 0)
-			i_word = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && i_word >= 0)
+		if (s[i] != c && s_word < 0)
+			s_word = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && s_word >= 0)
 		{
-			res[j++] = ft_fill_new_word(s, i_word, i);
-			i_word = -1;
+			res[j] = fill_word(s, s_word, i);
+			s_word = -1;
+			j++;
 		}
 		i++;
 	}
@@ -45,16 +45,15 @@ char	**ft_split(const char *s, char c)
 	return (res);
 }
 
-// allocates a new *word and fill it with the word starting at index start and
-// ending at index end, adds a 0 character then returns the word
-
-static char	*ft_fill_new_word(const char *str, int start, int end)
+static char	*fill_word(const char *str, int start, int end)
 {
 	char	*word;
 	int		i;
 
 	i = 0;
 	word = malloc((end - start + 1) * sizeof(char));
+	if (!word)
+		return (NULL);
 	while (start < end)
 	{
 		word[i] = str[start];
@@ -64,10 +63,6 @@ static char	*ft_fill_new_word(const char *str, int start, int end)
 	word[i] = 0;
 	return (word);
 }
-
-// check through all *str to count the number of words, when x is set to one 
-// it also adds one to the word_count, the x is just a "trigger" to not count
-// multiple words when there is multiple separator one after another
 
 static int	word_count(const char *str, char c)
 {

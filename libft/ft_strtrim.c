@@ -6,11 +6,12 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 09:37:27 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/23 13:57:06 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/24 17:27:17 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	to_trim(const char *set, char c);
 
@@ -19,22 +20,26 @@ char	*ft_strtrim(const char *s1, const char *set)
 	char	*res;
 	int		i;
 	int		j;
+	int		k;
 
 	res = malloc((ft_strlen(s1) + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
 	i = 0;
-	j = 0;
+	j = ft_strlen(s1) - 1;
+	k = 0;
 	if (ft_strlen(s1) == 0)
 		res[0] = 0;
-	while (s1[i])
-	{
-		if (!(to_trim(set, s1[i])))
-		{
-			res[j] = s1[i];
-			j++;
-		}
+	while (to_trim(set, s1[i]))
 		i++;
+	while (to_trim(set, s1[j]))
+		j--;
+	while (k < j - (i - 1))
+	{
+		res[k] = s1[i + k];
+		k++;
 	}
-	res[i] = 0;
+	res[k] = 0;
 	return (res);
 }
 

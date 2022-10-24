@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 09:27:07 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/23 13:56:43 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/24 17:27:56 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	unsigned int	i;
 	char			*res;
 
+	if (len < 0)
+		return (NULL);
 	res = malloc((len + 1) * sizeof(char));
 	if (!res)
 		return (NULL);
