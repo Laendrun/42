@@ -6,12 +6,11 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:54:58 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/24 16:39:24 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/25 10:34:27 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

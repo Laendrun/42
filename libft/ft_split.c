@@ -6,12 +6,11 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 09:58:01 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/24 17:30:27 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/25 10:36:16 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	word_count(const char *str, char c);
 static char	*fill_word(const char *str, int start, int end);

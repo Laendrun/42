@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 20:05:02 by saeby             #+#    #+#             */
-/*   Updated: 2022/09/29 19:57:13 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/25 14:17:05 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list			*tmp;
-	t_list			*new;
+	t_list			*tmp_obj;
+	t_list			*new_list;
 	unsigned int	i;
 
-	tmp = lst;
-	new = ft_lstnew(f(tmp->content));
-	tmp = tmp->next;
-	while (tmp)
+	new_list = NULL;
+	while (lst)
 	{
-		new = ft_lstnew(f(tmp->content));
-		new = new->next;
-		tmp = tmp->next;
+		tmp_obj = ft_lstnew(f(lst->content));
+		if (!tmp_obj)
+			return (NULL);
+		ft_lstadd_back(&new_list, tmp_obj);
+		lst = lst->next;
 	}
-	return (new);
+	return (new_list);
 }

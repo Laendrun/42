@@ -6,12 +6,11 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 09:37:27 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/24 17:27:17 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/25 10:11:31 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	to_trim(const char *set, char c);
 

@@ -6,23 +6,36 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:32:15 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/24 15:15:38 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/25 13:07:38 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static void	fill_str(char *res, char const *s1, char const *s2);
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned int	s1_len;
-	unsigned int	s2_len;
 	char			*res;
 
-	res = (char *) malloc((s1_len + s2_len + 1) * sizeof(char));
+	res = (char *) malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!res)
 		return (NULL);
-	ft_strlcat(res, s1, s1_len + s2_len);
-	ft_strlcat(res, s2, s1_len + s2_len);
-	res[s1_len + s2_len] = '\0';
+	fill_str(res, s1, s2);
 	return (res);
+}
+
+static void	fill_str(char *res, char const *s1, char const *s2)
+{
+	unsigned int	i;
+	unsigned int	j;
+
+	i = 0;
+	j = 0;
+	while (s1[j])
+		res[i++] = s1[j++];
+	j = 0;
+	while (s2[j])
+		res[i++] = s2[j++];
+	res[i] = '\0';
 }

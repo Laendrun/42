@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:36:55 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/24 13:21:31 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/25 12:54:10 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	unsigned int	i;
 
 	i = 0;
-	while (i < ft_strlen(s))
+	while (s[i])
 	{
 		(*f)(i, &s[i]);
 		i++;
