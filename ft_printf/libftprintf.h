@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 20:05:02 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/25 17:45:42 by saeby            ###   ########.fr       */
+/*   Created: 2022/10/25 16:07:00 by saeby             #+#    #+#             */
+/*   Updated: 2022/10/25 16:08:01 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
+# include <stdarg.h>
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-{
-	t_list	*tmp_obj;
-	t_list	*new_list;
 
-	new_list = NULL;
-	while (lst)
-	{
-		tmp_obj = ft_lstnew(f(lst->content));
-		if (!tmp_obj)
-		{
-			ft_lstclear(&new_list, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new_list, tmp_obj);
-		lst = lst->next;
-	}
-	return (new_list);
-}
+
+#endif

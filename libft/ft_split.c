@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 09:58:01 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/25 10:36:16 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/25 17:45:56 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*fill_word(const char *str, int start, int end);
 char	**ft_split(const char *s, char c)
 {
 	char	**res;
-	int		i;
+	size_t	i;
 	int		j;
 	int		s_word;
 
