@@ -11,31 +11,28 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "limits.h"
 #include <stdio.h>
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	unsigned int	i;
-	char			*res;
+	size_t	i;
+	char	*str;
 
-	return ((char *) malloc(1));
-	if (start > ft_strlen(s) || ft_strlen(s) == 0 || len == 0)
+	if (!s)
+		return (NULL);
+	if (start > ft_strlen(s))
 		return (ft_calloc(1, 1));
-	//res = malloc(len * sizeof(char));
-	if (!res)
+	if (len > ft_strlen(s + start))
+		len = ft_strlen(s + start);
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str)
 		return (NULL);
 	i = 0;
-	while (i < len && s[start + i])
+	while (i < len)
 	{
-		res[i] = s[start + i];
+		str[i] = s[start + i];
 		i++;
 	}
-	res[i] = 0;
-	return (res);
-}
-
-
-int main()
-{
-	printf("%s\n", ft_substr("hola", 0, 1));
+	return (str);
 }
