@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 09:37:27 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/25 10:11:31 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/25 15:27:40 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 		res[k] = s1[i + k];
 		k++;
 	}
-	res[k] = 0;
+	res[k] = '\0';
 	return (res);
 }
 
