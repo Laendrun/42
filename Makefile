@@ -1,5 +1,5 @@
 LIBFT_PATH = ./libft
-FT_PRINTF_PATH = ./ft_printf
+PRINTF_PATH = ./ft_printf
 
 all:
 	$(error No project specified.)
@@ -7,6 +7,7 @@ all:
 projects:
 	$(info Available projects :)
 	$(info libft)
+	$(info ft_printf (in progress))
 
 rules:
 	$(info libft)
@@ -16,6 +17,13 @@ rules:
 	$(info libft-re)
 	$(info libft-bonus)
 	$(info libft-everything)
+	$(info printf)
+	$(info printf-all)
+	$(info printf-clean)
+	$(info printf-fclean)
+	$(info printf-re)
+	$(info printf-bonus)
+	$(info printf-everything)
 
 # LIBFT
 
@@ -40,3 +48,23 @@ libft-everything:
 	@ cd $(LIBFT_PATH) && $(MAKE) everything
 
 # FT_PRINTF
+
+printf: printf-all
+
+printf-all:
+	@ cd $(PRINTF_PATH) && $(MAKE);
+
+printf-clean:
+	@ cd $(PRINTF_PATH) && $(MAKE) clean;
+
+printf-fclean:
+	@ cd $(PRINTF_PATH) && $(MAKE) fclean
+
+printf-re:
+	@ cd $(PRINTF_PATH) && $(MAKE) re
+
+printf-bonus:
+	@ cd $(PRINTF_PATH) && $(MAKE) bonus
+
+printf-everything:
+	@ cd $(PRINTF_PATH) && $(MAKE) everything
