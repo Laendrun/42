@@ -16,6 +16,7 @@
 static int	word_count(const char *str, char c);
 static char	*fill_word(const char *str, int start, int end);
 static void	*ft_free(char **strs, int count);
+static void	ft_initiate_vars(size_t *i, int *j, int *s_word);
 
 char	**ft_split(const char *s, char c)
 {
@@ -24,10 +25,8 @@ char	**ft_split(const char *s, char c)
 	int		j;
 	int		s_word;
 
-	i = 0;
-	j = 0;
-	s_word = -1;
-	res = malloc((word_count(s, c) + 1) * sizeof(char *));
+	ft_initiate_vars(&i, &j, &s_word);
+	res = ft_calloc((word_count(s, c) + 1), sizeof(char *));
 	if (!res)
 		return (NULL);
 	while (i <= ft_strlen(s))
@@ -36,22 +35,29 @@ char	**ft_split(const char *s, char c)
 			s_word = i;
 		else if ((s[i] == c || i == ft_strlen(s)) && s_word >= 0)
 		{
-			if (!(res[j] = fill_word(s, s_word, i)))
+			res[j] = fill_word(s, s_word, i);
+			if (!(res[j]))
 				return (ft_free(res, j));
 			s_word = -1;
 			j++;
 		}
 		i++;
 	}
-	res[j] = 0;
 	return (res);
+}
+
+static void	ft_initiate_vars(size_t *i, int *j, int *s_word)
+{
+	*i = 0;
+	*j = 0;
+	*s_word = -1;
 }
 
 static void	*ft_free(char **strs, int count)
 {
-	int	i = 0;
-	(void) strs;
-	(void) count;
+	int	i;
+
+	i = 0;
 	while (i < count)
 	{
 		free(strs[i]);
