@@ -26,16 +26,9 @@ char	*ft_strtrim(const char *s1, const char *set)
 	if (ft_strlen(s1) == 0)
 		return (ft_calloc(1, 1));
 	while (to_trim(set, s1[i]))
-	{
-		//printf("s1[%d]: %c\n", i, s1[i]);
 		i++;
-	}
 	while (to_trim(set, s1[j]))
-	{
-		//printf("s1[%d]: %c\n", j, s1[j]);
 		j--;
-	}
-	//printf("i: %d, j: %d, j - (i - 1): %d\n", i, j, j - (i - 1));
 	return (new_str(s1, i, j - (i - 1)));
 }
 

@@ -11,9 +11,11 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	word_count(const char *str, char c);
 static char	*fill_word(const char *str, int start, int end);
+static void	*ft_free(char **strs, int count);
 
 char	**ft_split(const char *s, char c)
 {
@@ -34,7 +36,8 @@ char	**ft_split(const char *s, char c)
 			s_word = i;
 		else if ((s[i] == c || i == ft_strlen(s)) && s_word >= 0)
 		{
-			res[j] = fill_word(s, s_word, i);
+			if (!(res[j] = fill_word(s, s_word, i)))
+				return (ft_free(res, j));
 			s_word = -1;
 			j++;
 		}
@@ -42,6 +45,20 @@ char	**ft_split(const char *s, char c)
 	}
 	res[j] = 0;
 	return (res);
+}
+
+static void	*ft_free(char **strs, int count)
+{
+	int	i = 0;
+	(void) strs;
+	(void) count;
+	while (i < count)
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+	return (NULL);
 }
 
 static char	*fill_word(const char *str, int start, int end)
