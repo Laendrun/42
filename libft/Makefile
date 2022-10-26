@@ -34,7 +34,7 @@ RMA = $(RM) $(OBJSA)
 
 # compile .c -> .o
 %.o: %.c
-	$(CC) $(CCFLAGS) -o $@ -c $? 
+	$(CC) -I. $(CCFLAGS) -o $@ -c $? 
 
 # main rules
 all: $(NAME)

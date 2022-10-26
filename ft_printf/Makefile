@@ -1,5 +1,8 @@
+# gcc -Iincludes -L. -lftprintf -Werror -Wextra -Wall -fsanitize=address test.c
+
 # SRC & OBJS for mandatory functions
-SRC = ft_isalpha.c 
+SRC = main.c ft_lstnew.c ft_lstsize.c ft_lstadd_back.c ft_strstr.c ft_strlen.c ft_putstr_fd.c ft_lstlast.c \
+	ft_get_flags.c ft_isflag.c
 OBJS := $(SRC:%.c=%.o)
 
 # SRC & OBJS for bonus functions
@@ -14,6 +17,7 @@ OBJS_SUP := $(SRC_SUP:%.c=%.o)
 NAME = libftprintf.a
 CC = gcc
 CCFLAGS = -Wall -Wextra -Werror
+INC_DIR = includes
 
 # Additional variables
 RM = rm -f
@@ -27,7 +31,7 @@ RMA = $(RM) $(OBJSA)
 
 # compile .c -> .o
 %.o: %.c
-	$(CC) -I. -o $@ -c $? $(CFLAGS)
+	$(CC) -I$(INC_DIR) $(CCFLAGS) -o $@ -c $?
 
 # main rules
 all: $(NAME)

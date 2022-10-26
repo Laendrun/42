@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 16:07:00 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/25 16:08:01 by saeby            ###   ########.fr       */
+/*   Created: 2022/10/26 20:41:33 by saeby             #+#    #+#             */
+/*   Updated: 2022/10/26 20:42:42 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <stdarg.h>
+#include "libftprintf.h"
 
+void	ft_putstr_fd(const char *str, int fd)
+{
+	size_t	i;
 
-
-#endif
+	i = 0;
+	while (str[i] && i < ft_strlen(str))
+	{
+		write(fd, &str[i], 1);
+		i++;
+	}
+}
