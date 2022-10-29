@@ -1,62 +1,35 @@
-# gcc -Iincludes -L. -lftprintf -Werror -Wextra -Wall -fsanitize=address test.c
+SRC = ft_printf.c
+SRC_HELPERS = $(addprefix helpers/, ft_putchar.c ft_putnbr.c)
+SRC_PRINTERS = $(addprefix printers/, ft_print_c.c ft_print_s.c)
 
-# SRC & OBJS for mandatory functions
-SRC = main.c ft_lstnew.c ft_lstsize.c ft_lstadd_back.c ft_strstr.c ft_strlen.c ft_putstr_fd.c ft_lstlast.c \
-	ft_get_flags.c ft_isflag.c
 OBJS := $(SRC:%.c=%.o)
+OBJS_HELPERS := $(SRC_HELPERS:%.c=%.o)
+OBJS_PRINTERS := $(SRC_PRINTERS:%.c=%.o)
 
-# SRC & OBJS for bonus functions
-SRC_BONUS = 
-OBJS_BONUS := $(SRC_BONUS:%.c=%.o)
-
-# SRC & OBJS for additionnal functions
-SRC_SUP = 
-OBJS_SUP := $(SRC_SUP:%.c=%.o)
-
-# "Base" variables
 NAME = libftprintf.a
 CC = gcc
-CCFLAGS = -Wall -Wextra -Werror
-INC_DIR = includes
+CCFLAGS = -Werror -Wall -Wextra
+INC_DIR = .
 
-# Additional variables
-RM = rm -f
-ARTARGET = ar rcs $(NAME)
-RANTARGET = ranlib $(NAME)
-OBJSA = $(OBJS) $(OBJS_BONUS) $(OBJS_SUP)
-
-# Delete variables
-RMTARGET = $(RM) $(NAME)
-RMA = $(RM) $(OBJSA)
-
-# compile .c -> .o
 %.o: %.c
 	$(CC) -I$(INC_DIR) $(CCFLAGS) -o $@ -c $?
 
-# main rules
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(ARTARGET) $(OBJS)
-	$(RANTARGET)
-	
+$(NAME): $(OBJS) $(OBJS_HELPERS) $(OBJS_PRINTERS)
+	ar rcs $(NAME) $(OBJS) $(OBJS_HELPERS) $(OBJS_PRINTERS)
+	ranlib $(NAME)
+
 clean:
-	$(RMA)
+	rm -f $(OBJS) $(OBJS_HELPERS) $(OBJS_PRINTERS)
 
 fclean: clean
-	$(RMTARGET)
+	rm -f $(NAME)
 
 re: fclean all
 
-# bonus rules
-bonus: $(OBJS) $(OBJS_BONUS)
-	$(ARTARGET) $(OBJS) $(OBJS_BONUS)
-	$(RANTARGET)
-
-# additional rules
-everything: $(OBJSA)
-	$(ARTARGET) $(OBJSA)
-	$(RANTARGET)
-
 clear: fclean 
 	clear
+
+test: all
+	gcc $(CCFLAGS) -I. -L. -lftprintf test.c

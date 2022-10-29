@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_print_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 20:41:33 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/26 20:42:42 by saeby            ###   ########.fr       */
+/*   Created: 2022/10/29 13:53:09 by saeby             #+#    #+#             */
+/*   Updated: 2022/10/29 13:59:10 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putstr_fd(const char *str, int fd)
+int	ft_print_s(char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (str[i] && i < ft_strlen(str))
+	while(s[i])
 	{
-		write(fd, &str[i], 1);
+		ft_print_c(s[i]);
 		i++;
 	}
+	return (i);
 }

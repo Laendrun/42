@@ -2,6 +2,7 @@
 
 int main()
 {
-    ft_printf("b%clib%clablo%c");
-    //ft_printf("bliblablo");
+	ft_printf("%c\n", 'K');
+	ft_printf("%c %s %d\n", 'K', "fu", 158);
+	ft_printf("%s\n", "TEST");
 }
