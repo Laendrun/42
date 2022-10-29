@@ -3,17 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 23:07:19 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/23 13:59:22 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/29 08:55:54 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_atoi.c
+ * @author saeby (saeby@42lausanne.ch)
+ * @version 1.0
+ * @date 2022-10-28
+ */
 #include "libft.h"
 
 static int	ft_isspace(int c);
 
+/**
+ * @fn int	ft_atoi(const char *str)
+ * The ft_atoi() function converts the inital portion of the string
+ * pointed to by str to int representation.
+ * @brief Converts a string to an int.
+ * @param str string to convert.
+ * @retval int representation of the string
+ */
 int	ft_atoi(const char *str)
 {
 	int	result;

@@ -3,15 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 23:31:08 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/23 13:54:41 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/29 08:00:45 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_bzero.c
+ * @author saeby (saeby@42lausane.ch)
+ * @version 1.0
+ * @date 2022-10-28
+ */
 #include "libft.h"
 
+/**
+ * @fn ft_bzero(void *s, size_t n)
+ * The bzero() function writes n zeroed bytes to the string s.  
+ * If n is zero, bzero() does nothing.
+ * @brief Write zeroes to a byte string.
+ * @param s strings to write zeroed bytes to
+ * @param n number of bytes to be zeroed
+ */
 void	ft_bzero(void *s, size_t n)
 {
 	char	*str_ptr;
