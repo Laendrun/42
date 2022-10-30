@@ -6,11 +6,11 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:09:41 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/29 13:09:48 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/30 21:42:40 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_putchar(char c)
 {

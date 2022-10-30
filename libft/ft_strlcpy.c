@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:34:15 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/23 13:53:42 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/30 18:17:31 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (src_len);
 }
 
-// if -> dans le cas où il y a de la place pour terminé 
+// if -> dans le cas où il y a de la place pour terminer
 // la string complète par NUL
 // else if -> dans le cas ou il font tronquer la source 
 // pour terminer la string par NUL

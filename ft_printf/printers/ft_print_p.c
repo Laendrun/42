@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 19:07:53 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/29 13:54:07 by saeby            ###   ########.fr       */
+/*   Created: 2022/10/30 20:10:58 by saeby             #+#    #+#             */
+/*   Updated: 2022/10/30 21:49:50 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define TEST
+#include "ft_printf.h"
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <stdarg.h>
-# ifdef TEST
-#  include <stdio.h>
-# endif
+int	ft_print_p(uintptr_t adr)
+{
+	int	count;
 
-int		ft_printf(const char *, ...);
-void	ft_putchar(char);
-int		ft_putnbr(int);
-
-int		ft_print_c(char);
-int		ft_print_s(char*);
-
-#endif
+	(void) adr;
+	count = 0;
+	count += ft_print_s("0x");
+	count += ft_put_ptr(adr);
+	return (count);
+}

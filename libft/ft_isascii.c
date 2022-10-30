@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 23:26:34 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/29 13:31:38 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/30 20:00:29 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
  * @retval 1 (true) if the character is alphabetical
  * @retval 0 (false) if the character is not alphabetical
  */
-int	ft_isascii(int c) 
+int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);

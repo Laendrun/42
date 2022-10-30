@@ -6,18 +6,18 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:53:09 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/29 13:59:10 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/30 21:42:21 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_print_s(char *s)
 {
 	int	i;
 
 	i = 0;
-	while(s[i])
+	while (s[i])
 	{
 		ft_print_c(s[i]);
 		i++;

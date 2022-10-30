@@ -6,13 +6,11 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 09:27:07 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/25 18:06:57 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/30 20:03:20 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "limits.h"
-#include <stdio.h>
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
