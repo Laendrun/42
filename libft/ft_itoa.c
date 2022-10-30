@@ -3,18 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:57:18 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/23 14:26:57 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/29 17:51:41 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_itoa.c
+ * @author saeby (saeby@42lausanne.ch)
+ * @version 1.0
+ * @date 2022-10-29
+ */
 #include "libft.h"
 
 static int	int_len(long nbr);
 static char	*pre_conv(int len);
 
+/**
+ * @fn char *ft_itoa(int n)
+ * Converts an int to a string (char *)
+ * @brief Converts an int to a string
+ * @param n number to convert to string
+ * @return char* 
+ * @retval NULL If the memory allocation failed
+ * @retval char* Number converted to string
+ */
 char	*ft_itoa(int n)
 {
 	int		len;
@@ -42,6 +57,12 @@ char	*ft_itoa(int n)
 	return (result);
 }
 
+/**
+ * @fn static char *pre_conv(int len)
+ * @param len length of the number that will be converted
+ * @param len this length is the number of chars
+ * @return char* allocated string in memory
+ */
 static char	*pre_conv(int len)
 {
 	char	*tmp;
@@ -56,6 +77,13 @@ static char	*pre_conv(int len)
 	}
 }
 
+/**
+ * @fn static int int_len(long nbr)
+ * @param nbr the number for which we want to count the 
+ * @param nbr number of characters
+ * @return int
+ * @retval int The number of characters needed to write nbr
+ */
 static int	int_len(long nbr)
 {
 	int	count;
