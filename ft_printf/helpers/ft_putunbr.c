@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/30 20:10:30 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/30 21:48:41 by saeby            ###   ########.fr       */
+/*   Created: 2022/10/30 19:54:58 by saeby             #+#    #+#             */
+/*   Updated: 2022/10/30 21:49:35 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+int	ft_putunbr(unsigned int nb)
 {
-	int	i;
+	int	count;
 
-	i = 0;
-	ft_printf("%c\n", 'K');
-	ft_printf("%c %s %d\n", 'K', "fu", 158);
-	ft_printf("%s\n", "TEST");
-	ft_printf("%d\n", 158851);
-	ft_printf("%%\n");
-	ft_printf("%u\n", 2158483648);
-	ft_printf("%p\n", &i);
-	ft_printf("%x\n", 1256);
-	ft_printf("%X\n", 1256);
+	count = 0;
+	if (nb >= 10)
+	{
+		count += ft_putnbr(nb / 10);
+		count += ft_putnbr(nb % 10);
+	}
+	else
+		count += ft_print_c(nb + 48);
+	return (count);
 }

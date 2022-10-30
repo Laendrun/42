@@ -6,35 +6,34 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:39:00 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/29 13:43:11 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/30 21:49:23 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putnbr(int nb)
 {
+	int	count;
+
+	count = 0;
 	if (nb == -2147483648)
-	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_putnbr(147483648);
-	}
+		count += ft_print_s("-2147483648");
 	else if (nb < 0)
 	{
-		ft_putchar('-');
+		count += ft_print_c('-');
 		nb = -nb;
-		ft_putnbr(nb);
+		count += ft_putnbr(nb);
 	}
 	else
 	{
 		if (nb >= 10)
 		{
-			ft_putnbr(nb / 10);
-			ft_putnbr(nb % 10);
+			count += ft_putnbr(nb / 10);
+			count += ft_putnbr(nb % 10);
 		}
 		else
-			ft_putchar(nb + 48);
+			count += ft_print_c(nb + 48);
 	}
-	return (0);
+	return (count);
 }

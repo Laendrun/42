@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_put_ptr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/30 20:10:30 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/30 21:48:41 by saeby            ###   ########.fr       */
+/*   Created: 2022/10/30 20:27:39 by saeby             #+#    #+#             */
+/*   Updated: 2022/10/30 21:48:57 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+int	ft_put_ptr(uintptr_t nbr)
 {
-	int	i;
+	char	*chars;
+	int		count;
 
-	i = 0;
-	ft_printf("%c\n", 'K');
-	ft_printf("%c %s %d\n", 'K', "fu", 158);
-	ft_printf("%s\n", "TEST");
-	ft_printf("%d\n", 158851);
-	ft_printf("%%\n");
-	ft_printf("%u\n", 2158483648);
-	ft_printf("%p\n", &i);
-	ft_printf("%x\n", 1256);
-	ft_printf("%X\n", 1256);
+	chars = "0123456789abcdef";
+	count = 0;
+	if (nbr >= 16)
+	{
+		count += ft_put_ptr(nbr / 16);
+		count += ft_put_ptr(nbr % 16);
+	}
+	else
+		count += ft_print_c(chars[nbr]);
+	return (count);
 }

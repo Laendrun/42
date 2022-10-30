@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_print_d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/30 20:10:30 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/30 21:48:41 by saeby            ###   ########.fr       */
+/*   Created: 2022/10/30 18:20:36 by saeby             #+#    #+#             */
+/*   Updated: 2022/10/30 21:42:16 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+int	ft_print_d(int nbr)
 {
-	int	i;
-
-	i = 0;
-	ft_printf("%c\n", 'K');
-	ft_printf("%c %s %d\n", 'K', "fu", 158);
-	ft_printf("%s\n", "TEST");
-	ft_printf("%d\n", 158851);
-	ft_printf("%%\n");
-	ft_printf("%u\n", 2158483648);
-	ft_printf("%p\n", &i);
-	ft_printf("%x\n", 1256);
-	ft_printf("%X\n", 1256);
+	return (ft_putnbr(nbr));
 }

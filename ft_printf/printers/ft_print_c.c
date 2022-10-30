@@ -6,13 +6,13 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:32:37 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/29 13:33:19 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/30 21:42:13 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int ft_print_c(char c)
+int	ft_print_c(char c)
 {
 	ft_putchar(c);
 	return (1);
