@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:48:45 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/31 20:15:20 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/31 21:53:16 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,19 @@ int main(void)
 	int	i;
 	
 	ft_printf("Bliblablo\n");
-	ft_printf("|||%-10c|||\n", 'K');\
-	ft_printf("|||%10c|||\n", 'K');
-	ft_printf("%%s %s\n", "Ceci est un test");
-	ft_printf("%%u %u\n", 2147483652);
-	ft_printf("%%%% %%\n");
-	ft_printf("%% d 154: % d\n", 154);
-	ft_printf("%%+ d 154: %+ d\n", 154);
-	ft_printf("%%+d -154: %+d\n", -154);
-	ft_printf("%%#X 154: %#X\n", 154);
-	ft_printf("%%#x 154: %#x\n", 154);
-	ft_printf("%%p &i: %p\n", &i);
-	ft_printf("%%#X 0: %#X\n", 0);
+	ft_printf("|%-25c|\n", 'K');
+	ft_printf("|%25c|\n", 'K');
+	ft_printf("|%-c|\n", 'K');
+	ft_printf("%s\n", "Ceci est un test");
+	ft_printf("|%25s|\n", "Ceci est un test");
+	ft_printf("|%-25s|\n", "Ceci est un test");
+	ft_printf("%u\n", 2147483652);
+	ft_printf("%%\n");
+	ft_printf("% d\n", 154);
+	ft_printf("%+ d\n", 154);
+	ft_printf("%+d\n", -154);
+	ft_printf("%#X\n", 154);
+	ft_printf("%#x\n", 154);
+	ft_printf("%p\n", &i);
+	ft_printf("%#X\n", 0);
 }

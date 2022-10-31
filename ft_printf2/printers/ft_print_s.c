@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 18:00:33 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/31 18:31:22 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/31 21:49:34 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,37 @@
 int	ft_print_s(char *s, t_flags *flags)
 {
 	int		i;
-	char	*tmp;
-	(void)	flags;
+	int		count;
 
 	i = 0;
-	if (!s)
+	count = 0;
+	if (!s && flags->width > 0 && flags->minus == 1)
 	{
-		tmp = "(null)";
-		while (tmp[i])
-		{
-			if (ft_putchar(tmp[i]) == -1)
-				return (-1);
-			i++;
-		}
+		count += ft_putstr("(null)");
+		while (i++ < flags->width - 6)
+			count += write(1, " ", 1);
+	}
+	else if (!s && flags->width > 0 && flags->minus == 0)
+	{
+		while (i++ < flags->width - 6)
+			count += write(1, " ", 1);
+		count += ft_putstr("(null)");
+	}
+	else if (!s && flags->width == 0 && flags->minus == 1)
+		count += ft_putstr("(null)");
+	else if (s && flags->width > 0 && flags->minus == 1)
+	{
+		count += ft_putstr(s);
+		while (i++ < flags->width - ft_strlen(s))
+			count += write(1, " ", 1);
+	}
+	else if (s && flags->width > 0 && flags->minus == 0)
+	{
+		while (i++ < flags->width - ft_strlen(s))
+			count += write(1, " ", 1);
+		count += ft_putstr(s);
 	}
 	else
-	{
-		while (s[i])
-		{
-			if (ft_putchar(s[i]) == -1)
-				return (-1);
-			i++;
-		}
-	}
-	return (i);
+		count += ft_putstr(s);
+	return (count);
 }

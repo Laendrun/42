@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:54:18 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/31 20:13:30 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/31 20:24:07 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int ft_print_c(unsigned char c, t_flags *flags)
 		}
 		count += write(1, &c, 1);
 	}
+	else
+		count += write(1, &c, 1);
 	/*if (write(1, &c, 1) == -1)
 		return (-1);
 	*/

@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:49:52 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/31 20:03:42 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/31 20:59:01 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,7 @@ static int	_check_format(const char *str, va_list par, int *i)
 	}
 	count = 0;
 	if (str[*i] == 'c')
-	{
 		count += ft_print_c((unsigned char) va_arg(par, int), flags);
-	}
 	else if (str[*i] == '%')
 		count += ft_putchar('%');
 	else if (str[*i] == 'd' || str[*i] == 'i')

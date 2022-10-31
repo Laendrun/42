@@ -1,5 +1,5 @@
 SRC = ft_printf.c
-SRC_HELPERS = $(addprefix helpers/, ft_putchar.c ft_putnbr.c ft_putstr.c ft_itoa.c ft_putunbr.c ft_put_hex.c ft_put_ptr.c )
+SRC_HELPERS = $(addprefix helpers/, ft_putchar.c ft_putnbr.c ft_putstr.c ft_itoa.c ft_putunbr.c ft_put_hex.c ft_put_ptr.c ft_strlen.c )
 SRC_PRINTERS = $(addprefix printers/, ft_print_c.c ft_print_d.c ft_print_u.c ft_print_x.c ft_print_s.c ft_print_p.c )
 
 OBJS := $(SRC:%.c=%.o)
