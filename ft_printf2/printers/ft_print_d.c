@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 16:49:00 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/31 22:29:04 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/31 22:50:42 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ int	ft_print_d(int nbr, t_flags *flags)
 	nbr_len = _int_len(nbr);
 	if (flags->space || flags->plus)
 		nbr_len++;
-
-	if (flags->minus && flags->width > 0)
+	if (flags->minus && flags->width > 0 && flags->zero == 0)
 	{
 		if (nbr >= 0 && (flags->space || flags->plus))
 			count += _prepend_char(flags);
@@ -35,7 +34,7 @@ int	ft_print_d(int nbr, t_flags *flags)
 		while (i++ < flags->width - nbr_len)
 			write(1, " ", 1);
 	}
-	else if (flags->minus == 0 && flags->width > 0)
+	else if (flags->minus == 0 && flags->width > 0 && flags->zero == 0)
 	{
 		while (i++ < flags->width - nbr_len)
 			write(1, " ", 1);
@@ -43,7 +42,23 @@ int	ft_print_d(int nbr, t_flags *flags)
 			count += _prepend_char(flags);
 		count += ft_putnbr(nbr);
 	}
-	else 
+	else if (flags->minus && flags->width > 0 && flags->zero)
+	{
+		if (nbr >= 0 && (flags->space || flags->plus))
+			count += _prepend_char(flags);
+		count += ft_putnbr(nbr);
+		while (i++ < flags->width - nbr_len)
+			write(1, " ", 1);
+	}
+	else if (flags->minus == 0 && flags->width > 0 && flags->zero)
+	{
+		if (nbr >= 0 && (flags->space || flags->plus))
+			count += _prepend_char(flags);
+		while (i++ < flags->width - nbr_len)
+			write(1, "0", 1);
+		count += ft_putnbr(nbr);
+	}
+	else
 	{
 		count += _prepend_char(flags);
 		count += ft_putnbr(nbr);
