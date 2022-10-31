@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:39:00 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/30 22:59:44 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/31 12:39:07 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int	ft_putnbr(int nb)
 		else
 			count += ft_print_c(nb + 48);
 	}
+	if (count < 0)
+		return (-1);
 	return (count);
 }

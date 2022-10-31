@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:20:36 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/31 10:42:01 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/31 12:38:20 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,11 @@
 
 int	ft_print_d(int nbr)
 {
-	return (ft_putnbr(nbr));
+	int	count;
+
+	count = 0;
+	count += ft_putnbr(nbr);
+	if (count < 0)
+		return (-1);
+	return (count);
 }

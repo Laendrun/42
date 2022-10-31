@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:27:39 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/30 21:48:57 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/31 12:36:16 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ int	ft_put_ptr(uintptr_t nbr)
 	}
 	else
 		count += ft_print_c(chars[nbr]);
+	if (count < 0)
+		return (-1);
 	return (count);
 }

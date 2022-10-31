@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 10:43:43 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/31 11:49:46 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/31 12:28:55 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,16 @@ int	ft_printf(const char *input_str, ...)
 	{
 		if (input_str[i] == '%')
 		{
-			i++;
-			count += _check_format(input_str, params, i);
+			count += _check_format(input_str, params, ++i);
+			if (count < 0)
+				return (-1);
 		}
 		else
+		{
 			count += ft_print_c(input_str[i]);
+			if (count < 0)
+				return (-1);
+		}
 		i++;
 	}
 	va_end(params);
