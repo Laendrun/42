@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 10:43:43 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/31 11:32:33 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/31 11:49:46 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+// %[parameter][flags][width][.precision][length]type
 
 static int	_check_format(const char *input_str, va_list params, int i);
 
@@ -34,14 +36,13 @@ int	ft_printf(const char *input_str, ...)
 			count += ft_print_c(input_str[i]);
 		i++;
 	}
-
 	va_end(params);
 	return (count);
 }
 
 static int	_check_format(const char *str, va_list par, int i)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (str[i] == 'c')
