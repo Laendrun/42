@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:53:09 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/30 21:42:21 by saeby            ###   ########.fr       */
+/*   Updated: 2022/10/31 10:41:52 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,26 @@
 
 int	ft_print_s(char *s)
 {
-	int	i;
+	int		i;
+	char	*tmp;
 
 	i = 0;
-	while (s[i])
+	if (!s)
 	{
-		ft_print_c(s[i]);
-		i++;
+		tmp = "(null)";
+		while (tmp[i])
+		{
+			ft_print_c(tmp[i]);
+			i++;
+		}
+	}
+	else
+	{
+		while (s[i])
+		{
+			ft_print_c(s[i]);
+			i++;
+		}
 	}
 	return (i);
 }

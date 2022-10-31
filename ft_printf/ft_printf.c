@@ -3,68 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 10:27:33 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/30 21:47:04 by saeby            ###   ########.fr       */
+/*   Created: 2022/10/31 10:43:43 by saeby             #+#    #+#             */
+/*   Updated: 2022/10/31 11:32:33 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static int	_check_format(const char *input_str, va_list params, int i);
+
 int	ft_printf(const char *input_str, ...)
 {
 	va_list	params;
-	size_t	w_chars;
-	char	curr_char;
-	char	next_char;
+	int		i;
+	int		count;
 
 	va_start(params, input_str);
-	w_chars = 0;
-	while (*input_str != 0)
+	i = 0;
+	count = 0;
+	while (input_str[i])
 	{
-		curr_char = *input_str;
-		next_char = *(input_str + 1);
-		if (curr_char != '%')
-			w_chars += ft_print_c(*input_str);
-		else if (next_char == 'c')
+		if (input_str[i] == '%')
 		{
-			w_chars += ft_print_c((char) va_arg(params, int));
-			input_str++;
+			i++;
+			count += _check_format(input_str, params, i);
 		}
-		else if (next_char == 's')
-		{
-			w_chars += ft_print_s((char *) va_arg(params, char *));
-			input_str++;
-		}
-		else if (next_char == 'd' || next_char == 'i')
-		{
-			w_chars += ft_print_d((int) va_arg(params, int));
-			input_str++;
-		}
-		else if (next_char == '%')
-		{
-			w_chars += ft_print_c('%');
-			input_str++;
-		}
-		else if (next_char == 'u')
-		{
-			w_chars += ft_print_u((unsigned int) va_arg(params, unsigned int));
-			input_str++;
-		}
-		else if (next_char == 'p')
-		{
-			w_chars += ft_print_p((uintptr_t) va_arg(params, uintptr_t));
-			input_str++;
-		}
-		else if (next_char == 'x' || next_char == 'X')
-		{
-			w_chars += ft_print_x((unsigned int) va_arg(params, unsigned int) \
-			, next_char);
-			input_str++;
-		}
-		input_str++;
+		else
+			count += ft_print_c(input_str[i]);
+		i++;
 	}
+
 	va_end(params);
-	return (w_chars);
+	return (count);
+}
+
+static int	_check_format(const char *str, va_list par, int i)
+{
+	int count;
+
+	count = 0;
+	if (str[i] == 'c')
+		count += ft_print_c((char) va_arg(par, int));
+	else if (str[i] == 's')
+		count += ft_print_s((char *) va_arg(par, char *));
+	else if (str[i] == 'd' || str[i] == 'i')
+		count += ft_print_d((int) va_arg(par, int));
+	else if (str[i] == 'u')
+		count += ft_print_u((unsigned int) va_arg(par, unsigned int));
+	else if (str[i] == 'x' || str[i] == 'X')
+		count += ft_print_x((unsigned int) va_arg(par, unsigned int), str[i]);
+	else if (str[i] == 'p')
+		count += ft_print_p((uintptr_t) va_arg(par, uintptr_t));
+	else if (str[i] == '%')
+		count += ft_print_c('%');
+	return (count);
 }
