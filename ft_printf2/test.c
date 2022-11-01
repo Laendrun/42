@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:48:45 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/01 15:51:19 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/01 16:07:16 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,38 +17,9 @@
 
 int main(void)
 {
-	//printf("%x\n", 0x7fedcba1);
-	//ft_printf("%#x\n", 2146290593);
-	//ft_printf("%#x\n", 2146290593);
-	//ft_printf("%#x\n", 0x7fedcba1);
-	/*
-	ft_printf("p=======================\n");
-	printf("|%020x|\n", 154);
-	printf("|%-20x|\n", 154);
-	printf("|%-x|\n", 154);
-	printf("|%020x|\n", 154);
-	printf("|%20x|\n", 154);
-	ft_printf("f=======================\n");
-	ft_printf("|%020x|\n", 154);
-	ft_printf("|%-20x|\n", 154);
-	ft_printf("|%-x|\n", 154);
-	ft_printf("|%020x|\n", 154);
-	ft_printf("|%20x|\n", 154);
-	ft_printf("p=======================\n");
-	printf("|%020X|\n", 154);
-	printf("|%-20X|\n", 154);
-	printf("|%-X|\n", 154);
-	printf("|%020X|\n", 154);
-	printf("|%20X|\n", 154);
-	ft_printf("f=======================\n");
-	ft_printf("|%020X|\n", 154);
-	ft_printf("|%-20X|\n", 154);
-	ft_printf("|%-X|\n", 154);
-	ft_printf("|%020X|\n", 154);
-	ft_printf("|%20X|\n", 154);*/
-	/*int	i;
+	//int	i;
 
-	ft_printf("Bliblablo\n");
+	/*ft_printf("Bliblablo\n");
 	ft_printf("|%-25c|\n", 'K');
 	ft_printf("|%25c|\n", 'K');
 	ft_printf("|%-c|\n", 'K');
@@ -72,6 +43,10 @@ int main(void)
 	printf("|%20x|\n", 154);
 	ft_printf("%#X\n", 154);
 	ft_printf("%#x\n", 154);
-	ft_printf("%p\n", &i);
-	ft_printf("%#X\n", 0);*/
+	ft_printf("|%p|\n", &i);
+	printf("|%-20p|\n\n", &i);*/
+
+	ft_printf("|%p|\n", (void *)NULL);
+	/*printf("|%-20p|\n", (void *)NULL);
+	printf("|%20p|\n", (void *)NULL);*/
 }

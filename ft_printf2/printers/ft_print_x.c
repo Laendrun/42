@@ -6,14 +6,13 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:48:41 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/01 15:11:09 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/01 16:09:17 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static int	_hex_len(int nb);
-//static int	_recursive_power(int nb, int power);
 static int	_prepend_str(char *str);
 
 int	ft_print_x(unsigned int nbr, int format, t_flags *flags)
