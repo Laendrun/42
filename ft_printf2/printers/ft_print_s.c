@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 18:00:33 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/31 21:49:34 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/01 13:52:40 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	ft_print_s(char *s, t_flags *flags)
 		count += ft_putstr("(null)");
 	}
 	else if (!s && flags->width == 0 && flags->minus == 1)
+		count += ft_putstr("(null)");
+	else if (!s && flags->width == 0 && flags->minus == 0)
 		count += ft_putstr("(null)");
 	else if (s && flags->width > 0 && flags->minus == 1)
 	{

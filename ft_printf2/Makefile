@@ -32,4 +32,4 @@ clear: fclean
 	clear
 
 test: all
-	gcc $(CCFLAGS) -L. -lftprintf  -fsanitize=address test.c
+	gcc $(CCFLAGS) -L. -lftprintf -fsanitize=address test.c
