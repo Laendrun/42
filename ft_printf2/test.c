@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:48:45 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/31 22:59:26 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/01 10:00:08 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int main(void)
 {
-	int	i;
+	/*int	i;
 
 	ft_printf("Bliblablo\n");
 	ft_printf("|%-25c|\n", 'K');
@@ -28,18 +28,21 @@ int main(void)
 	ft_printf("|%-25s|\n", "Ceci est un test");
 	ft_printf("|%10s|\n", "Ceci est un test");
 	ft_printf("|%-10s|\n", "Ceci est un test");
-	ft_printf("%u\n", 2147483652);
+	ft_printf("|%020u|\n", 2147483652);
 	ft_printf("%%\n");
-	ft_printf("|% -5d|\n\n", 154);
-	ft_printf("|%+ -5d|\n\n", 154);
-	ft_printf("|%+010d|\n\n", 154);
-	ft_printf("|%+-010d|\n\n", 154);
-	ft_printf("|% d|\n\n", 154);
-	ft_printf("|%+ d|\n\n", 154);
-	ft_printf("|%+d|\n\n", -154);
-	ft_printf("%#X\n", 154);
+	ft_printf("|% -5d|\n", 154);
+	ft_printf("|%+ -5d|\n", 154);
+	ft_printf("|%+010d|\n", 154);
+	ft_printf("|%+-010d|\n", 154);
+	ft_printf("|% d|\n", 154);
+	ft_printf("|%+ d|\n", 154);
+	ft_printf("|%+d|\n", -154);*/
+	ft_printf("|%-20x|\n", 154);
+	printf("|%-20x|\n", 154);
+	ft_printf("|%20x|\n", 154);
+	printf("|%20x|\n", 154);
+	/*ft_printf("%#X\n", 154);
 	ft_printf("%#x\n", 154);
 	ft_printf("%p\n", &i);
-	printf("|%#20p|\n", &i);
-	ft_printf("%#X\n", 0);
+	ft_printf("%#X\n", 0);*/
 }
