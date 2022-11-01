@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:49:52 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/01 14:28:40 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/01 17:25:57 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,17 @@ static int	_check_format(const char *str, va_list par, int *i)
 		flags->width += str[*i] - 48;
 		*i = *i + 1;
 	}
+	if (str[*i] == '.')
+	{
+		flags->point = 1;
+		*i = *i + 1;
+	}
+	while (_isdigit(str[*i]))
+	{
+		flags->precision *= 10;
+		flags->precision += str[*i] - 48;
+		*i = *i + 1;
+	}
 	count = 0;
 	if (str[*i] == 'c')
 		count += ft_print_c((unsigned char) va_arg(par, int), flags);
@@ -86,7 +97,11 @@ static int	_check_format(const char *str, va_list par, int *i)
 		count += ft_print_x((unsigned int) va_arg(par, unsigned int), \
 		str[*i], flags);
 	else if (str[*i] == 'p')
+	{
+		long tmp = va_arg(par, long);
+		printf("%ld\n", tmp);
 		count += ft_print_p((uintptr_t) va_arg(par, uintptr_t), flags);
+	}
 	free(flags);
 	return (count);
 }
@@ -128,4 +143,6 @@ static void	_initiate_flags(t_flags *flags)
 	flags->total = 0;
 	flags->hash = 0;
 	flags->width = 0;
+	flags->point = 0;
+	flags->precision = 0;
 }

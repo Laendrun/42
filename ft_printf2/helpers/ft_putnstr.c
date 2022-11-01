@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 15:48:45 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/01 17:27:22 by saeby            ###   ########.fr       */
+/*   Created: 2022/11/01 16:45:20 by saeby             #+#    #+#             */
+/*   Updated: 2022/11/01 16:46:52 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// if character is not printable, print nothing but count the char as printed
-// i.e. printf("%c %c %c\n", '0', 0, '1') prints "0  1" and returns 6
-
-int main(void)
+int	ft_putnstr(char *str, int n)
 {
-	//printf(" %2p \n", -1);
-	ft_printf(" %d \n", -10);
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i] && i < n)
+	{
+		count += write(1, &str[i], 1);
+		i++;
+	}
+	return (count);
 }

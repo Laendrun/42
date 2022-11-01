@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:49:21 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/31 21:39:16 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/01 16:47:15 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_flags
 	int	hash;
 	int	total;
 	int	width;
+	int point;
+	int precision;
 } t_flags;
 
 int		ft_printf(const char *input_str, ...);
@@ -42,6 +44,7 @@ int		ft_strlen(char *s);
 int		ft_putchar(char c);
 int		ft_putnbr(int nbr);
 int		ft_putstr(char *s);
+int		ft_putnstr(char *str, int n);
 int		ft_putstr_sep(char *s);
 char	*ft_itoa(int n);
 int		ft_putunbr(unsigned int nb);

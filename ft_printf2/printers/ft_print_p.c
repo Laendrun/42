@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 18:12:12 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/01 16:31:58 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/01 17:23:46 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_print_p(uintptr_t adr, t_flags *flags)
 	int	i;
 	int	adr_len;
 	
+	printf("%lu\n", adr);
 	adr_len = _adr_len(adr) + 2;
 	count = 0;
 	i = 0;
@@ -47,25 +48,6 @@ int	ft_print_p(uintptr_t adr, t_flags *flags)
 		count += ft_put_ptr(adr);
 	return (count);
 }
-/*
-int	ft_print_p(uintptr_t adr, t_flags *flags)
-{
-	int	count;
-	int	adr_len;
-	(void)	flags;
-
-	adr_len = _adr_len(adr);
-	adr_len += 2;
-	count = 0;
-	count += ft_putstr("0x");
-	if (count < 0)
-		return (-1);
-	count += ft_put_ptr(adr);
-	if (count < -1)
-		return (-1);
-	return (count);
-}
-*/
 
 static int	_adr_len(unsigned int nb)
 {
