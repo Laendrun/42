@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:49:52 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/01 17:25:57 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/01 21:27:56 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	_check_format(const char *input_str, va_list params, int *i);
+static int	_check_format(const char *input_str, va_list *params, int *i);
 static void	_check_flags(char c, t_flags *flags);
 static void	_initiate_flags(t_flags *flags);
 static int	_isflag(char c);
@@ -32,7 +32,7 @@ int	ft_printf(const char *input_str, ...)
 		if (input_str[i] == '%')
 		{
 			i++;
-			count += _check_format(input_str, params, &i);
+			count += _check_format(input_str, &params, &i);
 			if (count < 0)
 				return (-1);
 		}
@@ -48,7 +48,7 @@ int	ft_printf(const char *input_str, ...)
 	return (count);
 }
 
-static int	_check_format(const char *str, va_list par, int *i)
+static int	_check_format(const char *str, va_list *par, int *i)
 {
 	int		count;
 	int		width;
@@ -84,24 +84,20 @@ static int	_check_format(const char *str, va_list par, int *i)
 	}
 	count = 0;
 	if (str[*i] == 'c')
-		count += ft_print_c((unsigned char) va_arg(par, int), flags);
+		count += ft_print_c((int) va_arg(*par, int), flags);
 	else if (str[*i] == '%')
 		count += ft_putchar('%');
 	else if (str[*i] == 'd' || str[*i] == 'i')
-		count += ft_print_d((int) va_arg(par, int), flags);
+		count += ft_print_d((int) va_arg(*par, int), flags);
 	else if (str[*i] == 'u')
-		count += ft_print_u((unsigned int) va_arg(par, unsigned int), flags);
+		count += ft_print_u((unsigned int) va_arg(*par, unsigned int), flags);
 	else if (str[*i] == 's')
-		count += ft_print_s((char *) va_arg(par, char *), flags);
+		count += ft_print_s((char *) va_arg(*par, char *), flags);
 	else if (str[*i] == 'x' || str[*i] == 'X')
-		count += ft_print_x((unsigned int) va_arg(par, unsigned int), \
+		count += ft_print_x((unsigned int) va_arg(*par, unsigned int), \
 		str[*i], flags);
 	else if (str[*i] == 'p')
-	{
-		long tmp = va_arg(par, long);
-		printf("%ld\n", tmp);
-		count += ft_print_p((uintptr_t) va_arg(par, uintptr_t), flags);
-	}
+		count += ft_print_p((uintptr_t) va_arg(*par, uintptr_t), flags);
 	free(flags);
 	return (count);
 }

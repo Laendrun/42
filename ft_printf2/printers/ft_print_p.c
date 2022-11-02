@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 18:12:12 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/01 17:23:46 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/01 21:28:58 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	ft_print_p(uintptr_t adr, t_flags *flags)
 	int	i;
 	int	adr_len;
 	
-	printf("%lu\n", adr);
 	adr_len = _adr_len(adr) + 2;
 	count = 0;
 	i = 0;

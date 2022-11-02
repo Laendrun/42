@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:49:21 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/01 16:47:15 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/01 20:33:21 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_flags
 
 int		ft_printf(const char *input_str, ...);
 
-int 	ft_print_c(unsigned char c, t_flags *flags);
+int 	ft_print_c(int c, t_flags *flags);
 int		ft_print_d(int nbr, t_flags *flags);
 int		ft_print_u(unsigned int nbr, t_flags *flags);
 int		ft_print_x(unsigned int nbr, int format, t_flags *flags);
