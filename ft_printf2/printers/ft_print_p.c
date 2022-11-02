@@ -6,7 +6,11 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 18:12:12 by saeby             #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2022/11/01 21:28:58 by saeby            ###   ########.fr       */
+=======
+/*   Updated: 2022/11/01 18:15:06 by saeby            ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +18,24 @@
 
 static int	_adr_len(unsigned int nb);
 
-int	ft_print_p(uintptr_t adr, t_flags *flags)
+int	ft_print_p(int tmp, t_flags *flags)
 {
+<<<<<<< Updated upstream
 	int	count;
 	int	i;
 	int	adr_len;
 	
+=======
+	int		count;
+	int		i;
+	int		adr_len;
+	uintptr_t	adr;
+	(void) flags;
+
+	/*if (tmp < 0)
+		return (0);
+	*/adr = (uintptr_t) tmp;
+>>>>>>> Stashed changes
 	adr_len = _adr_len(adr) + 2;
 	count = 0;
 	i = 0;

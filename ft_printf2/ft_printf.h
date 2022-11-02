@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:49:21 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/01 20:33:21 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/02 07:30:19 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_print_d(int nbr, t_flags *flags);
 int		ft_print_u(unsigned int nbr, t_flags *flags);
 int		ft_print_x(unsigned int nbr, int format, t_flags *flags);
 int		ft_print_s(char *s, t_flags *flags);
-int		ft_print_p(uintptr_t adr, t_flags *flags);
+int		ft_print_p(int adr, t_flags *flags);
 int		ft_strlen(char *s);
 
 int		ft_putchar(char c);

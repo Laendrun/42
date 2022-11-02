@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:49:52 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/01 21:27:56 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/02 07:30:36 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static int	_check_format(const char *str, va_list *par, int *i)
 		count += ft_print_x((unsigned int) va_arg(*par, unsigned int), \
 		str[*i], flags);
 	else if (str[*i] == 'p')
-		count += ft_print_p((uintptr_t) va_arg(*par, uintptr_t), flags);
+		count += ft_print_p((int) va_arg(par, int), flags);
 	free(flags);
 	return (count);
 }
