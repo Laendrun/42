@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 15:48:45 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/02 17:43:25 by saeby            ###   ########.fr       */
+/*   Created: 2022/11/02 08:37:40 by saeby             #+#    #+#             */
+/*   Updated: 2022/11/02 09:53:15 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdio.h>
 
-// if character is not printable, print nothing but count the char as printed
-// i.e. printf("%c %c %c\n", '0', 0, '1') prints "0  1" and returns 6
+char	*get_next_line(int fd);
 
-int main(void)
-{
-	//int i = -1;
+void	*ft_calloc(size_t count, size_t size);
 
-	printf("%d\n", ft_printf(" %-4p ", -10));
-	//printf("%d\n", printf(" %-4p ", 17));
-
-}
+#endif

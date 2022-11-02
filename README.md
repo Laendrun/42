@@ -9,9 +9,9 @@ Here's a list of all projects available in this repository with a status (Finish
 | Project   | Started            | Finished ?         | Marked          | Comments                    | Francinette | Francinette strict |
 | --------- | ------------------ | ------------------ | --------------- | --------------------------- | ----------- | ------------------ |
 | [Libft](https://github.com/Laendrun/42/tree/main/libft) | :white_check_mark: | :white_check_mark: | 125/100 | | 125/100    | Only lstmap fails |
-| [Ft_printf](https://github.com/Laendrun/42/tree/main/ft_printf) | :white_check_mark: | :white_check_mark: | :x: | Will be added to libft | 100/100 | don't try it |
-| [Ft_printf2](https://github.com/Laendrun/42/tree/main/ft_printf2) | :white_check_mark: | :white_check_mark: | :x: | Tried the bonus, apparently it does not work | 100/100 | |
-| Get Next Line | :x: | :x: | :x: |  |  |  |
+| [Ft_printf](https://github.com/Laendrun/42/tree/main/ft_printf) | :white_check_mark: | :white_check_mark: | 100/100 | Will be added to libft | 100/100 | don't try it |
+| [Ft_printf2](https://github.com/Laendrun/42/tree/main/ft_printf2) | :white_check_mark: | :white_check_mark: | :x: | One day (maybe) I'll make the bonus work | 100/100 | |
+| [Get Next Line](https://github.com/Laendrun/42/tree/main/get_next_line) | :white_check_mark: | :x: | :x: |  |  |  |
 
 ## Subjects
 

@@ -27,7 +27,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-#bonus: all
+bonus: all
 
 re: fclean all
 
@@ -35,4 +35,4 @@ clear: fclean
 	clear
 
 test: all
-	gcc $(CCFLAGS) -L. -lftprintf -fsanitize=address test.c
+	gcc -L. -lftprintf -fsanitize=address test.c
