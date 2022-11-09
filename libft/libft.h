@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 23:36:53 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/24 13:57:56 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/09 10:15:00 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -81,5 +82,15 @@ char	*ft_strncpy(char *dst, const char *src, size_t len);
 char	*ft_strcat(char *s1, const char *s2);
 char	*ft_strncat(char *s1, const char *s2, size_t n);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
+
+// Printf
+
+int		ft_printf(const char *input_str, ...);
+int		ft_print_c(char c);
+int		ft_print_s(char *s);
+int		ft_print_d(int nbr);
+int		ft_print_u(unsigned int nbr);
+int		ft_print_p(uintptr_t adr);
+int		ft_print_x(unsigned int nbr, int format);
 
 #endif

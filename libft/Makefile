@@ -12,9 +12,15 @@ SRC_BONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 			ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 OBJS_BONUS := $(SRC_BONUS:%.c=%.o)
 
+# PRINTF SRC
+PRINTF_SRC = ft_printf.c ft_print_c.c ft_print_s.c ft_print_d.c ft_print_u.c ft_print_p.c ft_print_x.c
+
+# Additionnal functions
+ADD_SRC = ft_putchar.c ft_putstr.c ft_putnbr.c ft_strcmp.c ft_strstr.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c \
+			ft_memccpy.c ft_strchr.c
+
 # SRC & OBJS for additionnal functions
-SRC_SUP = ft_putchar.c ft_putstr.c ft_putnbr.c ft_strcmp.c ft_strstr.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c \
-		ft_memccpy.c ft_strchr.c
+SRC_SUP = $(ADD_SRC) $(PRINTF_SRC)
 OBJS_SUP := $(SRC_SUP:%.c=%.o)
 
 # "Base" variables
@@ -27,6 +33,9 @@ RM = rm -f
 ARTARGET = ar rcs $(NAME)
 RANTARGET = ranlib $(NAME)
 OBJSA = $(OBJS) $(OBJS_BONUS) $(OBJS_SUP)
+
+TEST_SRC = __test.c
+TEST_OUTPUT = test
 
 # Delete variables
 RMTARGET = $(RM) $(NAME)
@@ -63,3 +72,8 @@ everything: $(OBJSA)
 
 clear: fclean 
 	clear
+
+test: everything
+	$(RM) $(TEST_OUTPUT)
+	$(CC) $(CCFLAGS) -L. -lft $(TEST_SRC) -o $(TEST_OUTPUT)
+	./$(TEST_OUTPUT)
