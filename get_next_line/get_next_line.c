@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:37:46 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/02 18:22:09 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/04 17:54:19 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,51 @@ static char	*ft_strjoin(char *s1, char *s2);
 static void	fill_str(char *res, char *s1, char *s2);
 static char	*ft_strdup(char *s1);
 static char	*ft_strchr(char *s, int c);
-size_t	ft_strlen(char *s);
+static int _len_till_backslash(char * s);
+static size_t	ft_strlen(char *s);
 
 char	*get_next_line(int fd)
 {
-	static char	*s[1];
+	static char	*s;
 	char	buffer[BUFFER_SIZE + 1];
 	int		b_read;
 	char	*tmp;
-
+	int		i;
+	int		original_len;
+	if (s)
+	{
+		i = ft_strlen(s);
+		original_len = _len_till_backslash(s);
+	}
+	else
+	{
+		i = 0;
+		original_len = 0;
+	}
 	if (fd < 0)
 		return (NULL);
-
 	b_read = 1;
 	while (b_read > 0)
 	{
 		b_read = read(fd, buffer, BUFFER_SIZE);
 		buffer[b_read] = 0;
-		if (!s[0])
-			s[0] = ft_strdup(buffer);
+		if (!s)
+			s = ft_strdup(buffer);
 		else
 		{
-			tmp = ft_strjoin(s[0], buffer);
-			free(s[0]);
-			s[0] = tmp;
+			tmp = ft_strjoin(s, buffer);
+			free(s);
+			s = tmp;
 		}
-		if (ft_strchr(s[0], '\n'))
+		if (ft_strchr(s, '\n'))
 			break ;
 	}
-	return (s[0]);
+	while (s[i] != '\n' && s[i] != 0)
+		i++;
+	s[i] = '\n';
+	s[i++] = 0;
+	return (s + original_len);
 }
-
 
 static char	*ft_strdup(char *s1)
 {
@@ -64,6 +78,16 @@ static char	*ft_strdup(char *s1)
 	}
 	dest[i] = 0;
 	return (dest);
+}
+
+static int _len_till_backslash(char * s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\n' && s[i] != 0)
+		i++;
+	return (i);
 }
 
 static char	*ft_strjoin(char *s1, char *s2)
@@ -110,7 +134,7 @@ static char	*ft_strchr(char *s, int c)
 	return (NULL);
 }
 
-size_t	ft_strlen(char *s)
+static size_t	ft_strlen(char *s)
 {
 	int	i;
 
