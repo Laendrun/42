@@ -76,4 +76,4 @@ clear: fclean
 test: everything
 	$(RM) $(TEST_OUTPUT)
 	$(CC) $(CCFLAGS) -L. -lft $(TEST_SRC) -o $(TEST_OUTPUT)
-	./$(TEST_OUTPUT)
+	./$(TEST_OUTPUT) | cat -e
