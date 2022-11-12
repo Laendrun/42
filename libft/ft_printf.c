@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:55:16 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/09 11:02:44 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/12 23:12:07 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	_check_format(const char *str, va_list par, int i)
 	if (str[i] == 'c')
 		count += ft_print_c((char) va_arg(par, int));
 	else if (str[i] == 's')
-		count+= ft_print_s((char *) va_arg(par, char*));
+		count += ft_print_s((char *) va_arg(par, char *));
 	else if (str[i] == 'd' || str[i] == 'i')
 		count += ft_print_d((int) va_arg(par, int));
 	else if (str[i] == 'u')
