@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:37:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/16 15:54:21 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/22 21:04:03 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 15
 # endif
-# define MAX_FD 4096
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>

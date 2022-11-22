@@ -3,19 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:37:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/16 15:55:30 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/22 21:09:48 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+/*
+ * The MAX_FD macro is defined based on the max number of file descriptors
+ * based on my current OS (MacOS Ventura 13.0)
+ * On the most recent MacOS versions, the default maximum file descriptors 
+ * is 10240
+ * this value can be different on the school computers so I'll check this
+ * when I'll be back there
+*/
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 15
 # endif
-# define MAX_FD 4096
+# define MAX_FD 10240
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
