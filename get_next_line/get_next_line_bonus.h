@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:37:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/22 21:09:48 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/23 10:18:22 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
  * based on my current OS (MacOS Ventura 13.0)
  * On the most recent MacOS versions, the default maximum file descriptors 
  * is 10240
- * this value can be different on the school computers so I'll check this
- * when I'll be back there
 */
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
