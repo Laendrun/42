@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:27:11 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/16 15:55:37 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/30 08:58:20 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * most system calls
  */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char		*_fill_line_buffer(int fd, char *left_c, char *buffer);
 static char		*_set_line(char *line);

@@ -6,11 +6,11 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:37:43 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/16 15:55:24 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/30 08:58:12 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strdup(char *s1)
 {
