@@ -13,6 +13,7 @@ This repo will (if I don't forget) save all my projects during the 42 cursus at 
 ## Unfinished
 
 | Project | Status | Comments |
+| --- | --- | --- |
 | [Ft_printf2](https://github.com/Laendrun/42/tree/main/ft_printf2) | :construction: | Tried the bonus... |
 
 ## Subjects
