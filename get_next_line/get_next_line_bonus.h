@@ -6,10 +6,9 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:37:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/23 10:18:22 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/30 08:43:35 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 /*
  * The MAX_FD macro is defined based on the max number of file descriptors

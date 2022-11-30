@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:27:11 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/22 21:03:37 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/30 08:44:05 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static char		*ft_strchr(char *s, int c);
  * i.e. our file is "1\n234\n", our BUFFER_SIZE is 4
  * te first time we'll read through the file we'll read 1\n23
  * so what we are going to store in our static variable is '23', because the
- * next time we call the function on the same fd it will read starting at 4 in the
+ * next time we call the function on the same fd it will read 
+ * starting at 4 in the
  * file.
  */
 char	*get_next_line(int fd)
@@ -100,9 +101,10 @@ static char	*_set_line(char *line_buffer)
  * there is a \n character in the line buffer
  * each time through it will check if there is already data
  * in the left_c buffer and append the new characters to it
- * if a \n is found, it will returne the left_c buffer 
+ * if a \n is found, it will return the left_c buffer 
  * after appending the read characters to it.
  */
+
 static char	*_fill_line_buffer(int fd, char *left_c, char *buffer)
 {
 	ssize_t	b_read;
