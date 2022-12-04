@@ -1,0 +1,7 @@
+.DS_Store
+*/*.o
+*/*.out
+*/*.a
+test/*
+libft/__test.c
+libft/test
