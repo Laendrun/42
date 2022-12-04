@@ -57,10 +57,27 @@ One of the biggest disadvantage is that it's harder for a user to find a passwor
 
 ## How does lvm work ?
 
-LVM is used to combine multiple physical volumes (multiples disks) into volume group so that it unifies the storage available to the total of all physical volumes.
-Then we can set partitions on top of these volume group. These partitions can be dynamic as we have access to all the available space from multiple physical volumes.
-I.E. we have 2 200GB disks, LVM will combine them into a 400GB volume. Most times when we assign partitions to disks, we have to use all the available space, it's not the case with LVM.
-We could attribute a 12GB partition, and when we need more, we could simply tell LVM to change it to add 12GB more to it. This will have no effect on the user currently on the disk, all his files will still be available and usable during the modification of the partition.
+LVM := Logical Volume Manager
+Allows us to easily manipulate the partitions or logical volume on a storage device.
+
+## What's an UFW and what's the value of using it ?
+
+UFW is a simple firewall. It let's us block some network ports.
+
+Imagine a big wall being built around your virtual machine, and on this wall is alot of doors. Each door is a port and you can tell UFW which doors are locked or not.
+That's what we did for b2br, we set the door 4242 opened for everyone from everywhere going in or out. You could only let people enter through this door but not going out, or the other way around.
+Adding a friewall is a security practice, because you can specify exactly where you want things to go, and from where they come, all the other routes are locked.
+
+## What is ssh and what's the value of using it ?
+
+SSH (Secure SHell) is an authentication mechanism between a client and a host.
+It uses encryption so that all communication between clients and hosts is encrypted.
+We can work on our vm directly from the terminal on our Mac by connecting to it via ssh.
+We can either configure a key (like we did for vogsphere to push our project), or just specify a username when connecting and the host will ask for our password before giving us access.
+
+## What is CRON ?
+
+Cron is command line utility to schedule commands or scripts to happen at specific time (i.e. every first monday of the month) or time intervals (i.e. every 10 minutes)
 
 ---
 
@@ -101,4 +118,7 @@ We could attribute a 12GB partition, and when we need more, we could simply tell
 	sudo vim /etc/hosts -> change old hostname to new
 - Check if sudo is installed
 	(we already used it for the other commands)
-	dpkg -l | grep sudo
+	dpkg -l | grep sudovi
+- CRON
+	cd /usr/local/bin -> show monitoring.sh
+	sudo crontab -u root -e -> to edit the cron job
