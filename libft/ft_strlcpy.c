@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:34:15 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/30 18:17:31 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/12 23:22:28 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	unsigned int	i;
 	unsigned int	src_len;
 
 	src_len = ft_strlen(src);
-	i = 0;
 	if (src_len + 1 < dstsize)
 	{
 		ft_memcpy(dst, src, src_len + 1);

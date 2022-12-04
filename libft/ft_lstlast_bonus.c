@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 18:28:16 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/29 18:10:39 by saeby            ###   ########.fr       */
+/*   Updated: 2022/11/12 23:22:51 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,10 @@
 t_list	*ft_lstlast(t_list *lst)
 {
 	t_list			*tmp;
-	unsigned int	i;
 
 	if (!lst)
 		return (NULL);
 	tmp = lst;
-	i = 0;
 	while (tmp->next)
 		tmp = tmp->next;
 	return (tmp);
