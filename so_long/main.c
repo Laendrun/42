@@ -1,79 +1,68 @@
-#include "mlx.h"
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/04 20:18:15 by saeby             #+#    #+#             */
+/*   Updated: 2022/12/04 23:34:57 by saeby            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+#include "so_long.h"
 
-typedef struct	s_point {
-	int	x;
-	int	y;
-}				t_point;
-
-void	put_mlx_pixel(t_data *data, int x, int y, int color);
-void	draw_rect(t_data *img, t_point start, t_point end, int color);
-
-int	main(void)
+int	main(int argc, char *argv[])
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
+	(void) argv;
+	(void) argc;
+	/*
+	if (argc != 2)
+	{
+		ft_printf("No map specified !");
+		exit(0);
+	}*/
+	t_vars	vars;
+	//t_sprite	player_sprite;
+	//int	width;
+	//int	height;
 
-	t_point	start;
-	t_point	end;
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, WIN_W, WIN_H, WIN_NAME);
+	vars.img = mlx_new_image(vars.mlx, WIN_W, WIN_H);
+	vars.addr = mlx_get_data_addr(vars.img, &vars.bits_per_pixel, \
+									&vars.line_length,&vars.endian);
+	
+	vars.player.position.x = 0;
+	vars.player.position.y = 0;
+	vars.player.size = 50;
+	vars.player.color = 0xFF00FF;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1280, 720, "so_long");
-	img.img = mlx_new_image(mlx, 1280, 720);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
+	//player_sprite.src = mlx_xpm_file_to_image(vars.mlx, "img/test.xpm", &width, &height);
+	//printf("sprite address: %p\n", player_sprite.src);
 
-	start.x = 5;
-	start.y = 5;
-	end.x = 10;
-	end.y = 10;
-	draw_rect(&img, start, end, 0x00FF0000);
-	start.x = 10;
-	start.y = 10;
-	end.x = 250;
-	end.y = 25;
-	draw_rect(&img, start, end, 0x000000FF);
+	// Close window when pressing esc or the red crosd
+	mlx_hook(vars.win, 2, 0L, keyHandler, &vars);
+	mlx_hook(vars.win, 17, 0L, close, &vars);
+	vars.bg_color = 0x0;
 
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
-
-	printf("Hello world, minilbx test !\n");
+	mlx_loop_hook(vars.mlx, render, &vars);
+	mlx_loop(vars.mlx);
 	return (0);
 }
 
-void	draw_rect(t_data *img, t_point start, t_point end, int color)
+
+int	render(t_vars *vars)
 {
-	size_t	i;
-
-	i = start.x;
-	while (start.y <= end.y)
-	{
-		while (i <= end.x)
-		{
-			put_mlx_pixel(img, i, start.y, color);
-			i++;
-		}
-		i = start.x;
-		start.y++;
-	}
-
-	put_mlx_pixel(img, start.x, start.y, color);
-	put_mlx_pixel(img, end.x, end.y, color);
-}
-
-void	put_mlx_pixel(t_data *img, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	t_point	bg_start;
+	t_point	bg_end;
+	
+	bg_start.x = 0;
+	bg_start.y = 0;
+	bg_end.x = WIN_W;
+	bg_end.y = WIN_H;
+	draw_background(vars, bg_start, bg_end);
+	draw_player(vars);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
+	return (0);
 }
