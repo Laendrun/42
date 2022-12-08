@@ -1,0 +1,62 @@
+CCFLAGS = -Wextra -Werror -Wall
+
+RESET = \033[0;39m
+GRAY = \033[0;90m
+RED = \033[0;91m
+GREEN = \033[0;92m
+YELLOW = \033[0;93m
+BLUE = \033[0;94m
+MAGENTA = \033[0;95m
+CYAN = \033[0;96m
+WHITE = \033[0;97m
+
+first_word:
+	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
+
+fizzbuzz:
+	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
+
+ft_putstr:
+	@echo "$(YELLOW)Warning: $(RED)$@ $(RESET)is a function."
+	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !.$(RESET)"
+
+ft_strcpy:
+	@echo "$(YELLOW)Warning: $(RED)$@ $(RESET)is a function."
+	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !.$(RESET)"
+
+ft_strlen:
+	@echo "$(YELLOW)Warning: $(RED)$@ $(RESET)is a function."
+	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !.$(RESET)"
+
+ft_swap:
+	@echo "$(YELLOW)Warning: $(RED)$@ $(RESET)is a function."
+	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !.$(RESET)"
+
+repeat_alpha:
+	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
+
+rev_print:
+	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
+
+rot_13:
+	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
+
+rotone:
+	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
+
+search_and_replace:
+	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
+
+ulstr:
+	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
+
+.PHONY: first_word fizzbuzz ft_putstr ft_strcpy ft_strlen ft_swap repeat_alpha \
+		rev_print rot_13 rotone search_and_replace ulstr
