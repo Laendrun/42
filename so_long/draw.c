@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:31:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/04 22:12:39 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/05 07:06:13 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	draw_player(t_vars *vars)
 {
 	t_point	player_end;
 
-	player_end.x = vars->player.position.x + vars->player.size;
-	player_end.y = vars->player.position.y + vars->player.size;
+	player_end.x = vars->player.position.x + SIZE;
+	player_end.y = vars->player.position.y + SIZE;
 
 	//printf("player x: %zu, player y: %zu\n", vars->player.position.x, vars->player.position.y);
 	draw_rect(vars, vars->player.position, player_end, vars->player.color);

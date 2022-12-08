@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:37:43 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/04 23:21:00 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/05 07:20:25 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,6 @@ char	*ft_strdup(char *s1)
 	}
 	dest[i] = 0;
 	return (dest);
-}
-
-size_t	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
 }
 
 char	*ft_substr(char *s, unsigned int start, size_t len)

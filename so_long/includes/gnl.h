@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:37:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/04 23:26:35 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/05 07:20:15 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 char	*get_next_line(int fd);
 
 char	*ft_strdup(char *s);
-size_t	ft_strlen(char *s);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 char	*ft_strjoin(char *s1, char *s2);
 void	fill_str(char *res, char *s1, char *s2);
