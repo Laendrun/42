@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 07:09:14 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/09 14:30:41 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/09 22:09:28 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,27 @@ int	parse_map(t_map *map)
 int		fill_grid(t_map *map)
 {
 	int			fd;
-	size_t		x;
-	size_t		y;
+	t_point		g_pos;
 	char		*line;
-	char		**grid;
 
-	grid = malloc(map->g_h * sizeof(char *));
+	g_pos.px_x = 0;
+	g_pos.px_y = 0;
+	map->grid_list = ft_lstnew('o', g_pos);
 	fd = open(map->path, O_RDONLY);
-	x = 0;
-	y = 0;
 	line = get_next_line(fd);
 	while (line)
 	{
-		grid[y] = malloc((map->g_w - 1) * sizeof(char));
-		while (x < map->g_w - 1)
+		//grid[g_pos.px_y] = malloc((map->g_w - 1) * sizeof(char));
+		while (g_pos.px_x < map->g_w - 1)
 		{
-			grid[y][x] = line[x];
-			x++;
+			//grid[g_pos.px_y][g_pos.px_x] = line[g_pos.px_x];
+			ft_lstadd_back(&map->grid_list, ft_lstnew(line[g_pos.px_x], g_pos));
+			g_pos.px_x++;
 		}
-		x = 0;
-		y++;
+		g_pos.px_x = 0;
+		g_pos.px_y++;
 		line = get_next_line(fd);
 	}
-	map->grid = grid;
 	close(fd);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:15:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/09 15:24:41 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/09 22:09:10 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ typedef struct	s_wall {
 	size_t	g_y;
 }				t_wall;
 
+typedef struct	s_point {
+	size_t	px_x;
+	size_t	px_y;
+}				t_point;
+
 /* Types
  * c : collectible
  * w : wall
@@ -41,15 +46,11 @@ typedef struct	s_wall {
  */
 
 typedef struct	s_g_list {
-	t_wall		*elem;
-	char		type;
-	void		*next;
+	void	*content;
+	char	type;
+	t_point	g_pos;
+	void	*next;
 }				t_g_list;
-
-typedef struct	s_point {
-	size_t	px_x;
-	size_t	px_y;
-}				t_point;
 
 typedef struct s_sprite {
 	int	px_w;
@@ -66,7 +67,7 @@ typedef struct	s_map {
 	char		*path;
 	size_t		g_h;
 	size_t		g_w;
-	char		**grid;
+	t_g_list	*grid_list;
 }				t_map;
 
 typedef struct	s_vars {
@@ -105,5 +106,11 @@ void	draw_player(t_vars *vars);
 // map_parser.c
 int		parse_map(t_map *map);
 int		fill_grid(t_map *map);
+
+// lst.c
+t_g_list	*ft_lstnew(char type, t_point g_pos);
+int	ft_lstsize(t_g_list *lst);
+void	ft_lstadd_back(t_g_list **alst, t_g_list *new);
+t_g_list	*ft_lstlast(t_g_list *lst);
 
 #endif

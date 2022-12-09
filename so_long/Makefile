@@ -1,5 +1,5 @@
 NAME = so_long
-SRC = main.c utils.c draw.c map_parser.c
+SRC = main.c utils.c draw.c map_parser.c lst.c
 GNL_SRC = $(addprefix gnl/, gnl.c gnl_utils.c)
 PRINTF_SRC = $(addprefix ft_printf/, ft_print_c.c ft_print_d.c ft_print_p.c ft_print_s.c ft_print_u.c ft_print_x.c ft_printf.c)
 OBJ := $(SRC:%.c=%.o)
@@ -12,8 +12,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
 	gcc $(CCFLAGS) $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
-
-# $(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 %.o: %.c
 	gcc $(CCFLAGS) -Imlx -Iincludes -c $< -o $@
