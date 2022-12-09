@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:17:56 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/05 12:16:15 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/09 13:17:11 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,30 @@ int	keyHandler(int keycode, t_vars *vars)
 {
 	t_point	new_pos;
 
-	new_pos.x = 0;
-	new_pos.y = 0;
+	new_pos.px_x = 0;
+	new_pos.px_y = 0;
 	if (keycode == 53)
 		close_window(vars);
 	else if (keycode == 49)
 		switch_color(vars);
 	else if (keycode == 2 || keycode == 124)
 	{
-		new_pos.x = SIZE;
+		new_pos.px_x = SIZE;
 		update_player_position(vars, new_pos);
 	}
 	else if (keycode == 0 || keycode == 123)
 	{
-		new_pos.x = -SIZE;
+		new_pos.px_x = -SIZE;
 		update_player_position(vars, new_pos);
 	}
 	else if (keycode == 13 || keycode == 126)
 	{
-		new_pos.y = -SIZE;
+		new_pos.px_y = -SIZE;
 		update_player_position(vars, new_pos);
 	}
 	else if (keycode == 1 || keycode == 125)
 	{
-		new_pos.y = SIZE;
+		new_pos.px_y = SIZE;
 		update_player_position(vars, new_pos);
 	}
 	else
@@ -61,14 +61,16 @@ void	switch_color(t_vars *vars)
 		vars->bg_color = 0xFF0000;
 	else if (vars->bg_color == 0xFF0000)
 		vars->bg_color = 0x00FF00;
+	else
+		vars->bg_color = 0x00FF00;
 }
 
-void	update_player_position(t_vars *vars, t_point new_pos)
+void	update_player_position(t_vars *vars, t_point np)
 {
-	if (vars->player.position.x + new_pos.x >= 0 && vars->player.position.x + new_pos.x <= vars->map.width*SIZE+1 - SIZE)
-		vars->player.position.x += new_pos.x;
-	if (vars->player.position.y + new_pos.y >= 0 && vars->player.position.y + new_pos.y <= vars->map.height*SIZE+1 - SIZE)
-		vars->player.position.y += new_pos.y;
+	if (vars->player.pos.px_x + np.px_x >= 0 && vars->player.pos.px_x + np.px_x <= vars->map.g_w*SIZE - SIZE)
+		vars->player.pos.px_x += np.px_x;
+	if (vars->player.pos.px_y + np.px_y >= 0 && vars->player.pos.px_y + np.px_y <= vars->map.g_h*SIZE - SIZE)
+		vars->player.pos.px_y += np.px_y;
 }
 
 size_t	ft_strlen(char *s)
