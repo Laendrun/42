@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:15:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/09 22:09:10 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/10 02:45:58 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct	s_map {
 typedef struct	s_vars {
 	void		*mlx;
 	void		*win;
+	void		*img;
+	char		*addr;
 	t_player	player;
 	t_map		map;
 	t_sprite	w_sp;
@@ -80,6 +82,7 @@ typedef struct	s_vars {
 	t_sprite	s_sp;
 	t_sprite	e_sp;
 	t_sprite	f_sp;
+	t_sprite	p_sp;
 	int			bg_color;
 	int			bits_per_pixel;
 	int			line_length;
@@ -99,6 +102,8 @@ size_t	ft_strlen(char *s);
 // draw.c
 void	put_mlx_pixel(t_vars *vars, int x, int y, int color);
 void	draw_rect(t_vars *vars, t_point start, t_point end, int color);
+void	draw_map(t_vars *vars);
+
 //void	draw_background(t_vars *vars, t_point start, t_point end);
 void	draw_background(t_vars *vars);
 void	draw_player(t_vars *vars);

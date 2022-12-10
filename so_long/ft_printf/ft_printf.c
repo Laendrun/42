@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:55:16 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/04 23:22:09 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/09 22:29:01 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	_check_format(const char *str, va_list *par, int i)
 	else if (str[i] == 'x' || str[i] == 'X')
 		count += ft_print_x((unsigned int) va_arg(*par, unsigned int), str[i]);
 	else if (str[i] == 'p')
-		count += ft_print_p((uintptr_t) va_arg(*par, uintptr_t));
+		count += ft_print_p((unsigned int) va_arg(*par, unsigned int));
 	else if (str[i] == '%')
 		count += ft_print_c('%');
 	return (count);

@@ -10,14 +10,25 @@ CCFLAGS = -Wextra -Wall -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
-	gcc $(CCFLAGS) $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
+# MacOs
+#$(NAME): $(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
+#	gcc $(CCFLAGS) $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
 
+# Linux
+$(NAME): $(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
+	gcc $^ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+
+# MacOs
+#%.o: %.c
+#	gcc $(CCFLAGS) -Imlx -Iincludes -c $< -o $@
+
+# Linux
 %.o: %.c
-	gcc $(CCFLAGS) -Imlx -Iincludes -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -I/usr/include -Iincludes -Imlx_linux -O3 -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
+
 fclean: clean
 	rm -f $(NAME)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:17:56 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/09 13:17:11 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/10 02:41:10 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,24 @@ int	keyHandler(int keycode, t_vars *vars)
 
 	new_pos.px_x = 0;
 	new_pos.px_y = 0;
-	if (keycode == 53)
+	if (keycode == 53 || keycode == 65307)
 		close_window(vars);
-	else if (keycode == 49)
-		switch_color(vars);
-	else if (keycode == 2 || keycode == 124)
+	else if (keycode == 2 || keycode == 124 || keycode == 100)
 	{
 		new_pos.px_x = SIZE;
 		update_player_position(vars, new_pos);
 	}
-	else if (keycode == 0 || keycode == 123)
+	else if (keycode == 0 || keycode == 123 || keycode == 97)
 	{
 		new_pos.px_x = -SIZE;
 		update_player_position(vars, new_pos);
 	}
-	else if (keycode == 13 || keycode == 126)
+	else if (keycode == 13 || keycode == 126 || keycode == 119)
 	{
 		new_pos.px_y = -SIZE;
 		update_player_position(vars, new_pos);
 	}
-	else if (keycode == 1 || keycode == 125)
+	else if (keycode == 1 || keycode == 125 || keycode == 115)
 	{
 		new_pos.px_y = SIZE;
 		update_player_position(vars, new_pos);
@@ -53,23 +51,11 @@ int	keyHandler(int keycode, t_vars *vars)
 	return(0);
 }
 
-void	switch_color(t_vars *vars)
-{
-	if (vars->bg_color == 0x00FF00)
-		vars->bg_color = 0x0000FF;
-	else if (vars->bg_color == 0x0000FF)
-		vars->bg_color = 0xFF0000;
-	else if (vars->bg_color == 0xFF0000)
-		vars->bg_color = 0x00FF00;
-	else
-		vars->bg_color = 0x00FF00;
-}
-
 void	update_player_position(t_vars *vars, t_point np)
 {
-	if (vars->player.pos.px_x + np.px_x >= 0 && vars->player.pos.px_x + np.px_x <= vars->map.g_w*SIZE - SIZE)
+	if (vars->player.pos.px_x + np.px_x <= vars->map.g_w * (SIZE + 1) - SIZE)
 		vars->player.pos.px_x += np.px_x;
-	if (vars->player.pos.px_y + np.px_y >= 0 && vars->player.pos.px_y + np.px_y <= vars->map.g_h*SIZE - SIZE)
+	if (vars->player.pos.px_y + np.px_y <= vars->map.g_h * (SIZE + 1) - SIZE)
 		vars->player.pos.px_y += np.px_y;
 }
 

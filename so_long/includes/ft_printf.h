@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:19:01 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/04 23:26:42 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/09 22:29:39 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_print_c(char c);
 int		ft_print_s(char *s);
 int		ft_print_d(int nbr);
 int		ft_print_u(unsigned int nbr);
-int		ft_print_p(uintptr_t adr);
+int		ft_print_p(unsigned int adr);
 int		ft_print_x(unsigned int nbr, int format);
 
 #endif

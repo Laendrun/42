@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 07:09:14 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/09 22:09:28 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/10 02:48:56 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int		fill_grid(t_map *map)
 		{
 			//grid[g_pos.px_y][g_pos.px_x] = line[g_pos.px_x];
 			ft_lstadd_back(&map->grid_list, ft_lstnew(line[g_pos.px_x], g_pos));
+			//if (line[g_pos.px_x] == 'P')
+
 			g_pos.px_x++;
 		}
 		g_pos.px_x = 0;

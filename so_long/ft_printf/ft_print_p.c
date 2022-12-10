@@ -6,15 +6,15 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:38:49 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/04 23:25:22 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/09 22:29:18 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	ft_put_ptr(uintptr_t adr);
+static int	ft_put_ptr(unsigned int adr);
 
-int	ft_print_p(uintptr_t adr)
+int	ft_print_p(unsigned int adr)
 {
 	int	count;
 
@@ -26,7 +26,7 @@ int	ft_print_p(uintptr_t adr)
 	return (count);
 }
 
-static int	ft_put_ptr(uintptr_t adr)
+static int	ft_put_ptr(unsigned int adr)
 {
 	int	count;
 
