@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:15:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/10 02:45:58 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/10 18:11:52 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,6 @@ typedef struct	s_point {
 	size_t	px_y;
 }				t_point;
 
-/* Types
- * c : collectible
- * w : wall
- * s : start
- * e : exit
- */
-
-typedef struct	s_g_list {
-	void	*content;
-	char	type;
-	t_point	g_pos;
-	void	*next;
-}				t_g_list;
-
 typedef struct s_sprite {
 	int	px_w;
 	int	px_h;
@@ -67,7 +53,7 @@ typedef struct	s_map {
 	char		*path;
 	size_t		g_h;
 	size_t		g_w;
-	t_g_list	*grid_list;
+	char		**grid;
 }				t_map;
 
 typedef struct	s_vars {
@@ -83,6 +69,11 @@ typedef struct	s_vars {
 	t_sprite	e_sp;
 	t_sprite	f_sp;
 	t_sprite	p_sp;
+	int			collected;
+	int			collectibles;
+	int			exitUnlocked;
+	int			exitFound;
+	int			startFound;
 	int			bg_color;
 	int			bits_per_pixel;
 	int			line_length;
@@ -110,12 +101,9 @@ void	draw_player(t_vars *vars);
 
 // map_parser.c
 int		parse_map(t_map *map);
-int		fill_grid(t_map *map);
-
-// lst.c
-t_g_list	*ft_lstnew(char type, t_point g_pos);
-int	ft_lstsize(t_g_list *lst);
-void	ft_lstadd_back(t_g_list **alst, t_g_list *new);
-t_g_list	*ft_lstlast(t_g_list *lst);
+int		fill_grid(t_vars *vars);
+void	map_error(char *s);
+int		walls_error(t_vars *vars);
+int		unknown_character(int c);
 
 #endif
