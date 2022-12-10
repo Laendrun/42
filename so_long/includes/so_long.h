@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:15:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/10 18:11:52 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/10 22:02:49 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,70 +15,23 @@
 # define WIN_W 501
 # define WIN_H 501
 # define WIN_NAME "so_long"
+# define WALL '1'
+# define FLOOR '0'
+# define START 'P'
+# define EXIT 'E'
+# define COLLECTIBLE 'C'
 # ifndef SIZE
 # 	define SIZE 50
 # endif
 # include "mlx.h"
 # include "gnl.h"
 # include "ft_printf.h"
+# include "structures.h"
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stdio.h>
-
-// structures declaration
-typedef struct	s_wall {
-	size_t	g_x;
-	size_t	g_y;
-}				t_wall;
-
-typedef struct	s_point {
-	size_t	px_x;
-	size_t	px_y;
-}				t_point;
-
-typedef struct s_sprite {
-	int	px_w;
-	int	px_h;
-	void *img;
-}				t_sprite;
-
-typedef struct	s_player {
-	t_point		pos;
-	t_sprite	sprite;
-}				t_player;
-
-typedef struct	s_map {
-	char		*path;
-	size_t		g_h;
-	size_t		g_w;
-	char		**grid;
-}				t_map;
-
-typedef struct	s_vars {
-	void		*mlx;
-	void		*win;
-	void		*img;
-	char		*addr;
-	t_player	player;
-	t_map		map;
-	t_sprite	w_sp;
-	t_sprite	c_sp;
-	t_sprite	s_sp;
-	t_sprite	e_sp;
-	t_sprite	f_sp;
-	t_sprite	p_sp;
-	int			collected;
-	int			collectibles;
-	int			exitUnlocked;
-	int			exitFound;
-	int			startFound;
-	int			bg_color;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_vars;
 
 // main.c
 int		render(t_vars *vars);
@@ -89,11 +42,13 @@ int		close_window(t_vars *vars);
 void	switch_color(t_vars *vars);
 void	update_player_position(t_vars *vars, t_point new_pos);
 size_t	ft_strlen(char *s);
+char	*ft_itoa(int n);
 
 // draw.c
 void	put_mlx_pixel(t_vars *vars, int x, int y, int color);
 void	draw_rect(t_vars *vars, t_point start, t_point end, int color);
 void	draw_map(t_vars *vars);
+void	draw_moves(t_vars *vars);
 
 //void	draw_background(t_vars *vars, t_point start, t_point end);
 void	draw_background(t_vars *vars);
@@ -105,5 +60,8 @@ int		fill_grid(t_vars *vars);
 void	map_error(char *s);
 int		walls_error(t_vars *vars);
 int		unknown_character(int c);
+
+// path_checker.c
+void	check_path(t_point p, t_vars *vars);
 
 #endif

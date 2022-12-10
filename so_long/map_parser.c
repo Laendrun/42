@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 07:09:14 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/10 18:12:00 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/10 21:28:06 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		fill_grid(t_vars *vars)
 	char		*line;
 
 	vars->map.grid = malloc(vars->map.g_h * sizeof(char *));
+	vars->map.tiles = malloc(vars->map.g_h * sizeof(t_tile *));
 	g_pos.px_x = 0;
 	g_pos.px_y = 0;
 	fd = open(vars->map.path, O_RDONLY);
@@ -53,25 +54,28 @@ int		fill_grid(t_vars *vars)
 	while (line)
 	{
 		vars->map.grid[g_pos.px_y] = malloc((vars->map.g_w - 1) * sizeof(char));
+		vars->map.tiles[g_pos.px_y] = malloc((vars->map.g_w - 1) * sizeof(t_tile));
 		while (g_pos.px_x < vars->map.g_w)
 		{
 			vars->map.grid[g_pos.px_y][g_pos.px_x] = line[g_pos.px_x];
-			if (unknown_character(vars->map.grid[g_pos.px_y][g_pos.px_x]))
+			vars->map.tiles[g_pos.px_y][g_pos.px_x].t = line[g_pos.px_x];
+			vars->map.tiles[g_pos.px_y][g_pos.px_x].v = 0;
+			if (unknown_character(vars->map.tiles[g_pos.px_y][g_pos.px_x].t))
 				map_error("Unrecognized character in map file.");
-			if (vars->map.grid[g_pos.px_y][g_pos.px_x] == 'P' && !vars->startFound)
+			if (vars->map.grid[g_pos.px_y][g_pos.px_x] == START && !vars->startFound)
 			{
 				vars->startFound = 1;
 				vars->player.pos = g_pos;
 			}
-			else if (vars->map.grid[g_pos.px_y][g_pos.px_x] == 'P' && vars->startFound)
+			else if (vars->map.grid[g_pos.px_y][g_pos.px_x] == START && vars->startFound)
 				map_error("Multiple start positions.");
 
-			if (vars->map.grid[g_pos.px_y][g_pos.px_x] == 'E' && !vars->exitFound)
+			if (vars->map.grid[g_pos.px_y][g_pos.px_x] == EXIT && !vars->exitFound)
 				vars->exitFound = 1;
-			else if (vars->map.grid[g_pos.px_y][g_pos.px_x] == 'E' && vars->exitFound)
+			else if (vars->map.grid[g_pos.px_y][g_pos.px_x] == EXIT && vars->exitFound)
 				map_error("Multiple exits.");
 
-			if (vars->map.grid[g_pos.px_y][g_pos.px_x] == 'C')
+			if (vars->map.grid[g_pos.px_y][g_pos.px_x] == COLLECTIBLE)
 				vars->collectibles++;
 			g_pos.px_x++;
 		}
@@ -83,6 +87,11 @@ int		fill_grid(t_vars *vars)
 		map_error("No collectibles found on the map.");
 	if (walls_error(vars))
 		map_error("Map not enclosed in walls.");
+	check_path(vars->player.pos, vars);
+	if (!vars->map.exitAccessible)
+		map_error("No valid path to exit.");
+	if (vars->map.accessibleCollectibles != vars->collectibles)
+		map_error("No path to all collectibles.");
 	close(fd);
 	return (1);
 }
@@ -96,18 +105,18 @@ int	walls_error(t_vars *vars)
 	x = 0;
 	while (x < vars->map.g_w)
 	{
-		if (vars->map.grid[y][x] != '1')
+		if (vars->map.grid[y][x] != WALL)
 			return (1);
-		else if (vars->map.grid[vars->map.g_h - 1][x] != '1')
+		else if (vars->map.grid[vars->map.g_h - 1][x] != WALL)
 			return (1);
 		x++;
 	}
 	x = 0;
 	while (y < vars->map.g_h)
 	{
-		if (vars->map.grid[y][x] != '1')
+		if (vars->map.grid[y][x] != WALL)
 			return (1);
-		else if (vars->map.grid[y][vars->map.g_w - 1] != '1')
+		else if (vars->map.grid[y][vars->map.g_w - 1] != WALL)
 			return (1);
 		y++;
 	}
@@ -116,7 +125,7 @@ int	walls_error(t_vars *vars)
 
 int	unknown_character(int c)
 {
-	if (c != 'C' && c != 'P' && c != 'E' && c != '1' && c != '0')
+	if (c != COLLECTIBLE && c != START && c != EXIT && c != WALL && c != FLOOR && c != 'D')
 		return (1);
 	return (0);
 }

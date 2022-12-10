@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:18:15 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/10 18:15:25 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/10 22:09:34 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int	main(int ac, char *av[])
 	t_vars		vars;
 	
 	vars.map.path = av[1];
+	vars.collected = 0;
+	vars.exitUnlocked = 0;
+	vars.map.exitAccessible = 0;
+	vars.map.accessibleCollectibles = 0;
 	parse_map(&vars.map);
 	fill_grid(&vars);
 
@@ -37,8 +41,8 @@ int	main(int ac, char *av[])
 	vars.c_sp.img = mlx_xpm_file_to_image(vars.mlx, "img/c_sp_3.xpm", &vars.c_sp.px_w, &vars.c_sp.px_h);
 	vars.e_sp.img = mlx_xpm_file_to_image(vars.mlx, "img/e_sp.xpm", &vars.e_sp.px_w, &vars.e_sp.px_h);
 	vars.f_sp.img = mlx_xpm_file_to_image(vars.mlx, "img/f_sp.xpm", &vars.f_sp.px_w, &vars.f_sp.px_h);
-	vars.collected = 0;
-	vars.exitUnlocked = 0;
+	vars.d_sp.img = mlx_xpm_file_to_image(vars.mlx, "img/d_sp.xpm", &vars.d_sp.px_w, &vars.d_sp.px_h);
+	vars.zero_sp.img = mlx_xpm_file_to_image(vars.mlx, "img/0_sp.xpm", &vars.zero_sp.px_w, &vars.zero_sp.px_h);
 	draw_background(&vars);
 
 
@@ -57,6 +61,8 @@ int	render(t_vars *vars)
 	draw_background(vars);
 	draw_map(vars);
 	draw_player(vars);
+	draw_moves(vars);
+	mlx_string_put(vars->mlx, vars->win, 10, 10, 0x0, ft_itoa(vars->moves));
 	
 	return (0);
 }
