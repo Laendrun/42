@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:17:56 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/11 13:01:56 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 17:03:35 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ void	update_player_position(t_vars *vars, t_point np)
 	ft_printf("Total moves: %d\n", ++vars->moves);
 	if (np.px_x < vars->map.g_w && np.px_y < vars->map.g_h) // Check if inside window
 	{
-		if (vars->map.grid[np.px_y][np.px_x] == COLLECTIBLE)
+		if (vars->map.grid[np.px_y][np.px_x] == COLLECT)
 		{
 			vars->collected++;
 			vars->map.grid[np.px_y][np.px_x] = FLOOR;
 			if (vars->collected == vars->collectibles)
-				vars->exitUnlocked = 1;
+				vars->exit_unlocked = 1;
 			vars->player.pos = np;
 		}
-		else if (vars->map.grid[np.px_y][np.px_x] == EXIT && vars->exitUnlocked)
+		else if (vars->map.grid[np.px_y][np.px_x] == EXIT && vars->exit_unlocked)
 		{
 			vars->player.pos = np;
 			vars->won = 1;
@@ -113,7 +113,6 @@ int	check_map_name(char *s)
 	size_t	l;
 
 	l = ft_strlen(s) - 1;
-	ft_printf("s: %s\n", s);
 	if (s[l] == 'r' && s[l - 1] == 'e' && s[l - 2] == 'b' && s[l - 3] == '.')
 		return (0);
 	return (1);

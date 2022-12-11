@@ -6,23 +6,26 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:15:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/11 13:01:30 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 18:14:22 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# define WIN_W 501
-# define WIN_H 501
+# define WIN_W 500
+# define WIN_H 500
 # define WIN_NAME "so_long"
 # define WALL '1'
 # define FLOOR '0'
 # define START 'P'
 # define EXIT 'E'
-# define COLLECTIBLE 'C'
+# define COLLECT 'C'
 # ifndef SIZE
-# 	define SIZE 50
+#  define SIZE 50
 # endif
+# define bool short int
+# define TRUE 1
+# define FALSE 0
 # include "mlx.h"
 # include "gnl.h"
 # include "ft_printf.h"
@@ -52,6 +55,7 @@ void	put_mlx_pixel(t_vars *vars, int x, int y, int color);
 void	draw_rect(t_vars *vars, t_point start, t_point end, int color);
 void	draw_map(t_vars *vars);
 void	draw_moves(t_vars *vars);
+void	put_sp(t_vars *vars, t_point p, char t);
 
 //void	draw_background(t_vars *vars, t_point start, t_point end);
 void	draw_background(t_vars *vars);
@@ -63,8 +67,16 @@ int		fill_grid(t_vars *vars);
 void	map_error(char *s);
 int		walls_error(t_vars *vars);
 int		unknown_character(int c);
+void	check_map(t_vars *vars);
+void	count_grid(t_vars *vars, char c, t_point p);
 
 // path_checker.c
 void	check_path(t_point p, t_vars *vars);
+
+// game_utils.c
+void	init_game(t_vars *vars, char *map_path);
+void	load_sprites(t_vars *vars);
+void	load_map_sprites(t_vars *vars);
+void	load_digits_sprites(t_vars *vars);
 
 #endif
