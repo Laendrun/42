@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 07:09:14 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/10 21:28:06 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 12:14:58 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	parse_map(t_map *map)
 	char	*line;
 
 	fd = open(map->path, O_RDONLY);
+	if (fd < 0)
+		map_error("Map not found.");
 	map->g_h = 0;
 	map->g_w = 0;
 	line = get_next_line(fd);
@@ -32,7 +34,9 @@ int	parse_map(t_map *map)
 	{
 		map->g_h++;
 		if (map->g_h == 1)
-			map->g_w = ft_strlen(line) - 1;
+			map->g_w = ft_linelen(line);
+		if (ft_linelen(line) != map->g_w)
+			map_error("Map not rectangular.");
 		line = get_next_line(fd);
 	}
 	close(fd);
@@ -62,20 +66,19 @@ int		fill_grid(t_vars *vars)
 			vars->map.tiles[g_pos.px_y][g_pos.px_x].v = 0;
 			if (unknown_character(vars->map.tiles[g_pos.px_y][g_pos.px_x].t))
 				map_error("Unrecognized character in map file.");
-			if (vars->map.grid[g_pos.px_y][g_pos.px_x] == START && !vars->startFound)
+			else if (vars->map.grid[g_pos.px_y][g_pos.px_x] == START && !vars->startFound)
 			{
 				vars->startFound = 1;
 				vars->player.pos = g_pos;
+				vars->player.start_pos = g_pos;
 			}
 			else if (vars->map.grid[g_pos.px_y][g_pos.px_x] == START && vars->startFound)
 				map_error("Multiple start positions.");
-
-			if (vars->map.grid[g_pos.px_y][g_pos.px_x] == EXIT && !vars->exitFound)
+			else if (vars->map.grid[g_pos.px_y][g_pos.px_x] == EXIT && !vars->exitFound)
 				vars->exitFound = 1;
 			else if (vars->map.grid[g_pos.px_y][g_pos.px_x] == EXIT && vars->exitFound)
 				map_error("Multiple exits.");
-
-			if (vars->map.grid[g_pos.px_y][g_pos.px_x] == COLLECTIBLE)
+			else if (vars->map.grid[g_pos.px_y][g_pos.px_x] == COLLECTIBLE)
 				vars->collectibles++;
 			g_pos.px_x++;
 		}

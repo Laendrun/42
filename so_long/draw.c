@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:31:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/10 22:11:15 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 12:01:35 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,23 +74,17 @@ void	draw_map(t_vars *vars)
 
 void	draw_moves(t_vars *vars)
 {
-	/*
-	char	c;
-	char	d;
-	char	u;
+	int	h;
+	int	t;
+	int	u;
 
-	c = 48;
-	d = 48;
-	u = 48;
-	*/
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->zero_sp.img, 2 * SIZE + 10, 10); // units
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->zero_sp.img, 1 * SIZE + 10, 10); // tens
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->zero_sp.img, 0 * SIZE + 10, 10); // hundreds
+	h = (vars->moves / 100);
+	t = (vars->moves / 10) % 10;
+	u = ((vars->moves % 100) % 10);
+
+	//ft_printf("h: %d, t: %d, u: %d\n", h, t, u);
+
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->digits_sp[h].img, 0 * SIZE + 10, 10);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->digits_sp[t].img, 1 * SIZE + 10, 10);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->digits_sp[u].img, 2 * SIZE + 10, 10);
 }
-
-/*
-static void put_nbr_sp(t_vars *vars, int c)
-{
-
-}
-*/

@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:18:15 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/10 22:09:34 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 13:22:19 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@ int	main(int ac, char *av[])
 {
 	if (ac != 2)
 	{
-		ft_printf("No map specified !");
+		ft_printf("No map specified !\n");
+		exit(0);
+	}
+	else if (ac == 2 && check_map_name(av[1]))
+	{
+		ft_printf("Wrong map name !\n");
 		exit(0);
 	}
 	t_vars		vars;
@@ -26,8 +31,12 @@ int	main(int ac, char *av[])
 	vars.exitUnlocked = 0;
 	vars.map.exitAccessible = 0;
 	vars.map.accessibleCollectibles = 0;
+	vars.collectibles = 0;
+	vars.won = 0;
+	vars.moves = 0;
 	parse_map(&vars.map);
 	fill_grid(&vars);
+	free_tiles(&vars);
 
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, vars.map.g_w * SIZE, vars.map.g_h * SIZE, WIN_NAME);
@@ -42,9 +51,18 @@ int	main(int ac, char *av[])
 	vars.e_sp.img = mlx_xpm_file_to_image(vars.mlx, "img/e_sp.xpm", &vars.e_sp.px_w, &vars.e_sp.px_h);
 	vars.f_sp.img = mlx_xpm_file_to_image(vars.mlx, "img/f_sp.xpm", &vars.f_sp.px_w, &vars.f_sp.px_h);
 	vars.d_sp.img = mlx_xpm_file_to_image(vars.mlx, "img/d_sp.xpm", &vars.d_sp.px_w, &vars.d_sp.px_h);
-	vars.zero_sp.img = mlx_xpm_file_to_image(vars.mlx, "img/0_sp.xpm", &vars.zero_sp.px_w, &vars.zero_sp.px_h);
-	draw_background(&vars);
-
+	vars.yw_sp.img = mlx_xpm_file_to_image(vars.mlx, "img/yw_sp.xpm", &vars.yw_sp.px_w, &vars.yw_sp.px_h);
+	vars.digits_sp = malloc(10 * sizeof(t_sprite));
+	vars.digits_sp[0].img = mlx_xpm_file_to_image(vars.mlx, "img/0_sp.xpm", &vars.digits_sp[0].px_w, &vars.digits_sp[0].px_h);
+	vars.digits_sp[1].img = mlx_xpm_file_to_image(vars.mlx, "img/1_sp.xpm", &vars.digits_sp[1].px_w, &vars.digits_sp[1].px_h);
+	vars.digits_sp[2].img = mlx_xpm_file_to_image(vars.mlx, "img/2_sp.xpm", &vars.digits_sp[2].px_w, &vars.digits_sp[2].px_h);
+	vars.digits_sp[3].img = mlx_xpm_file_to_image(vars.mlx, "img/3_sp.xpm", &vars.digits_sp[3].px_w, &vars.digits_sp[3].px_h);
+	vars.digits_sp[4].img = mlx_xpm_file_to_image(vars.mlx, "img/4_sp.xpm", &vars.digits_sp[4].px_w, &vars.digits_sp[4].px_h);
+	vars.digits_sp[5].img = mlx_xpm_file_to_image(vars.mlx, "img/5_sp.xpm", &vars.digits_sp[5].px_w, &vars.digits_sp[5].px_h);
+	vars.digits_sp[6].img = mlx_xpm_file_to_image(vars.mlx, "img/6_sp.xpm", &vars.digits_sp[6].px_w, &vars.digits_sp[6].px_h);
+	vars.digits_sp[7].img = mlx_xpm_file_to_image(vars.mlx, "img/7_sp.xpm", &vars.digits_sp[7].px_w, &vars.digits_sp[7].px_h);
+	vars.digits_sp[8].img = mlx_xpm_file_to_image(vars.mlx, "img/8_sp.xpm", &vars.digits_sp[8].px_w, &vars.digits_sp[8].px_h);
+	vars.digits_sp[9].img = mlx_xpm_file_to_image(vars.mlx, "img/9_sp.xpm", &vars.digits_sp[9].px_w, &vars.digits_sp[9].px_h);
 
 	// Close window when pressing esc or the red crosd
 	mlx_hook(vars.win, 2, 1L<<0, keyHandler, &vars);
@@ -59,10 +77,19 @@ int	render(t_vars *vars)
 {
 	//mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 	draw_background(vars);
-	draw_map(vars);
-	draw_player(vars);
-	draw_moves(vars);
-	mlx_string_put(vars->mlx, vars->win, 10, 10, 0x0, ft_itoa(vars->moves));
+	if (!vars->won)
+	{
+		draw_map(vars);
+		draw_player(vars);
+		draw_moves(vars);
+	}
+	else
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->yw_sp.img, 0, 0);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->digits_sp[(vars->moves / 100)].img, 1 * SIZE + 10, 3 * SIZE + 10);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->digits_sp[(vars->moves / 10) % 10].img, 2 * SIZE + 10, 3 * SIZE + 10);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->digits_sp[(vars->moves % 100) % 10].img, 3 * SIZE + 10, 3 * SIZE + 10);
+	}
 	
 	return (0);
 }

@@ -19,12 +19,10 @@ linux: $(NAME)-linux
 
 # MacOs
 $(NAME)-macos:$(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
-	@$(MAKE) re -C mlx/
 	gcc $(CCFLAGS) $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 # Linux
 $(NAME)-linux: $(LI-OBJ) $(LI-GNL_OBJ) $(LI-PRINTF_OBJ)
-	@$(MAKE) re -C mlx_linux/
 	gcc $^ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 # MacOs
@@ -42,5 +40,11 @@ fclean: clean
 	make clean -C mlx/
 	make clean -C mlx_linux/
 	rm -f $(NAME)
+
+mlx:
+	@$(MAKE) re -C mlx/
+
+mlx_linux:
+	@$(MAKE) re -C mlx_linux/
 
 re: fclean all

@@ -6,14 +6,11 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:17:56 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/10 22:00:21 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 13:01:56 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static int	int_len(long nbr);
-static char	*pre_conv(int len);
 
 int	close_window(t_vars *vars)
 {
@@ -23,43 +20,24 @@ int	close_window(t_vars *vars)
 
 int	keyHandler(int keycode, t_vars *vars)
 {
-	t_point	new_pos;
-
-	new_pos.px_x = vars->player.pos.px_x;
-	new_pos.px_y = vars->player.pos.px_y;
 	if (keycode == 53 || keycode == 65307)
 		close_window(vars);
-	else if (keycode == 2 || keycode == 124 || keycode == 100)
-	{
-		new_pos.px_x = vars->player.pos.px_x + 1;
-		vars->moves++;
-		update_player_position(vars, new_pos);
-	}
-	else if (keycode == 0 || keycode == 123 || keycode == 97)
-	{
-		new_pos.px_x = vars->player.pos.px_x - 1;
-		vars->moves++;
-		update_player_position(vars, new_pos);
-	}
-	else if (keycode == 13 || keycode == 126 || keycode == 119)
-	{
-		new_pos.px_y = vars->player.pos.px_y - 1;
-		vars->moves++;
-		update_player_position(vars, new_pos);
-	}
-	else if (keycode == 1 || keycode == 125 || keycode == 115)
-	{
-		new_pos.px_y = vars->player.pos.px_y + 1;
-		vars->moves++;
-		update_player_position(vars, new_pos);
-	}
-	else
-		ft_printf("Keycode: %d\n", keycode);
+	else if (keycode == 2 && !vars->won)
+		update_player_position(vars, (t_point){vars->player.pos.px_x + 1, vars->player.pos.px_y});
+	else if (keycode == 0 && !vars->won)
+		update_player_position(vars, (t_point){vars->player.pos.px_x - 1, vars->player.pos.px_y});
+	else if (keycode == 13 && !vars->won)
+		update_player_position(vars, (t_point){vars->player.pos.px_x, vars->player.pos.px_y - 1});
+	else if (keycode == 1 && !vars->won)
+		update_player_position(vars, (t_point){vars->player.pos.px_x, vars->player.pos.px_y + 1});
+	//else
+	//	ft_printf("Keycode: %d\n", keycode);
 	return(0);
 }
 
 void	update_player_position(t_vars *vars, t_point np)
 {
+	ft_printf("Total moves: %d\n", ++vars->moves);
 	if (np.px_x < vars->map.g_w && np.px_y < vars->map.g_h) // Check if inside window
 	{
 		if (vars->map.grid[np.px_y][np.px_x] == COLLECTIBLE)
@@ -70,14 +48,12 @@ void	update_player_position(t_vars *vars, t_point np)
 				vars->exitUnlocked = 1;
 			vars->player.pos = np;
 		}
-		else if (vars->map.grid[np.px_y][np.px_x] == WALL)
-			ft_printf("You're not a ghost!\n");
 		else if (vars->map.grid[np.px_y][np.px_x] == EXIT && vars->exitUnlocked)
 		{
 			vars->player.pos = np;
-			ft_printf("Congrats! You escaped the room!\n");
+			vars->won = 1;
 		}
-		else
+		else if (vars->map.grid[np.px_y][np.px_x] != WALL)
 			vars->player.pos = np;
 	}
 }
@@ -92,85 +68,53 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
-/**
- * @fn char *ft_itoa(int n)
- * Converts an int to a string (char *)
- * @brief Converts an int to a string
- * @param n number to convert to string
- * @return char* 
- * @retval NULL If the memory allocation failed
- * @retval char* Number converted to string
- */
-char	*ft_itoa(int n)
+size_t	ft_linelen(char *s)
 {
-	int		len;
-	int		i;
-	char	*result;
-	long	nbr;
+	size_t	i;
 
-	nbr = n;
-	len = int_len(nbr);
-	result = pre_conv(len);
-	if (!result)
-		return (NULL);
-	if (nbr < 0)
-		nbr = -nbr;
-	i = len - 1;
-	while (nbr != 0)
-	{
-		result[i] = ((nbr % 10) + 48);
-		nbr = nbr / 10;
-		i--;
-	}
-	if (n < 0)
-		result[0] = '-';
-	result[len] = '\0';
-	return (result);
+	i = 0;
+	while (s[i] && s[i] != '\n')
+		i++;
+	return (i);
 }
 
-/**
- * @fn static char *pre_conv(int len)
- * @param len length of the number that will be converted
- * @param len this length is the number of chars
- * @return char* allocated string in memory
- */
-static char	*pre_conv(int len)
+void	free_tiles(t_vars *vars)
 {
-	char	*tmp;
+	size_t	i;
 
-	tmp = malloc((len + 1) * sizeof(char));
-	if (!tmp)
+	i = 0;
+	while (i < vars->map.g_h)
+	{
+		free(vars->map.tiles[i]);
+		vars->map.tiles[i] = NULL;
+		i++;
+	}
+	free(vars->map.tiles);
+	vars->map.tiles = NULL;
+}
+
+void	free_grid(t_vars *vars)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < vars->map.g_h)
+	{
+		free(vars->map.grid[i]);
+		vars->map.grid[i] = NULL;
+		i++;
+	}
+	free(vars->map.grid);
+	vars->map.tiles = NULL;
+}
+
+int	check_map_name(char *s)
+{
+	size_t	l;
+
+	l = ft_strlen(s) - 1;
+	ft_printf("s: %s\n", s);
+	if (s[l] == 'r' && s[l - 1] == 'e' && s[l - 2] == 'b' && s[l - 3] == '.')
 		return (0);
-	else
-	{
-		tmp[0] = '0';
-		return (tmp);
-	}
-}
-
-/**
- * @fn static int int_len(long nbr)
- * @param nbr the number for which we want to count the 
- * @param nbr number of characters
- * @return int
- * @retval int The number of characters needed to write nbr
- */
-static int	int_len(long nbr)
-{
-	int	count;
-
-	count = 0;
-	if (nbr < 0)
-	{
-		count++;
-		nbr = -nbr;
-	}
-	if (nbr == 0)
-		count++;
-	while (nbr != 0)
-	{
-		nbr = nbr / 10;
-		count++;
-	}
-	return (count);
+	return (1);
 }

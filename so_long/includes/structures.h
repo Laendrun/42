@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:04:12 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/10 22:09:47 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 13:19:16 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_sprite {
 
 typedef struct	s_player {
 	t_point		pos;
+	t_point		start_pos;
 	t_sprite	sprite;
 }				t_player;
 
@@ -58,7 +59,9 @@ typedef struct	s_vars {
 	t_sprite	f_sp;
 	t_sprite	p_sp;
 	t_sprite	d_sp;
-	t_sprite	zero_sp;
+	t_sprite	yw_sp;
+	t_sprite	*digits_sp;
+	int			won;
 	int			moves;
 	int			collected;
 	int			collectibles;

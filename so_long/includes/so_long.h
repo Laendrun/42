@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:15:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/10 22:02:49 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 13:01:30 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ int		close_window(t_vars *vars);
 void	switch_color(t_vars *vars);
 void	update_player_position(t_vars *vars, t_point new_pos);
 size_t	ft_strlen(char *s);
-char	*ft_itoa(int n);
+void	free_tiles(t_vars *vars);
+void	free_grid(t_vars *vars);
+int		check_map_name(char *s);
+size_t	ft_linelen(char *s);
 
 // draw.c
 void	put_mlx_pixel(t_vars *vars, int x, int y, int color);
