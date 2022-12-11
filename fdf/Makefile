@@ -1,5 +1,5 @@
 NAME = FdF
-SRC = $(addprefix src/, keyboard.c main.c utils.c map_parser.c)
+SRC = $(addprefix src/, keyboard.c main.c utils.c map_parser.c free.c)
 LIBFT_SRC = $(addprefix libft/, ft_split.c ft_calloc.c ft_strlen.c ft_atoi.c)
 GNL_SRC = $(addprefix gnl/, gnl.c gnl_utils.c)
 PRINTF_SRC = $(addprefix ft_printf/, ft_print_c.c ft_print_d.c ft_print_p.c ft_print_s.c ft_print_u.c ft_print_x.c ft_printf.c)
@@ -31,3 +31,5 @@ mlx:
 	@$(MAKE) re -C mlx/
 
 re: fclean all
+
+.PHONY: mlx
