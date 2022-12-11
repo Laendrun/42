@@ -10,7 +10,8 @@ This repo will (if I don't forget) save all my projects during the 42 cursus at 
 | 1 | [Ft_printf](https://github.com/Laendrun/42/tree/main/ft_printf) | :white_check_mark: | 100/100 |
 | 1 | [Get Next Line](https://github.com/Laendrun/42/tree/main/get_next_line) | :white_check_mark: | 125/100 |
 | 1 | [Born 2 Be Root](https://github.com/Laendrun/42/tree/main/b2br) | :white_check_mark: | 100/100 |
-| 2 | [so_long](https://github.com/Laendrun/42/tree/main/so_long) | :construction: | :x: |
+| 2 | [so_long](https://github.com/Laendrun/42/tree/main/so_long) | :white_check_mark: | :x: |
+| 2 | [FdF](https://github.com/Laendrun/42/tree/main/fdf) | :construction: | :x: |
 
 
 ## Unfinished
