@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:19:03 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/11 18:19:24 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 20:02:10 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,21 @@ void	count_grid(t_vars *vars, char c, t_point p)
 
 void	check_map(t_vars *vars)
 {
-	if (vars->collectibles <= 0)
-		map_error("No collectibles found on the map.");
 	if (walls_error(vars))
 		map_error("Map not enclosed in walls.");
+	if (vars->exit_found <= 0)
+		map_error("No exit found on map.");
+	if (vars->collectibles <= 0)
+		map_error("No collectibles found on the map.");
+	if (vars->start_found <= 0)
+		map_error("No start position found on the map.");
 	if (!vars->map.exit_accessible)
 		map_error("No valid path to exit.");
 	if (vars->map.accessible_collectibles != vars->collectibles)
 		map_error("No path to all collectibles.");
-	if (vars->start_found == 0 || vars->start_found > 1)
+	if (vars->start_found > 1)
 		map_error("Multiple start positions.");
-	if (vars->exit_found == 0 || vars->exit_found > 1)
+	if (vars->exit_found > 1)
 		map_error("Multiple exit found.");
 }
 
@@ -75,4 +79,13 @@ int	unknown_character(int c)
 									&& c != FLOOR)
 		return (1);
 	return (0);
+}
+
+void	initiate_map_filling(t_vars *vars, t_point *p)
+{
+	vars->map.fd = open(vars->map.path, O_RDONLY);
+	vars->map.grid = malloc(vars->map.g_h * sizeof(char *));
+	vars->map.tiles = malloc(vars->map.g_h * sizeof(t_tile *));
+	p->px_x = 0;
+	p->px_y = 0;
 }

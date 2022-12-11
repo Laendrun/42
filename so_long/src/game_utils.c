@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 16:11:39 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/11 17:24:04 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 20:09:47 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,28 @@ void	load_digits_sprites(t_vars *vars)
 						&vars->digits_sp[8].px_w, &vars->digits_sp[8].px_h);
 	vars->digits_sp[9].img = mlx_xpm_file_to_image(vars->mlx, "img/9_sp.xpm", \
 						&vars->digits_sp[9].px_w, &vars->digits_sp[9].px_h);
+}
+
+void	update_player_position(t_vars *vars, t_point np)
+{
+	ft_printf("Total moves: %d\n", ++vars->moves);
+	if (np.px_x < vars->map.g_w && np.px_y < vars->map.g_h)
+	{
+		if (vars->map.grid[np.px_y][np.px_x] == COLLECT)
+		{
+			vars->collected++;
+			vars->map.grid[np.px_y][np.px_x] = FLOOR;
+			if (vars->collected == vars->collectibles)
+				vars->exit_unlocked = 1;
+			vars->player.pos = np;
+		}
+		else if (vars->map.grid[np.px_y][np.px_x] == EXIT \
+									&& vars->exit_unlocked)
+		{
+			vars->player.pos = np;
+			vars->won = 1;
+		}
+		else if (vars->map.grid[np.px_y][np.px_x] != WALL)
+			vars->player.pos = np;
+	}
 }

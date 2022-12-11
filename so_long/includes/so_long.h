@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:15:40 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/11 18:14:22 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 20:11:57 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # ifndef SIZE
 #  define SIZE 50
 # endif
-# define bool short int
+# define BOOL short int
 # define TRUE 1
 # define FALSE 0
 # include "mlx.h"
@@ -40,13 +40,10 @@
 int		render(t_vars *vars);
 
 // utils.c
-int		keyHandler(int keycode, t_vars *vars);
+int		key_handler(int keycode, t_vars *vars);
 int		close_window(t_vars *vars);
-void	switch_color(t_vars *vars);
-void	update_player_position(t_vars *vars, t_point new_pos);
 size_t	ft_strlen(char *s);
 void	free_tiles(t_vars *vars);
-void	free_grid(t_vars *vars);
 int		check_map_name(char *s);
 size_t	ft_linelen(char *s);
 
@@ -65,10 +62,15 @@ void	draw_player(t_vars *vars);
 int		parse_map(t_map *map);
 int		fill_grid(t_vars *vars);
 void	map_error(char *s);
-int		walls_error(t_vars *vars);
-int		unknown_character(int c);
-void	check_map(t_vars *vars);
+void	fill_tiles(t_vars *vars, char *line, t_point g_pos);
+void	allocate_line(t_vars *vars, t_point g_pos);
+
+// map_parser_utils.c
 void	count_grid(t_vars *vars, char c, t_point p);
+void	check_map(t_vars *vars);
+int		unknown_character(int c);
+int		walls_error(t_vars *vars);
+void	initiate_map_filling(t_vars *vars, t_point *p);
 
 // path_checker.c
 void	check_path(t_point p, t_vars *vars);
@@ -78,5 +80,9 @@ void	init_game(t_vars *vars, char *map_path);
 void	load_sprites(t_vars *vars);
 void	load_map_sprites(t_vars *vars);
 void	load_digits_sprites(t_vars *vars);
+void	update_player_position(t_vars *vars, t_point new_pos);
+
+// free.c
+void	free_tiles(t_vars *vars);
 
 #endif

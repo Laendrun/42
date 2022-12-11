@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 07:09:14 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/11 18:19:18 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 20:02:05 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,36 +45,43 @@ int	parse_map(t_map *map)
 
 int	fill_grid(t_vars *vars)
 {
-	int			fd;
 	t_point		g_pos;
 	char		*line;
 
-	vars->map.grid = malloc(vars->map.g_h * sizeof(char *));
-	vars->map.tiles = malloc(vars->map.g_h * sizeof(t_tile *));
-	g_pos.px_x = 0;
-	g_pos.px_y = 0;
-	fd = open(vars->map.path, O_RDONLY);
-	line = get_next_line(fd);
+	initiate_map_filling(vars, &g_pos);
+	line = get_next_line(vars->map.fd);
 	while (line)
 	{
-		vars->map.grid[g_pos.px_y] = malloc((vars->map.g_w - 1) * sizeof(char));
-		vars->map.tiles[g_pos.px_y] = malloc((vars->map.g_w - 1) * sizeof(t_tile));
+		allocate_line(vars, g_pos);
 		while (g_pos.px_x < vars->map.g_w)
 		{
-			vars->map.grid[g_pos.px_y][g_pos.px_x] = line[g_pos.px_x];
-			vars->map.tiles[g_pos.px_y][g_pos.px_x].t = line[g_pos.px_x];
-			vars->map.tiles[g_pos.px_y][g_pos.px_x].v = 0;
-			if (unknown_character(vars->map.tiles[g_pos.px_y][g_pos.px_x].t))
-				map_error("Unrecognized character in map file.");
+			fill_tiles(vars, line, g_pos);
 			count_grid(vars, vars->map.grid[g_pos.px_y][g_pos.px_x], g_pos);
 			g_pos.px_x++;
 		}
 		g_pos.px_x = 0;
 		g_pos.px_y++;
-		line = get_next_line(fd);
+		line = get_next_line(vars->map.fd);
 	}
-	close(fd);
+	close(vars->map.fd);
 	check_path(vars->player.pos, vars);
 	check_map(vars);
 	return (1);
+}
+
+void	fill_tiles(t_vars *vars, char *line, t_point g_pos)
+{
+	vars->map.grid[g_pos.px_y][g_pos.px_x] = line[g_pos.px_x];
+	vars->map.tiles[g_pos.px_y][g_pos.px_x].t = line[g_pos.px_x];
+	vars->map.tiles[g_pos.px_y][g_pos.px_x].v = 0;
+	if (unknown_character(vars->map.tiles[g_pos.px_y][g_pos.px_x].t))
+		map_error("Unrecognized character in map file.");
+}
+
+void	allocate_line(t_vars *vars, t_point g_pos)
+{
+		vars->map.grid[g_pos.px_y] = malloc((vars->map.g_w - 1) \
+													* sizeof(char));
+		vars->map.tiles[g_pos.px_y] = malloc((vars->map.g_w - 1) \
+												* sizeof(t_tile));
 }

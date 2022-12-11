@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:04:12 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/11 17:23:44 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 20:00:38 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_map {
 	char		**grid;
 	t_tile		**tiles;
 	int			exit_accessible;
+	int			fd;
 	int			accessible_collectibles;
 }				t_map;
 
@@ -60,11 +61,11 @@ typedef struct s_vars {
 	t_sprite	p_sp;
 	t_sprite	yw_sp;
 	t_sprite	*digits_sp;
-	bool		won;
+	BOOL		won;
 	int			moves;
 	int			collected;
 	int			collectibles;
-	bool		exit_unlocked;
+	BOOL		exit_unlocked;
 	int			exit_found;
 	int			start_found;
 	int			bits_per_pixel;

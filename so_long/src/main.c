@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:18:15 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/11 16:30:07 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 20:07:35 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char *av[])
 	vars.addr = mlx_get_data_addr(vars.img, &vars.bits_per_pixel, \
 									&vars.line_length, &vars.endian);
 	load_sprites(&vars);
-	mlx_hook(vars.win, 2, 1L << 0, keyHandler, &vars);
+	mlx_hook(vars.win, 2, 1L << 0, key_handler, &vars);
 	mlx_hook(vars.win, 17, 1L << 0, close_window, &vars);
 	mlx_loop_hook(vars.mlx, render, &vars);
 	mlx_loop(vars.mlx);
