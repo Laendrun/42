@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:34:59 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/11 21:51:24 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 22:50:30 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ int		close_window(t_vars *vars);
 // map_parser.c
 void	map_error(char *s);
 void	parse_map(t_vars *vars);
+
+// free.c
+void	free_c_grid(t_vars *vars);
 
 // main.c
 

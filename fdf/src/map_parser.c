@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 21:12:42 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/11 21:56:12 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/11 22:48:28 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	parse_map(t_vars *vars)
 	close(fd);
 	fd = open(vars->map.path, O_RDONLY);
 	vars->map.c_grid = malloc(vars->map.g_h * sizeof(char *));
-	//vars->map.i_grid = malloc(vars->map.g_h * sizeof(int *));
+	vars->map.i_grid = malloc(vars->map.g_h * sizeof(int *));
 	while (i < vars->map.g_h)
 	{
 		line = get_next_line(fd);
@@ -55,13 +55,15 @@ void	parse_map(t_vars *vars)
 	{
 		while (vars->map.c_grid[i][j])
 		{
-			ft_printf("i:%d, j:%d, >%s\n", i, j, vars->map.c_grid[i][j]);
-			//vars->map.i_grid[i][j] = ft_atoi(vars->map.c_grid[i][j]);
+			vars->map.i_grid[i] = malloc(sizeof(int));
+			vars->map.i_grid[i][j] = ft_atoi(vars->map.c_grid[i][j]);
 			j++;
 		}
+		if (vars->map.g_w == 0)
+			vars->map.g_w = j;
 		j = 0;
 		i++;
 	}
-
+	free_c_grid(vars);
 	close(fd);
 }
