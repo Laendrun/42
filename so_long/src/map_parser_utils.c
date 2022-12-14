@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:19:03 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/11 20:02:10 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/14 11:36:21 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	count_grid(t_vars *vars, char c, t_point p)
 
 void	check_map(t_vars *vars)
 {
-	if (walls_error(vars))
-		map_error("Map not enclosed in walls.");
 	if (vars->exit_found <= 0)
 		map_error("No exit found on map.");
 	if (vars->collectibles <= 0)
@@ -76,7 +74,7 @@ int	walls_error(t_vars *vars)
 int	unknown_character(int c)
 {
 	if (c != COLLECT && c != START && c != EXIT && c != WALL \
-									&& c != FLOOR)
+												&& c != FLOOR)
 		return (1);
 	return (0);
 }

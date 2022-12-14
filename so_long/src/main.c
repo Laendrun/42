@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 20:18:15 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/11 20:07:35 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/14 11:38:29 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ int	main(int ac, char *av[])
 {
 	t_vars		vars;
 
-	if (ac != 2)
+	if (ac == 1)
 		map_error("No map specified.");
+	else if (ac > 2)
+		map_error("Too many arguments.");
 	else if (ac == 2 && check_map_name(av[1]))
 		map_error("Wrong map name.");
 	init_game(&vars, av[1]);

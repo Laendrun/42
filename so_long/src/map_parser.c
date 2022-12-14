@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 07:09:14 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/11 20:02:05 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/14 11:36:35 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	parse_map(t_map *map)
 		line = get_next_line(fd);
 	}
 	close(fd);
+	if (map->g_h == 0)
+		map_error("Empty map file.");
 	return (1);
 }
 
@@ -64,6 +66,8 @@ int	fill_grid(t_vars *vars)
 		line = get_next_line(vars->map.fd);
 	}
 	close(vars->map.fd);
+	if (walls_error(vars))
+		map_error("Map not enclosed in walls.");
 	check_path(vars->player.pos, vars);
 	check_map(vars);
 	return (1);

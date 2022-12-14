@@ -21,6 +21,9 @@ linux: $(NAME)-linux
 $(NAME)-macos:$(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
 	gcc $(CCFLAGS) $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
+debug: $(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
+	gcc $(CCFLAGS) -fsanitize=address $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
 # Linux
 $(NAME)-linux: $(LI-OBJ) $(LI-GNL_OBJ) $(LI-PRINTF_OBJ)
 	gcc $^ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
