@@ -5,39 +5,22 @@ PRINTF_SRC = $(addprefix ft_printf/, ft_print_c.c ft_print_d.c ft_print_p.c ft_p
 OBJ := $(SRC:%.c=%.o)
 GNL_OBJ := $(GNL_SRC:%.c=%.o)
 PRINTF_OBJ := $(PRINTF_SRC:%.c=%.o)
-LI-OBJ := $(SRC:%.c=li-%.o)
-LI-GNL_OBJ := $(SRC:%.c=li-%.o)
-LI-PRINTF_OBJ := $(SRC:%.c=li-%.o)
 
 CCFLAGS = -Wextra -Wall -Werror
 
-all: macos
+all: $(NAME)
 
-macos: $(NAME)-macos
-
-linux: $(NAME)-linux
-
-# MacOs
-$(NAME)-macos:$(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
+$(NAME):$(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
 	gcc $(CCFLAGS) $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 debug: $(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
 	gcc $(CCFLAGS) -fsanitize=address $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
-# Linux
-$(NAME)-linux: $(LI-OBJ) $(LI-GNL_OBJ) $(LI-PRINTF_OBJ)
-	gcc $^ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-
-# MacOs
 %.o: %.c
 	gcc $(CCFLAGS) -Imlx -Iincludes -c $< -o $@
 
-# Linux
-li-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -I/usr/include -Iincludes -Imlx_linux -O3 -c $< -o $@
-
 clean:
-	rm -f $(OBJ) $(GNL_OBJ) $(PRINTF_OBJ) $(LI-OBJ) $(LI-GNL_OBJ) $(LI-PRINTF_OBJ)
+	rm -f $(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
 
 fclean: clean
 	make clean -C mlx/
