@@ -24,13 +24,9 @@ clean:
 
 fclean: clean
 	make clean -C mlx/
-	make clean -C mlx_linux/
 	rm -f $(NAME)
 
 mlx:
 	@$(MAKE) re -C mlx/
-
-mlx_linux:
-	@$(MAKE) re -C mlx_linux/
 
 re: fclean all
