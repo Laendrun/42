@@ -6,17 +6,21 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 23:36:53 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/12 23:36:09 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/15 19:38:25 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 15
+# endif
+# define MAX_FD 4096
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <fcntl.h>
 # include <stdarg.h>
-# include <stdio.h>
 
 typedef struct s_list
 {
@@ -93,5 +97,8 @@ int		ft_print_d(int nbr);
 int		ft_print_u(unsigned int nbr);
 int		ft_print_p(uintptr_t adr);
 int		ft_print_x(unsigned int nbr, int format);
+
+// Get Next Line
+char	*get_next_line(int fd);
 
 #endif

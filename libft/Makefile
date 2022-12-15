@@ -15,12 +15,15 @@ OBJS_BONUS := $(SRC_BONUS:%.c=%.o)
 # PRINTF SRC
 PRINTF_SRC = ft_printf.c ft_print_c.c ft_print_s.c ft_print_d.c ft_print_u.c ft_print_p.c ft_print_x.c
 
+# GNL SRC
+GNL_SRC = get_next_line.c
+
 # Additionnal functions
 ADD_SRC = ft_putchar.c ft_putstr.c ft_putnbr.c ft_strcmp.c ft_strstr.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c \
 			ft_memccpy.c ft_strchr.c
 
 # SRC & OBJS for additionnal functions
-SRC_SUP = $(ADD_SRC) $(PRINTF_SRC)
+SRC_SUP = $(ADD_SRC) $(PRINTF_SRC) $(GNL_SRC)
 OBJS_SUP := $(SRC_SUP:%.c=%.o)
 
 # "Base" variables
