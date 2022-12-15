@@ -46,7 +46,7 @@ RMA = $(RM) $(OBJSA)
 	$(CC) -I. $(CCFLAGS) -o $@ -c $?
 
 # main rules
-all: $(NAME)
+all: everything
 
 $(NAME): $(OBJS)
 	$(ARTARGET) $(OBJS)
