@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 22:05:34 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/16 17:25:13 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/16 20:42:02 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ void	fill_rotation_matrix_x(t_env *env)
 	env->rot_matrix_x[0][1] = 0;
 	env->rot_matrix_x[0][2] = 0;
 	env->rot_matrix_x[1][0] = 0;
-	env->rot_matrix_x[1][1] = cosf(env->angleX);
-	env->rot_matrix_x[1][2] = -sinf(env->angleX);
+	env->rot_matrix_x[1][1] = cosf(env->alpha);
+	env->rot_matrix_x[1][2] = -sinf(env->alpha);
 	env->rot_matrix_x[2][0] = 0;
-	env->rot_matrix_x[2][1] = sinf(env->angleX);
-	env->rot_matrix_x[2][2] = cosf(env->angleX);
+	env->rot_matrix_x[2][1] = sinf(env->alpha);
+	env->rot_matrix_x[2][2] = cosf(env->alpha);
 }
 
 void	fill_rotation_matrix_y(t_env *env)

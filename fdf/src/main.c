@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:54:17 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/16 17:54:38 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/16 20:55:57 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,8 @@ int	main(int ac, char *av[])
 	parse_map(&env);
 	fill_points_vector(&env);
 	free_i_grid(&env);
-	env.angleX = 2;
-	env.angleY = 2;
-	//env.alpha = 0.610865238;
-	//env.beta = 0.785398;
-	env.angleZ = 2;
-	fill_rotation_matrices(&env);
+	env.alpha = 0.5;
+	//fill_rotation_matrices(&env);
 	rotate_points(&env);
 	fill_projection_matrix(&env);
 	project_points(&env);
@@ -54,14 +50,6 @@ int	main(int ac, char *av[])
 
 int	render(t_env *env)
 {
-	//printf("angle: %f\n", env->angle);
-	//fill_rotation_matrices(env);
-	//rotate_points(env);
-	//env->angle += 0.01;
-	//draw_background(env);
-	//project_points(env);
-	//scale_points(env, 10);
-	//translate_points(env);
 	size_t	x;
 	size_t	y;
 	size_t	i;
@@ -91,22 +79,11 @@ int	render(t_env *env)
 				j = (x + 1) + y * env->map.w;
 				ft_draw_line(env, env->final_points[i], env->final_points[j], 0xFFFFFFFF);
 			}
-			// if x != env->map.w - 1 && y != env->map.h - 1
-				// draw line from (x; y) to (x + 1; y)
-				// draw line from (x; y) to (x; y + 1)
-			// if x == env->map.w - 1 && y != env->map.h - 1
-				// draw line from (x; y) to (x; y + 1)
-			// if x != env->map.w && y == env->map.h - 1
-				// draw line from (x; y) to (x + 1; y)
-			// if x == env->map.w - 1 && y == env->map.h - 1
-				// do nothing -> last spot bottom right
 			x++;
 		}
 		x = 0;
 		y++;
 	}
-	//ft_draw_line(env, (t_vector2){0, WIN_H}, (t_vector2){WIN_W, 0}, 0xFFFF0000);
-	//ft_draw_line(env, (t_vector2){0, 0}, (t_vector2){WIN_W, WIN_H}, 0xFF00FF00);
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
 	return (0);
 }
