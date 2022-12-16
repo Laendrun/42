@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 15:18:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/14 15:55:55 by saeby            ###   ########.fr       */
+/*   Created: 2022/09/26 23:28:27 by saeby             #+#    #+#             */
+/*   Updated: 2022/09/26 23:28:54 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+void	*ft_memset(void *b, int c, size_t len)
 {
-	(void) ac;
-	(void) av;
-	ft_printf("It's alive!\n");
-	return (0);
+	unsigned char	*tmp_ptr;
+
+	tmp_ptr = (unsigned char *) b;
+	while (len > 0)
+	{
+		*(tmp_ptr++) = (unsigned char) c;
+		len--;
+	}
+	return (b);
 }

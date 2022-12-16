@@ -11,9 +11,14 @@ This repo will (if I don't forget) save all my projects during the 42 cursus at 
 | 1 | [Get Next Line](https://github.com/Laendrun/42/tree/main/get_next_line) | :white_check_mark: | 125/100 |
 | 1 | [Born 2 Be Root](https://github.com/Laendrun/42/tree/main/b2br) | :white_check_mark: | 100/100 |
 | 2 | [so_long](https://github.com/Laendrun/42/tree/main/so_long) | :white_check_mark: | :x: |
-| 2 | [FdF](https://github.com/Laendrun/42/tree/main/fdf) | :construction: | :x: |
+| 2 | [FdF](https://github.com/Laendrun/42/tree/main/fdf) | :white_check_mark: | :x: |
 | 2 | [push_swap](https://github.com/Laendrun/42/tree/main/push_swap) | :construction: | :x: |
 | 2 | pipex | :soon: | :x: |
+| 2 | mintalk | :soon: | :x: |
+
+> :warning: FdF > the project works but there are no error checking on the map parsing part for now
+> so there's a lot of chance it will segfault if you don't provide an correct map. It will also
+> surely leak, as I don't free everything, I'll take a look at that some time.
 
 ## Unfinished
 

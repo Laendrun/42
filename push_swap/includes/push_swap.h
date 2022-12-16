@@ -6,13 +6,15 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:24:25 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/14 15:24:41 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/14 15:56:09 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
+# include <fcntl.h>
+# include <unistd.h>
+# include "libft.h"
 
 
 #endif

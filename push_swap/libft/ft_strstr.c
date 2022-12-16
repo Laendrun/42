@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 15:18:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/14 15:55:55 by saeby            ###   ########.fr       */
+/*   Created: 2022/09/26 22:44:30 by saeby             #+#    #+#             */
+/*   Updated: 2022/10/24 14:41:24 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	(void) ac;
-	(void) av;
-	ft_printf("It's alive!\n");
+	unsigned int	i_str;
+	unsigned int	j;
+
+	i_str = 0;
+	j = 0;
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (haystack[i_str] != '\0')
+	{
+		while (haystack[i_str + j] == needle[j] && haystack[i_str + j])
+		{
+			j++;
+			if (needle[j] == '\0')
+				return ((char *)haystack + i_str);
+		}
+		i_str++;
+		j = 0;
+	}
 	return (0);
 }

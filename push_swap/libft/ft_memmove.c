@@ -1,21 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 15:18:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/14 15:55:55 by saeby            ###   ########.fr       */
+/*   Created: 2022/09/26 22:54:58 by saeby             #+#    #+#             */
+/*   Updated: 2022/10/25 10:34:27 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	(void) ac;
-	(void) av;
-	ft_printf("It's alive!\n");
-	return (0);
+	char	*uc_src;
+	char	*uc_dst;
+	size_t	i;
+
+	if (!dst && !src)
+		return (NULL);
+	uc_src = (char *) src;
+	uc_dst = (char *) dst;
+	i = 0;
+	if (uc_dst > uc_src)
+		while (len-- > 0)
+			uc_dst[len] = uc_src[len];
+	else
+	{
+		while (i < len)
+		{
+			uc_dst[i] = uc_src[i];
+			i++;
+		}
+	}
+	return (dst);
 }
