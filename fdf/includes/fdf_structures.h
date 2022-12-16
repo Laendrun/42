@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 18:52:47 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/16 00:10:16 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/16 17:10:55 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,12 @@ typedef struct s_env {
 	float		***rotated;
 	float		***projected;
 	float		***p_matrices;
-	float		angle;
+	float		angleX;
+	float		angleY;
+	float		angleZ;
+	float		alpha;
+	float		beta;
+	int			scale;
 	float		**rot_matrix_x;
 	float		**rot_matrix_y;
 	float		**rot_matrix_z;

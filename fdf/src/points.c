@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 22:54:37 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/16 00:34:03 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/16 17:32:25 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	rotate_points(t_env *env)
 		env->p_matrices[i] = ft_vec3_to_matrix(env->points[i]);
 		env->rotated[i] = ft_matmul(env->rot_matrix_y, env->p_matrices[i], &(t_vector3){3, 3, 1});
 		env->rotated[i] = ft_matmul(env->rot_matrix_x, env->rotated[i], &(t_vector3){3, 3, 1});
-		//env->rotated[i] = ft_matmul(env->rot_matrix_z, env->rotated[i], &(t_vector3){3, 3, 1});
+		env->rotated[i] = ft_matmul(env->rot_matrix_z, env->rotated[i], &(t_vector3){3, 3, 1});
 		i++;
 	}
 	//free_p_matrices(env);
@@ -52,8 +52,8 @@ void	translate_points(t_env *env)
 	i = 0;
 	while (i < env->map.h * env->map.w)
 	{
-		env->final_points[i].x += WIN_W / 2;
-		env->final_points[i].y += WIN_H / 2;
+		env->final_points[i].x += (WIN_W - env->map.w * env->scale) / 2;
+		env->final_points[i].y += (WIN_H - env->map.h * env->scale) / 2;
 		i++;
 	}
 }

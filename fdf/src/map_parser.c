@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 19:18:17 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/15 22:53:52 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/16 07:10:42 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,11 @@ void	fill_points_vector(t_env *env)
 	i = 0;
 	while (y < env->map.h)
 	{
-		while (++x < env->map.w)
+		while (x < env->map.w)
+		{
 			env->points[i++] = (t_vector3){x, y, env->map.i_grid[y][x]};
+			x++;
+		}
 		x = 0;
 		y++;
 	}

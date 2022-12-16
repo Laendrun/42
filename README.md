@@ -11,6 +11,7 @@ This repo will (if I don't forget) save all my projects during the 42 cursus at 
 | 1 | [Get Next Line](https://github.com/Laendrun/42/tree/main/get_next_line) | :white_check_mark: | 125/100 |
 | 1 | [Born 2 Be Root](https://github.com/Laendrun/42/tree/main/b2br) | :white_check_mark: | 100/100 |
 | 2 | [so_long](https://github.com/Laendrun/42/tree/main/so_long) | :white_check_mark: | :x: |
+| 2 | [FdF](https://github.com/Laendrun/42/tree/main/fdf) | :construction: | :x: |
 | 2 | [push_swap](https://github.com/Laendrun/42/tree/main/push_swap) | :construction: | :x: |
 | 2 | pipex | :soon: | :x: |
 
@@ -22,7 +23,6 @@ If at some point I have some time to do it, I'll try again, but don't expect tha
 | Project | Status | Comments |
 | --- | --- | --- |
 | [Ft_printf2](https://github.com/Laendrun/42/tree/main/ft_printf2) | :construction: | Tried the bonus... |
-| [FdF](https://github.com/Laendrun/42/tree/main/fdf) | :construction: | I'll maybe do it sometimes |
 
 ## Subjects
 
