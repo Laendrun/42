@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:54:17 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/16 20:55:57 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/16 22:28:36 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	main(int ac, char *av[])
 {
 	t_env	env;
+
 	env.scale = 35;
+	env.alpha = 0.5;
 	if (ac == 3)
 		env.scale = ft_atoi(av[2]);
 	else if (ac > 3 || ac == 1)
@@ -24,17 +26,7 @@ int	main(int ac, char *av[])
 		exit(1);
 	}
 	env.map.path = av[1];
-	parse_map_info(&env);
-	parse_map(&env);
-	fill_points_vector(&env);
-	free_i_grid(&env);
-	env.alpha = 0.5;
-	//fill_rotation_matrices(&env);
-	rotate_points(&env);
-	fill_projection_matrix(&env);
-	project_points(&env);
-	scale_points(&env, env.scale);
-	translate_points(&env);
+	init_map(&env);
 	env.mlx = mlx_init();
 	env.win = mlx_new_window(env.mlx, WIN_W, WIN_H, WIN_NAME);
 	env.img = mlx_new_image(env.mlx, WIN_W, WIN_H);
@@ -42,7 +34,6 @@ int	main(int ac, char *av[])
 									&env.line_length, &env.endian);
 	mlx_hook(env.win, 2, 1L << 0, key_handler, &env);
 	mlx_hook(env.win, 17, 1L << 0, close_window, &env);
-
 	mlx_loop_hook(env.mlx, render, &env);
 	mlx_loop(env.mlx);
 	return (0);
@@ -53,7 +44,6 @@ int	render(t_env *env)
 	size_t	x;
 	size_t	y;
 	size_t	i;
-	size_t	j;
 
 	x = 0;
 	y = 0;
@@ -62,23 +52,7 @@ int	render(t_env *env)
 		while (x < env->map.w)
 		{
 			i = x + y * env->map.w;
-			if (x != env->map.w - 1 && y != env->map.h - 1)
-			{
-				j = (x + 1) + y * env->map.w;
-				ft_draw_line(env, env->final_points[i], env->final_points[j], 0xFFFFFFFF);
-				j = x + (y + 1) * env->map.w;
-				ft_draw_line(env, env->final_points[i], env->final_points[j], 0xFFFFFFFF);
-			}
-			if (x == env->map.w - 1 && y != env->map.h - 1)
-			{
-				j = x + (y + 1) * env->map.w;
-				ft_draw_line(env, env->final_points[i], env->final_points[j], 0xFFFFFFFF);
-			}
-			if (x != env->map.w - 1 && y == env->map.h - 1)
-			{
-				j = (x + 1) + y * env->map.w;
-				ft_draw_line(env, env->final_points[i], env->final_points[j], 0xFFFFFFFF);
-			}
+			connect_points(env, (t_vector3){x, y, i});
 			x++;
 		}
 		x = 0;

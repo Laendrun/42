@@ -44,12 +44,12 @@ TEST_OUTPUT = test
 RMTARGET = $(RM) $(NAME)
 RMA = $(RM) $(OBJSA)
 
-# compile .c -> .o
-%.o: %.c
-	$(CC) -I. $(CCFLAGS) -o $@ -c $?
-
 # main rules
 all: everything
+
+# compile .c -> .o
+%.o: %.c
+	$(CC) -I. $(CCFLAGS) -o $@ -c $<
 
 $(NAME): $(OBJS)
 	$(ARTARGET) $(OBJS)

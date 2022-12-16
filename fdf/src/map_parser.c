@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 19:18:17 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/16 07:10:42 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/16 22:33:12 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,30 @@ void	parse_map_info(t_env *env)
 
 void	parse_map(t_env *env)
 {
-	int		fd;
-	char	*line;
-	char	**f_line;
-	size_t		x;
-	size_t		y;
+	int			fd;
+	char		*line;
+	char		**f_line;
+	t_stvector2	v;
 
-	x = 0;
-	y = 0;
+	v.x = 0;
+	v.y = 0;
 	fd = open(env->map.path, O_RDONLY);
 	if (fd < 0)
 		map_error("Map not found.");
 	env->map.i_grid = malloc(env->map.h * sizeof(int *));
 	if (!env->map.i_grid)
 		map_error("Error allocating memory.");
-	while(y < env->map.h)
+	while (v.y < env->map.h)
 	{
-		env->map.i_grid[y] = malloc(env->map.w * sizeof(int));
-		if (!env->map.i_grid[y])
+		env->map.i_grid[v.y] = malloc(env->map.w * sizeof(int));
+		if (!env->map.i_grid[v.y])
 			map_error("Error allocating memory.");
 		line = get_next_line(fd);
 		f_line = ft_split(line, ' ');
-		while (++x < env->map.w)
-			env->map.i_grid[y][x] = ft_atoi(f_line[x]);
-		x = 0;
-		y++;
+		while (++v.x < env->map.w)
+			env->map.i_grid[v.y][v.x] = ft_atoi(f_line[v.x]);
+		v.x = 0;
+		v.y++;
 	}
 }
 

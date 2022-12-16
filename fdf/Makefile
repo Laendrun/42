@@ -16,12 +16,11 @@ NAME = fdf
 SRC = $(addprefix src/, main.c \
 						inputs.c \
 						utils.c \
+						render_utils.c \
 						draw.c \
 						map_parser.c \
 						free.c \
-						rotation.c \
 						points.c \
-						projection.c \
 						)
 OBJ := $(SRC:%.c=%.o)
 
@@ -32,28 +31,28 @@ all: $(NAME)
 $(NAME):$(OBJ)
 	@echo "$(CYAN)Compiling mlx$(DEF_COLOR)"
 	make -C libs/mlx/
-	@echo "$(CYAN)Compiling libftmatrices$(DEF_COLOR)"
-	make -C libs/libftmatrices/
 	@echo "$(CYAN)Compiling libft$(DEF_COLOR)"
 	make -C libs/libft/
 	@echo "$(BLUE)Linking all objects files$(DEF_COLOR)"
-	gcc $(CCFLAGS) $^ -Llibs/mlx -Llibs/libftmatrices -Llibs/libft -lftmatrices -lft -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	gcc $(CCFLAGS) $^ -Llibs/mlx -Llibs/libft -lft -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 	@echo "$(GREEN)fdf compiled$(DEF_COLOR)"
 
 debug: $(OBJ)
-	gcc $(CCFLAGS) -fsanitize=address $^ -Llibs/mlx -Llibs/libftmatrices -Llibs/libft -lftmatrices -lft -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	gcc $(CCFLAGS) -fsanitize=address $^ -Llibs/mlx -Llibs/libft -lft -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 %.o: %.c
 	@echo "$(BLUE)Compiling $@ from $<$(DEF_COLOR)"
-	gcc $(CCFLAGS) -D WIN_H=720 -D WIN_W=1280 -Ilibs/libft -Ilibs/libftmatrices -Ilibs/mlx -Iincludes -c $< -o $@
+	gcc $(CCFLAGS) -Ilibs/libft -Ilibs/mlx -Iincludes -c $< -o $@
 
 clean:
 	@echo "$(YELLOW)Cleaning mlx$(DEF_COLOR)"
 	make clean -C libs/mlx/
 	@echo "$(YELLOW)Cleaning libft$(DEF_COLOR)"
 	make clean -C libs/libft/
-	@echo "$(YELLOW)Cleaning libftmatrices.a$(DEF_COLOR)"
-	make clean -C libs/libftmatrices/
+	@echo "$(YELLOW)Cleaning fdf$(DEF_COLOR)"
+	rm -f $(OBJ)
+
+clean-fdf:
 	@echo "$(YELLOW)Cleaning fdf$(DEF_COLOR)"
 	rm -f $(OBJ)
 
@@ -62,8 +61,6 @@ fclean: clean
 	make fclean -C libs/mlx/
 	@echo "$(RED)Deleting libft.a$(DEF_COLOR)"
 	make fclean -C libs/libft/
-	@echo "$(RED)Deleting libftmatrices.a$(DEF_COLOR)"
-	make fclean -C libs/libftmatrices/
 	@echo "$(RED)Deleting fdf$(DEF_COLOR)"
 	@rm -f $(NAME)
 
@@ -72,8 +69,6 @@ libs:
 	make -C libs/mlx/
 	@echo "$(BLUE)Compiling libft$(DEF_COLOR)"
 	make -C libs/libft/
-	@echo "$(BLUE)Compiling libftmatrices$(DEF_COLOR)"
-	make -C libs/libftmatrices/
 	@echo "$(GREEN)Libraries Compiled.$(DEF_COLOR)"
 
 re: fclean all

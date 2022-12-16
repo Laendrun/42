@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 19:07:33 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/16 00:23:49 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/16 22:21:35 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,37 @@ void	ft_put_pixel(t_env *env, t_vector2 v, int color)
 {
 	char	*dst;
 
-	dst = env->addr + ((int)v.y * env->line_length + (int)v.x * (env->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	if (v.x >= 0 && v.x < WIN_W && v.y >= 0 && v.y < WIN_H)
+	{	
+		dst = env->addr + ((int)v.y * env->line_length \
+									+ (int)v.x * (env->bits_per_pixel / 8));
+		*(unsigned int *)dst = color;
+	}
 }
 
 void	ft_draw_line(t_env *env, t_vector2 s, t_vector2 e, int col)
 {
-	float	delta_x, delta_y, step, x, y;
-	int		i;
+	float		step;
+	t_vector3	v;
+	t_vector2	delta;
 
-	delta_x = e.x - s.x;
-	delta_y = e.y - s.y;
-	if (fabsf(delta_x) >= fabsf(delta_y))
-		step = fabsf(delta_x);
+	delta.x = e.x - s.x;
+	delta.y = e.y - s.y;
+	if (fabsf(delta.x) >= fabsf(delta.y))
+		step = fabsf(delta.x);
 	else
-		step = fabsf(delta_y);
-	delta_x = delta_x / step;
-	delta_y = delta_y / step;
-	x = s.x;
-	y = s.y;
-	i = 0;
-	while (i < step)
+		step = fabsf(delta.y);
+	delta.x = delta.x / step;
+	delta.y = delta.y / step;
+	v.x = s.x;
+	v.y = s.y;
+	v.z = 0;
+	while (v.z < step)
 	{
-		ft_put_pixel(env, (t_vector2){x, y}, col);
-		x = x + delta_x;
-		y = y + delta_y;
-		i++;
+		ft_put_pixel(env, (t_vector2){v.x, v.y}, col);
+		v.x = v.x + delta.x;
+		v.y = v.y + delta.y;
+		v.z++;
 	}
 }
 
@@ -49,7 +54,7 @@ void	ft_draw_point(t_env *env, t_vector2 p, int col, int sw)
 {
 	size_t	y;
 	size_t	x;
-	
+
 	y = p.y - sw;
 	x = p.x - sw;
 	while (y <= p.y + sw)
@@ -65,7 +70,7 @@ void	draw_background(t_env *env)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	j = 0;
 	while (i <= WIN_H)
@@ -78,4 +83,9 @@ void	draw_background(t_env *env)
 		j = 0;
 		i++;
 	}
+}
+
+void	connect(t_env *env, int i, int j, t_vector2 *points)
+{
+	ft_draw_line(env, points[i], points[j], 0xFFFFFFFF);
 }

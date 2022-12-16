@@ -6,12 +6,28 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 18:52:47 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/16 20:08:33 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/16 22:42:26 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_STRUCTURES_H
 # define FDF_STRUCTURES_H
+
+typedef struct s_vector3 {
+	float	x;
+	float	y;
+	float	z;
+}				t_vector3;
+
+typedef struct s_stvector2 {
+	size_t	x;
+	size_t	y;
+}				t_stvector2;
+
+typedef struct s_vector2 {
+	float	x;
+	float	y;
+}				t_vector2;
 
 typedef struct s_map {
 	char		*path;
@@ -28,21 +44,10 @@ typedef struct s_env {
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
+	int			scale;
+	float		alpha;
 	t_map		map;
 	t_vector3	*points;
-	float		***rotated;
-	float		***projected;
-	float		***p_matrices;
-	float		angleX;
-	float		angleY;
-	float		angleZ;
-	float		alpha;
-	float		beta;
-	int			scale;
-	float		**rot_matrix_x;
-	float		**rot_matrix_y;
-	float		**rot_matrix_z;
-	float		**projection;
 	t_vector2	*final_points;
 }				t_env;
 
