@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 18:52:47 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/16 22:42:26 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/17 13:24:59 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,15 @@ typedef struct s_env {
 	int			endian;
 	int			scale;
 	float		alpha;
+	float		sm_y;
+	float		bg_y;
+	float		sm_x;
+	float		bg_x;
+	t_vector2	offset;
 	t_map		map;
 	t_vector3	*points;
 	t_vector2	*final_points;
+	t_vector2	*rotated;
 }				t_env;
 
 #endif

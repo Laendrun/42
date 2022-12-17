@@ -21,6 +21,7 @@ SRC = $(addprefix src/, main.c \
 						map_parser.c \
 						free.c \
 						points.c \
+						arrows.c \
 						)
 OBJ := $(SRC:%.c=%.o)
 

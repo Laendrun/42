@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:54:17 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/16 22:28:36 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/17 16:38:51 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int ac, char *av[])
 	env.img = mlx_new_image(env.mlx, WIN_W, WIN_H);
 	env.addr = mlx_get_data_addr(env.img, &env.bits_per_pixel, \
 									&env.line_length, &env.endian);
+	mlx_hook(env.win, 4, 0, mouse_handler, &env);
 	mlx_hook(env.win, 2, 1L << 0, key_handler, &env);
 	mlx_hook(env.win, 17, 1L << 0, close_window, &env);
 	mlx_loop_hook(env.mlx, render, &env);
@@ -45,6 +46,11 @@ int	render(t_env *env)
 	size_t	y;
 	size_t	i;
 
+	draw_background(env);
+	rotate_points(env);
+	scale_points(env, env->scale);
+	translate_points(env);
+	limits(env);
 	x = 0;
 	y = 0;
 	while (y < env->map.h)
