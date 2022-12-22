@@ -20,7 +20,7 @@ GNL_SRC = get_next_line.c
 
 # Additionnal functions
 ADD_SRC = ft_putchar.c ft_putstr.c ft_putnbr.c ft_strcmp.c ft_strstr.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c \
-			ft_memccpy.c ft_strchr.c
+			ft_memccpy.c ft_strchr.c ft_strisdigit.c ft_atol.c
 
 # SRC & OBJS for additionnal functions
 SRC_SUP = $(ADD_SRC) $(PRINTF_SRC) $(GNL_SRC)

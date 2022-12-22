@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 18:28:16 by saeby             #+#    #+#             */
-/*   Updated: 2022/11/12 23:22:51 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/22 13:44:10 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list	*ft_lstlast(t_list *lst)
 	if (!lst)
 		return (NULL);
 	tmp = lst;
-	while (tmp->next)
+	while (tmp)
 		tmp = tmp->next;
 	return (tmp);
 }
