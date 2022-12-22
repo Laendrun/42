@@ -1,6 +1,15 @@
 NAME = push_swap
 
-SRC = $(addprefix src/, main.c)
+SRC = $(addprefix src/, main.c \
+						ps_list_1.c \
+						ps_list_2.c \
+						debug.c \
+						utils.c \
+						ps_swap.c \
+						ps_push.c \
+						ps_rotate.c \
+						ps_rev_rotate.c \
+						)
 OBJ := $(SRC:%.c=%.o)
 
 CC = gcc

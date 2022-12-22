@@ -17,7 +17,7 @@ PRINTF_SRC = ft_printf.c ft_print_c.c ft_print_s.c ft_print_d.c ft_print_u.c ft_
 
 # Additionnal functions
 ADD_SRC = ft_putchar.c ft_putstr.c ft_putnbr.c ft_strcmp.c ft_strstr.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c \
-			ft_memccpy.c ft_strchr.c
+			ft_memccpy.c ft_strchr.c ft_strisdigit.c ft_atol.c
 
 # SRC & OBJS for additionnal functions
 SRC_SUP = $(ADD_SRC) $(PRINTF_SRC)
@@ -43,10 +43,10 @@ RMA = $(RM) $(OBJSA)
 	$(CC) -I. $(CCFLAGS) -o $@ -c $?
 
 # main rules
-all: everything
+all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(ARTARGET) $(OBJS)
+$(NAME): $(OBJSA)
+	$(ARTARGET) $(OBJSA)
 	$(RANTARGET)
 	
 clean:
@@ -63,8 +63,8 @@ bonus: $(OBJS) $(OBJS_BONUS)
 	$(RANTARGET)
 
 # additional rules
-everything: $(OBJSA)
-	$(ARTARGET) $(OBJSA)
+everything: $(OBJS) $(OBJS_BONUS) $(OBJS_SUP)
+	$(ARTARGET) $(OBJS)
 	$(RANTARGET)
 
 clear: fclean 
