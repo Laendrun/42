@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_list_1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 15:27:05 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/22 19:10:27 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/23 21:22:51 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,32 +38,36 @@ t_dlist	*ps_lstswap(t_dlist *first)
 	return (first);
 }
 
-t_lists	*ps_lstpushb(t_lists *stack)
+t_lists	*ps_lstpushb(t_lists *stacks)
 {
 	t_dlist	*tmp;
 
-	if (!stack->b)
-		stack->b = ps_lstnew(stack->a->content);
+	if (!stacks->a)
+		return (stacks);
+	if (!stacks->b)
+		stacks->b = ps_lstnew(stacks->a->content);
 	else
-		ps_lstadd_front(&stack->b, ps_lstnew(stack->a->content));
-	tmp = stack->a->next;
-	free(stack->a);
-	stack->a = tmp;
-	return (stack);
+		ps_lstadd_front(&stacks->b, ps_lstnew(stacks->a->content));
+	tmp = stacks->a->next;
+	free(stacks->a);
+	stacks->a = tmp;
+	return (stacks);
 }
 
-t_lists	*ps_lstpusha(t_lists *stack)
+t_lists	*ps_lstpusha(t_lists *stacks)
 {
 	t_dlist	*tmp;
 
-	if (!stack->a)
-		stack->a = ps_lstnew(stack->b->content);
+	if (!stacks->b)
+		return (stacks);
+	if (!stacks->a)
+		stacks->a = ps_lstnew(stacks->b->content);
 	else
-		ps_lstadd_front(&stack->a, ps_lstnew(stack->b->content));
-	tmp = stack->b->next;
-	free(stack->b);
-	stack->b = tmp;
-	return (stack);
+		ps_lstadd_front(&stacks->a, ps_lstnew(stacks->b->content));
+	tmp = stacks->b->next;
+	free(stacks->b);
+	stacks->b = tmp;
+	return (stacks);
 }
 
 t_dlist	*ps_lstrotate(t_dlist *lst)

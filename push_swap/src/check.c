@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_rev_rotate.c                                    :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 18:35:11 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/23 20:58:47 by saeby            ###   ########.fr       */
+/*   Created: 2022/12/23 21:35:14 by saeby             #+#    #+#             */
+/*   Updated: 2022/12/23 21:49:26 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_lists	*ps_rra(t_lists *stacks)
+int	is_sorted(t_lists *stacks)
 {
-	write(1, "rra\n", 4);
-	stacks->a = ps_lstrrotate(stacks->a);
-	return (stacks);
-}
+	int		size;
+	int		i;
+	t_dlist	*tmp;
 
-t_lists	*ps_rrb(t_lists *stacks)
-{
-	write(1, "rrb\n", 4);
-	stacks->b = ps_lstrrotate(stacks->b);
-	return (stacks);
-}
-
-t_lists	*ps_rrr(t_lists *stacks)
-{
-	write(1, "rrr\n", 4);
-	stacks->a = ps_lstrrotate(stacks->a);
-	stacks->b = ps_lstrrotate(stacks->b);
-	return (stacks);
+	if (ps_lstsize(stacks->b) != 0)
+		return (0);
+	tmp = stacks->a;
+	size = ps_lstsize(tmp);
+	i = 0;
+	while (i < size - 1) // size - 1 because we don't want to check the next of the last element (=>segfault)
+	{
+		if (tmp->content > tmp->next->content)
+			return (0);
+		i++;
+		tmp = tmp->next;
+	}
+	return (1);
 }

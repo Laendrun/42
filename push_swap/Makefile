@@ -9,6 +9,8 @@ SRC = $(addprefix src/, main.c \
 						ps_push.c \
 						ps_rotate.c \
 						ps_rev_rotate.c \
+						small_sort.c \
+						check.c \
 						)
 OBJ := $(SRC:%.c=%.o)
 
@@ -17,8 +19,11 @@ CCFLAGS = -Werror -Wall -Wextra
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+libft:
 	@make -C libft/
+
+$(NAME): $(OBJ)
+	@make -C libft
 	$(CC) $^ -Llibft -lft -o $(NAME)
 
 %.o: %.c
