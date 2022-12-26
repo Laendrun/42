@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 15:20:59 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/22 19:20:12 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 13:03:35 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_dlist	*ps_lstlast(t_dlist *lst)
 	if (!lst)
 		return (NULL);
 	tmp = lst;
-	while(tmp->next)
+	while (tmp->next)
 		tmp = tmp->next;
 	return (tmp);
 }

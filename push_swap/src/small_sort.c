@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 08:06:46 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 11:28:40 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 13:04:14 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_lists	*ps_sort_three(t_lists *stacks)
 	{
 		lt = ps_lstlast(stacks->a);
 		ft = ps_lstfirst(stacks->a);
-		
 		if (ft->content < lt->content && ft->next->content > lt->content)
 		{
 			stacks = ps_sa(stacks);
@@ -44,9 +43,18 @@ t_lists	*ps_sort_three(t_lists *stacks)
 
 t_lists	*ps_sort_four(t_lists *stacks)
 {
-	ps_push_smallest_up(stacks, 'a');
+	stacks = ps_push_smallest_up_a(stacks);
 	stacks = ps_pb(stacks);
 	stacks = ps_sort_three(stacks);
+	stacks = ps_pa(stacks);
+	return (stacks);
+}
+
+t_lists	*ps_sort_five(t_lists *stacks)
+{
+	stacks = ps_push_smallest_up_a(stacks);
+	stacks = ps_pb(stacks);
+	stacks = ps_sort_four(stacks);
 	stacks = ps_pa(stacks);
 	return (stacks);
 }
@@ -62,7 +70,7 @@ t_lists	*ps_small_sort(t_lists *stacks)
 		stacks = ps_sort_three(stacks);
 	if (ps_lstsize(stacks->a) == 4)
 		stacks = ps_sort_four(stacks);
-	//if (ps_lstsize(stacks->a) == 5)
-	//	ps_sort_five(stacks);
+	if (ps_lstsize(stacks->a) == 5)
+		ps_sort_five(stacks);
 	return (stacks);
 }

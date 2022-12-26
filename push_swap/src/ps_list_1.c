@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ps_list_1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 15:27:05 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 11:33:49 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 13:03:16 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_dlist	*ps_lstfirst(t_dlist *lst)
-{
-	t_dlist	*tmp;
-
-	if (!lst)
-		return (NULL);
-	tmp = lst;
-	while(tmp->prev)
-		tmp = tmp->prev;
-	return (tmp);
-}
 
 t_dlist	*ps_lstswap(t_dlist *first)
 {

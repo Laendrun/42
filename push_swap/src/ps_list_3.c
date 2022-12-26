@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strisdigit.c                                    :+:      :+:    :+:   */
+/*   ps_list_3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 19:35:31 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 12:54:57 by saeby            ###   ########.fr       */
+/*   Created: 2022/12/26 13:01:50 by saeby             #+#    #+#             */
+/*   Updated: 2022/12/26 13:03:19 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_strisdigit(char *str)
+t_dlist	*ps_lstfirst(t_dlist *lst)
 {
-	int	i;
+	t_dlist	*tmp;
 
-	i = 0;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
+	if (!lst)
+		return (NULL);
+	tmp = lst;
+	while (tmp->prev)
+		tmp = tmp->prev;
+	return (tmp);
 }

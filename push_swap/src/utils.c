@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 19:25:05 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/23 17:33:16 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 13:05:01 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ps_error(t_lists *stacks)
 	exit(1);
 }
 
-int		ps_duplicate(t_dlist *a, int num)
+int	ps_duplicate(t_dlist *a, int num)
 {
 	t_dlist	*tmp;
 
@@ -33,7 +33,7 @@ int		ps_duplicate(t_dlist *a, int num)
 	return (0);
 }
 
-int		ps_get_max(t_dlist *a)
+int	ps_get_max(t_dlist *a)
 {
 	t_dlist	*tmp;
 	int		max;
@@ -49,7 +49,7 @@ int		ps_get_max(t_dlist *a)
 	return (max);
 }
 
-int		ps_get_min(t_dlist *a)
+int	ps_get_min(t_dlist *a)
 {
 	t_dlist	*tmp;
 	int		min;
