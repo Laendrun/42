@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_struct.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 15:18:18 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/22 19:11:02 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/23 22:34:55 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_lists
 {
 	t_dlist	*a;
 	t_dlist	*b;
+	size_t	count;
 } t_lists;
 
 #endif

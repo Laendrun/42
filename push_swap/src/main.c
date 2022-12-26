@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:18:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/23 21:49:48 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/24 10:54:21 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int ac, char *av[])
 		ps_error(stacks);
 	stacks->b = NULL;
 	stacks->a = NULL;
+	stacks->count = 0;
 	while (i < ac)
 	{
 		if (!ps_str_is_posneg(av[i]))
@@ -46,12 +47,17 @@ int	main(int ac, char *av[])
 
 	i = ps_lstsize(stacks->a);
 
-	if (i == 3)
-		ps_sort_three(stacks);
-
-	//ft_printf("stack A size: %d\n", i);
-
+	ft_printf("-------start-----\n");
 	ps_lstprint(stacks->a);
+	ft_printf("-----------------\n");
+	if (i < 5)
+		ps_small_sort(stacks);
+	ft_printf("-----------------\n");
+	ft_printf("op. count: %u\n", stacks->count);
+	ft_printf("-----------------\n\n");
+	ft_printf("-------end-------\n");
+	ps_lstprint(stacks->a);
+	ft_printf("-----------------\n");
 
 	return (0);
 }

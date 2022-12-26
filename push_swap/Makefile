@@ -11,6 +11,7 @@ SRC = $(addprefix src/, main.c \
 						ps_rev_rotate.c \
 						small_sort.c \
 						check.c \
+						sort_utils.c \
 						)
 OBJ := $(SRC:%.c=%.o)
 

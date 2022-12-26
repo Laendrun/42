@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:34:15 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/23 20:57:47 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/23 22:35:36 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_lists	*ps_sa(t_lists *stacks)
 {
 	write(1, "sa\n", 3);
+	stacks->count++;
 	stacks->a = ps_lstswap(stacks->a);
 	return (stacks);
 }
@@ -22,6 +23,7 @@ t_lists	*ps_sa(t_lists *stacks)
 t_lists	*ps_sb(t_lists *stacks)
 {
 	write(1, "sb\n", 3);
+	stacks->count++;
 	stacks->b = ps_lstswap(stacks->b);
 	return (stacks);
 }
@@ -29,6 +31,7 @@ t_lists	*ps_sb(t_lists *stacks)
 t_lists	*ps_ss(t_lists *stacks)
 {
 	write(1, "ss\n", 3);
+	stacks->count += 2;
 	stacks->a = ps_lstswap(stacks->a);
 	stacks->b = ps_lstswap(stacks->b);
 	return (stacks);
