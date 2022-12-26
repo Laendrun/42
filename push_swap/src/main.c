@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:18:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 19:22:11 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 19:28:26 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ t_lists	*parse_args(t_lists *stacks, int ac, char *av[])
 {
 	int		i;
 	long	tmp;
-	(void) ac;
 
 	i = 1;
 	if (ac == 2)

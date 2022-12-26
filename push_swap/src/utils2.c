@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 17:36:18 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 18:24:45 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 19:29:10 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_dlist	*ps_ptr_to_max(t_dlist *a)
 	{
 		if (tmp->content > max_val)
 		{
-			max_ptr  = tmp;
+			max_ptr = tmp;
 			max_val = tmp->content;
 		}
 		tmp = tmp->next;

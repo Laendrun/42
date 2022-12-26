@@ -6,12 +6,20 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 17:02:58 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 17:41:55 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 19:28:37 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+t_lists	*ps_med_sort(t_lists *stacks)
+{
+	int		size;
+
+	return (stacks);
+}
+
+/*
 t_lists	*ps_med_sort(t_lists *stacks)
 {
 	int	pivot_i;
@@ -38,3 +46,4 @@ t_lists	*ps_med_sort(t_lists *stacks)
 	
 	return (stacks);
 }
+*/

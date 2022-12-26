@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 10:14:18 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 17:12:55 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 19:28:57 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int	ps_get_index(t_dlist *s, int num)
 	return (-1);
 }
 
-int		ps_get_value_index(t_dlist *s, int index)
+int	ps_get_value_index(t_dlist *s, int index)
 {
-	int	i;
+	int		i;
 	t_dlist	*tmp;
 
 	i = 0;
