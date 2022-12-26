@@ -1,4 +1,5 @@
 NAME = push_swap
+OBJ_DIR = objs/
 
 SRC = $(addprefix src/, main.c \
 						ps_list_1.c \

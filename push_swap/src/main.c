@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:18:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/24 10:54:21 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 11:29:07 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int ac, char *av[])
 	ps_lstprint(stacks->a);
 	ft_printf("-----------------\n");
 	if (i < 5)
-		ps_small_sort(stacks);
+		stacks = ps_small_sort(stacks);
 	ft_printf("-----------------\n");
 	ft_printf("op. count: %u\n", stacks->count);
 	ft_printf("-----------------\n\n");

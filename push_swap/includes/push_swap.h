@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:24:25 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/24 10:35:17 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 11:27:52 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ int		ps_str_is_posneg(char *s);
 int		is_sorted(t_lists *stacks);
 
 // small_sort.c
-void	ps_small_sort(t_lists *stacks);
-void	ps_sort_three(t_lists *stacks);
-void	ps_sort_four(t_lists *stacks);
-void	ps_sort_five(t_lists *stacks);
+t_lists	*ps_small_sort(t_lists *stacks);
+t_lists	*ps_sort_three(t_lists *stacks);
+t_lists	*ps_sort_four(t_lists *stacks);
+t_lists	*ps_sort_five(t_lists *stacks);
 
 // sort_utils.c
 void	ps_push_biggest_up(t_lists *stacks, char c);
