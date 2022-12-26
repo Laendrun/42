@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:18:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 19:28:26 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 19:37:33 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,11 @@ t_lists	*sort(t_lists *stacks)
 	ft_printf("-----------------\n");
 	ft_printf("op. count: %u\n", stacks->count);
 	ft_printf("-----------------\n\n");
-	ft_printf("-------end-------\n");
+	ft_printf("-------end-a-----\n");
 	ps_lstprint(stacks->a);
+	ft_printf("-----------------\n");
+	ft_printf("-------end-b-----\n");
+	ps_lstprint(stacks->b);
 	ft_printf("-----------------\n");
 	return (stacks);
 }

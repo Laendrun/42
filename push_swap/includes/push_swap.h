@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:24:25 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 18:04:14 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 19:55:52 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ t_lists	*ps_sort_five(t_lists *stacks);
 
 // med_sort.c
 t_lists	*ps_med_sort(t_lists *stacks);
+t_lists	*ps_presort(t_lists *stacks);
 
 // sort_utils.c
 t_lists	*ps_push_smallest_up_a(t_lists *stacks);

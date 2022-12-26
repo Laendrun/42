@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 17:02:58 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 19:28:37 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 19:59:10 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,35 @@
 
 t_lists	*ps_med_sort(t_lists *stacks)
 {
-	int		size;
+	t_dlist	*ft;
+	t_dlist	*sc;
 
-	return (stacks);
-}
-
-/*
-t_lists	*ps_med_sort(t_lists *stacks)
-{
-	int	pivot_i;
-	int	i;
-	int	pivot_value;
-	int	size;
-	t_dlist	*tmp;
-
-	size = ps_lstsize(stacks->a);
-	pivot_i = size / 2;
-	pivot_value = ps_get_value_index(stacks->a, pivot_i);
-	i = 0;
-	while (i < size)
+	stacks = ps_presort(stacks);
+	while (!is_sorted(stacks))
 	{
-		tmp = ps_lstfirst(stacks->a);
-		if (tmp->content >= pivot_value)
-			stacks = ps_pb(stacks);
-		else if (tmp->content < pivot_value)
+		ft = ps_lstfirst(stacks->a);
+		sc = ft->next;
+		if (ft > sc)
+		{
+			stacks = ps_sa(stacks);
 			stacks = ps_ra(stacks);
-		//ft_printf("---b---\n");
-		//ps_lstprint(stacks->b);
-		i++;
+		}
 	}
-	
 	return (stacks);
 }
-*/
+
+t_lists	*ps_presort(t_lists *stacks)
+{
+	while (ps_lstsize(stacks->a) > 3)
+		stacks = ps_pb(stacks);
+	stacks = ps_sort_three(stacks);
+	while (ps_lstsize(stacks->b) > 0)
+	{
+		stacks = ps_pa(stacks);
+		if (stacks->a->content > stacks->a->next->content)
+			stacks = ps_sa(stacks);
+		else if (stacks->a->content > ps_lstlast(stacks->a)->content)
+			stacks = ps_ra(stacks);
+	}
+	return (stacks);
+}
