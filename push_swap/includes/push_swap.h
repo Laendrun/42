@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:24:25 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 13:03:08 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 18:04:14 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,19 @@ void	ps_lstprint(t_dlist *lst);
 // utils.c
 void	ps_error(t_lists *stacks);
 int		ps_duplicate(t_dlist *a, int num);
-int		ps_get_max(t_dlist *a);
-int		ps_get_min(t_dlist *a);
+long	ps_get_max(t_dlist *a);
+long	ps_get_min(t_dlist *a);
 int		ps_str_is_posneg(char *s);
+
+// utils2.c
+t_dlist	*ps_ptr_to_min(t_dlist *a);
+t_dlist	*ps_ptr_to_max(t_dlist *a);
 
 // check.c
 int		is_sorted(t_lists *stacks);
+
+// normalize.c
+t_lists	*ps_normalize(t_lists *stacks);
 
 // small_sort.c
 t_lists	*ps_small_sort(t_lists *stacks);
@@ -77,11 +84,13 @@ t_lists	*ps_sort_three(t_lists *stacks);
 t_lists	*ps_sort_four(t_lists *stacks);
 t_lists	*ps_sort_five(t_lists *stacks);
 
+// med_sort.c
+t_lists	*ps_med_sort(t_lists *stacks);
+
 // sort_utils.c
-t_lists	*ps_push_biggest_up_a(t_lists *stacks);
-t_lists	*ps_push_biggest_up_b(t_lists *stacks);
 t_lists	*ps_push_smallest_up_a(t_lists *stacks);
 t_lists	*ps_push_smallest_up_b(t_lists *stacks);
 int		ps_get_index(t_dlist *s, int num);
+int		ps_get_value_index(t_dlist *s, int index);
 
 #endif

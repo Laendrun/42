@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   normalize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 16:18:05 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 18:05:39 by saeby            ###   ########.fr       */
+/*   Created: 2022/12/26 13:28:23 by saeby             #+#    #+#             */
+/*   Updated: 2022/12/26 18:24:31 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ps_lstprint(t_dlist *lst)
+t_lists	*ps_normalize(t_lists *stacks)
 {
-	t_dlist	*tmp;
+	int		i;
+	int		size;
+	t_dlist	*min;
+	t_dlist	*max;
 
-	tmp = lst;
-	while (tmp)
+	i = 0;
+	size = ps_lstsize(stacks->a);
+	while (i < size)
 	{
-		printf("%ld\n", tmp->content);
-		tmp = tmp->next;
+		min = ps_ptr_to_min(stacks->a);
+		min->content = LONG_MAX - (1 + i);
+		i++;
 	}
+	i = 0;
+	while (i < size)
+	{
+		max = ps_ptr_to_max(stacks->a);
+		max->content = i;
+		i++;
+	}
+	return (stacks);
 }

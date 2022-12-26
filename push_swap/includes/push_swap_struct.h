@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 15:18:18 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 12:53:51 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 17:33:22 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 typedef struct s_dlist
 {
-	int				content;
+	long			content;
 	struct s_dlist	*next;
 	struct s_dlist	*prev;
 }	t_dlist;

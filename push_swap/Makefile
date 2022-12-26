@@ -4,14 +4,18 @@ OBJ_DIR = objs/
 SRC = $(addprefix src/, main.c \
 						ps_list_1.c \
 						ps_list_2.c \
+						ps_list_3.c \
 						debug.c \
 						utils.c \
+						utils2.c \
 						ps_swap.c \
 						ps_push.c \
 						ps_rotate.c \
 						ps_rev_rotate.c \
 						small_sort.c \
+						med_sort.c \
 						check.c \
+						normalize.c \
 						sort_utils.c \
 						)
 OBJ := $(SRC:%.c=%.o)
@@ -39,7 +43,6 @@ fclean: clean
 	make fclean -C libft/
 
 re: fclean all
-	make re -C libft/
 
 debug: $(OBJ)
 	$(CC) $(CCFLAGS) -fsanitize=address -Llibft -lft $^ -o $(NAME)

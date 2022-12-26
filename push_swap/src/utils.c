@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 19:25:05 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 13:05:01 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 17:55:09 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int	ps_duplicate(t_dlist *a, int num)
 	return (0);
 }
 
-int	ps_get_max(t_dlist *a)
+long	ps_get_max(t_dlist *a)
 {
 	t_dlist	*tmp;
-	int		max;
+	long	max;
 
 	tmp = a;
 	max = a->content;
@@ -49,10 +49,10 @@ int	ps_get_max(t_dlist *a)
 	return (max);
 }
 
-int	ps_get_min(t_dlist *a)
+long	ps_get_min(t_dlist *a)
 {
 	t_dlist	*tmp;
-	int		min;
+	long	min;
 
 	tmp = a;
 	min = a->content;

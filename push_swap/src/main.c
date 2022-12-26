@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:18:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 13:01:03 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 19:22:11 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 int	main(int ac, char *av[])
 {
-	t_lists	*stacks;
-	int		i;
+	t_lists		*stacks;
+	int			i;
 
 	i = 1;
 	stacks = malloc(2 * sizeof(t_dlist));
@@ -28,7 +28,10 @@ int	main(int ac, char *av[])
 	stacks->b = NULL;
 	stacks->a = NULL;
 	stacks->count = 0;
+	if (ac == 2)
+		av = ft_split((const char *) av[1], ' ');
 	stacks = parse_args(stacks, ac, av);
+	stacks = ps_normalize(stacks);
 	stacks = sort(stacks);
 	return (0);
 }
@@ -43,6 +46,8 @@ t_lists	*sort(t_lists *stacks)
 	ft_printf("-----------------\n");
 	if (i <= 5)
 		stacks = ps_small_sort(stacks);
+	else if (i <= 100)
+		stacks = ps_med_sort(stacks);
 	ft_printf("-----------------\n");
 	ft_printf("op. count: %u\n", stacks->count);
 	ft_printf("-----------------\n\n");
@@ -56,9 +61,12 @@ t_lists	*parse_args(t_lists *stacks, int ac, char *av[])
 {
 	int		i;
 	long	tmp;
+	(void) ac;
 
 	i = 1;
-	while (i < ac)
+	if (ac == 2)
+		i = 0;
+	while (av[i])
 	{
 		if (!ps_str_is_posneg(av[i]))
 			ps_error(stacks);

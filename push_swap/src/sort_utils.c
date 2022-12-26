@@ -6,14 +6,11 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 10:14:18 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 13:04:43 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 17:12:55 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_lists	*ps_push_biggest_up_a(t_lists *stacks);
-t_lists	*ps_push_biggest_up_b(t_lists *stacks);
 
 t_lists	*ps_push_smallest_up_a(t_lists *stacks)
 {
@@ -66,4 +63,19 @@ int	ps_get_index(t_dlist *s, int num)
 		tmp = tmp->next;
 	}
 	return (-1);
+}
+
+int		ps_get_value_index(t_dlist *s, int index)
+{
+	int	i;
+	t_dlist	*tmp;
+
+	i = 0;
+	tmp = s;
+	while (i < index)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (tmp->content);
 }
