@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 19:25:05 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 17:55:09 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 21:08:18 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ int	ps_duplicate(t_dlist *a, int num)
 long	ps_get_max(t_dlist *a)
 {
 	t_dlist	*tmp;
-	long	max;
+	long	max_val;
 
 	tmp = a;
-	max = a->content;
+	max_val = a->content;
 	while (tmp)
 	{
-		if (tmp->content > max)
-			max = tmp->content;
+		if (tmp->content > max_val)
+			max_val = tmp->content;
 		tmp = tmp->next;
 	}
-	return (max);
+	return (max_val);
 }
 
 long	ps_get_min(t_dlist *a)

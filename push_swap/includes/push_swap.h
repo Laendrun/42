@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:24:25 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 19:55:52 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 20:37:22 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ t_lists	*ps_presort(t_lists *stacks);
 // sort_utils.c
 t_lists	*ps_push_smallest_up_a(t_lists *stacks);
 t_lists	*ps_push_smallest_up_b(t_lists *stacks);
+t_lists	*ps_push_biggest_up_b(t_lists *stacks);
 int		ps_get_index(t_dlist *s, int num);
 int		ps_get_value_index(t_dlist *s, int index);
 

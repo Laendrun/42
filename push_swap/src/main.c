@@ -3,25 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:18:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 19:37:33 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 20:35:59 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// ecrire l'operation meme si rien n'est fait ?
-// genre si je fais pa mais que y a rien dans b, est-ce que je dois quand même 
-// print que j'ai fait pa ou pas ?
-
 int	main(int ac, char *av[])
 {
 	t_lists		*stacks;
-	int			i;
 
-	i = 1;
 	stacks = malloc(2 * sizeof(t_dlist));
 	if (ac == 1)
 		ps_error(stacks);

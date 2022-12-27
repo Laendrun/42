@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 10:14:18 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 19:28:57 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/26 21:05:31 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_lists	*ps_push_biggest_up_b(t_lists *stacks)
+{
+	int	bg_ind;
+
+	bg_ind = ps_get_index(stacks->b, ps_get_max(stacks->b));
+	if (bg_ind < ps_lstsize(stacks->b) / 2)
+	{
+		while (ps_lstfirst(stacks->b)->content != ps_get_max(stacks->b))
+			stacks = ps_rb(stacks);
+	}
+	else
+	{
+		while (ps_lstfirst(stacks->b)->content != ps_get_max(stacks->b))
+			stacks = ps_rrb(stacks);
+	}
+	return (stacks);
+}
 
 t_lists	*ps_push_smallest_up_a(t_lists *stacks)
 {
