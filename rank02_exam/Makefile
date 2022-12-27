@@ -13,11 +13,11 @@ WHITE = \033[0;97m
 # LEVEL 1
 
 first_word:
-	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@gcc $(CCFLAGS) lvl1/$@/$@.c -o _outputs/$@
 	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
 
 fizzbuzz:
-	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@gcc $(CCFLAGS) lvl1/$@/$@.c -o _outputs/$@
 	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
 
 ft_putstr:
@@ -37,47 +37,76 @@ ft_swap:
 	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !$(RESET)"
 
 repeat_alpha:
-	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@gcc $(CCFLAGS) lvl1/$@/$@.c -o _outputs/$@
 	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
 
 rev_print:
-	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@gcc $(CCFLAGS) lvl1/$@/$@.c -o _outputs/$@
 	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
 
 rot_13:
-	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@gcc $(CCFLAGS) lvl1/$@/$@.c -o _outputs/$@
 	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
 
 rotone:
-	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@gcc $(CCFLAGS) lvl1/$@/$@.c -o _outputs/$@
 	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
 
 search_and_replace:
-	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@gcc $(CCFLAGS) lvl1/$@/$@.c -o _outputs/$@
 	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
 
 ulstr:
-	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@gcc $(CCFLAGS) lvl1/$@/$@.c -o _outputs/$@
 	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
 
 # LEVEL 2
 
 alpha_mirror:
-	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@gcc $(CCFLAGS) lvl2/$@/$@.c -o _outputs/$@
 	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
 
 camel_to_snake:
-	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@gcc $(CCFLAGS) lvl2/$@/$@.c -o _outputs/$@
 	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
 
 do_op:
-	@gcc $(CCFLAGS) $@/$@.c -o _outputs/$@
+	@gcc $(CCFLAGS) lvl2/$@/$@.c -o _outputs/$@
 	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
 
 ft_atoi:
 	@echo "$(YELLOW)Warning: $(RED)$@ $(RESET)is a function."
 	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !$(RESET)"
 
+ft_strcmp:
+	@echo "$(YELLOW)Warning: $(RED)$@ $(RESET)is a function."
+	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !$(RESET)"
+
+ft_strcspn:
+	@echo "$(YELLOW)Warning: $(RED)$@ $(RESET)is a function."
+	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !$(RESET)"
+
+ft_strdup:
+	@echo "$(YELLOW)Warning: $(RED)$@ $(RESET)is a function."
+	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !$(RESET)"
+
+ft_strpbrk:
+	@echo "$(YELLOW)Warning: $(RED)$@ $(RESET)is a function."
+	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !$(RESET)"
+
+ft_strrev:
+	@echo "$(YELLOW)Warning: $(RED)$@ $(RESET)is a function."
+	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !$(RESET)"
+
+ft_strspn:
+	@echo "$(YELLOW)Warning: $(RED)$@ $(RESET)is a function."
+	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !$(RESET)"
+
+inter:
+	@gcc $(CCFLAGS) lvl2/$@/$@.c -o _outputs/$@
+	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
+
 .PHONY: first_word fizzbuzz ft_putstr ft_strcpy ft_strlen ft_swap repeat_alpha \
 		rev_print rot_13 rotone search_and_replace ulstr alpha_mirror \
-		camel_to_snake do_op ft_atoi
+		camel_to_snake do_op ft_atoi ft_strcmp ft_strcspn ft_strdup \
+		ft_strpbrk ft_strrev ft_strspn inter
