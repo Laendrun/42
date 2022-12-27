@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:18:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 20:35:59 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/27 16:33:16 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,10 @@ t_lists	*sort(t_lists *stacks)
 	int	i;
 
 	i = ps_lstsize(stacks->a);
-	ft_printf("-------start-----\n");
-	ps_lstprint(stacks->a);
-	ft_printf("-----------------\n");
 	if (i <= 5)
 		stacks = ps_small_sort(stacks);
-	else if (i <= 100)
+	else
 		stacks = ps_med_sort(stacks);
-	ft_printf("-----------------\n");
-	ft_printf("op. count: %u\n", stacks->count);
-	ft_printf("-----------------\n\n");
-	ft_printf("-------end-a-----\n");
-	ps_lstprint(stacks->a);
-	ft_printf("-----------------\n");
-	ft_printf("-------end-b-----\n");
-	ps_lstprint(stacks->b);
-	ft_printf("-----------------\n");
 	return (stacks);
 }
 
