@@ -138,8 +138,31 @@ wdmatch:
 	@gcc $(CCFLAGS) lvl2/$@/$@.c -o _outputs/$@
 	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
 
+# LEVEL 3
+
+add_prime_sum:
+	@gcc $(CCFLAGS) lvl3/$@/$@.c -o _outputs/$@
+	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
+
+epur_str:
+	@gcc $(CCFLAGS) lvl3/$@/$@.c -o _outputs/$@
+	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
+
+expand_str:
+	@gcc $(CCFLAGS) lvl3/$@/$@.c -o _outputs/$@
+	@echo "$(GREEN)$@ compiled in $(BLUE)_outputs/$@$(RESET)"
+
+ft_atoi_base:
+	@echo "$(YELLOW)Warning: $(RED)$@ $(RESET)is a function."
+	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !$(RESET)"
+
+ft_list_size:
+	@echo "$(YELLOW)Warning: $(RED)$@ $(RESET)is a function."
+	@echo "$(YELLOW)Warning: $(RED)Nothing Compiled !$(RESET)"
+
 .PHONY: first_word fizzbuzz ft_putstr ft_strcpy ft_strlen ft_swap repeat_alpha \
 		rev_print rot_13 rotone search_and_replace ulstr alpha_mirror \
 		camel_to_snake do_op ft_atoi ft_strcmp ft_strcspn ft_strdup \
 		ft_strpbrk ft_strrev ft_strspn inter last_word max print_bits \
-		reverse_bits snake_to_camel swap_bits union wdmatch
+		reverse_bits snake_to_camel swap_bits union wdmatch add_prime_sum \
+		epur_str expand_str ft_atoi_base ft_list_size
