@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:01:50 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/26 13:03:19 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/28 13:17:59 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,16 @@ t_dlist	*ps_lstfirst(t_dlist *lst)
 	while (tmp->prev)
 		tmp = tmp->prev;
 	return (tmp);
+}
+
+void	ps_lstclear(t_dlist *lst)
+{
+	t_dlist	*tmp;
+
+	while (lst)
+	{
+		tmp = lst->next;
+		free(lst);
+		lst = tmp;
+	}
 }

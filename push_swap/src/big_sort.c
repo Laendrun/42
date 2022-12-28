@@ -6,11 +6,11 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:52:30 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/28 12:55:00 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/28 12:58:30 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "push_swap.h"
+#include "push_swap.h"
 
 t_lists	*ps_big_sort(t_lists *stacks)
 {

@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:24:25 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/28 12:35:31 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/28 13:15:50 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_dlist	*ps_lstrrotate(t_dlist *lst);
 
 // ps_list_3.c
 t_dlist	*ps_lstfirst(t_dlist *lst);
+void	ps_lstclear(t_dlist *lst);
 
 // ps_swap.c
 t_lists	*ps_sa(t_lists *stacks);
