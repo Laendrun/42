@@ -14,7 +14,7 @@ This repo will (if I don't forget) save all my projects during the 42 cursus at 
 | 2 | [FdF](https://github.com/Laendrun/42/tree/main/fdf) | :white_check_mark: | :lock:<sup>1</sup> |
 | 2 | [push_swap](https://github.com/Laendrun/42/tree/main/push_swap) | :white_check_mark: | :x: |
 | 2 | [pipex](https://github.com/Laendrun/42/tree/main/pipex) | :construction: | :x: |
-| 2 | mintalk | :soon: | :x: |
+| 2 | minitalk | :soon: | :x: |
 
 > :warning: FdF > the project works but there are no error checking on the map parsing part for now
 > so there's a lot of chance it will segfault if you don't provide an correct map. It will also
