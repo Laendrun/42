@@ -5,10 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 18:28:01 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/28 18:53:27 by saeby            ###   ########.fr       */
+/*   Created: 2022/12/27 16:37:06 by saeby             #+#    #+#             */
+/*   Updated: 2022/12/28 15:27:12 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// https://tldp.org/LDP/lpg/node11.html
+// https://linuxhint.com/c-execve-function-usage/
 
 #include "pipex.h"
 
@@ -17,47 +20,38 @@ int	main(int ac, char *av[], char *envp[])
 	(void) ac;
 	(void) av;
 	(void) envp;
+	char *const args1[] = {"/bin/ls", NULL};
+	char *const args2[] = {"/usr/bin/grep", "Make", NULL};
 
-	// char *const args2[] = {"/bin/cat", NULL};
-
-	int	fd[2];
-	int	fd_in;
-	int	fd_out;
-	int	pid1;
-	int	pid2;
-
-	fd_in = open("infile", O_RDONLY);
-	fd_out = open("outfile", O_WRONLY);
-
+	int fd[2];
 	if (pipe(fd) == -1)
-		pip_error("Error creating the pipe.");
+		return (1);
 
-	pid1 = fork();
+	int pid1 = fork();
 	if (pid1 < 0)
-		pip_error("Error when forking (1).");
+		return (2);
 
 	if (pid1 == 0)
 	{
-		// first child process
-		ft_printf("wut\n");
+		// child process 1 (ls)
 		dup2(fd[1], STDOUT_FILENO);
 		close(fd[0]);
 		close(fd[1]);
-		//execve("/bin/cat", args2, envp);
+		execve("/bin/ls", args1, envp);
 	}
 
-	pid2 = fork();
+
+	int pid2 = fork();
 	if (pid2 < 0)
-		pip_error("Error when forking (2).");
+		return (2);
 
 	if (pid2 == 0)
 	{
-		ft_printf("wat\n");
-		// second child process
+		// child process 2 (grep)
 		dup2(fd[0], STDIN_FILENO);
 		close(fd[0]);
 		close(fd[1]);
-		//execve("/bin/cat", args2, envp);
+		execve("/usr/bin/grep", args2, envp);
 	}
 
 
@@ -65,14 +59,20 @@ int	main(int ac, char *av[], char *envp[])
 	close(fd[1]);
 	waitpid(pid1, NULL, 0);
 	waitpid(pid2, NULL, 0);
-	ft_printf("fd_in: %d\nfd_out: %d\n", fd_in, fd_out);
 	return (0);
 }
 
-/* 
-1. put the content of the infile into the stdin
-2. the first command read from the stdin
-3. redirect the output of the first command into the input of the second command via the pipe
-4. second command reads from the input coming from the pipe
-5. second command output is written in the outfile
+/* this nonsense works
+int	main(int ac, char *av[], char *envp[])
+{
+	(void) ac;
+	(void) av;
+	//(void) envp;
+
+	//char *binaryPath = "/bin/ls";
+	char *const args[] = {"/bin/ls", "-la", NULL};
+	//char *const env[] = {"HOSTNAME=www.linuxhint.com", NULL};
+	execve("/bin/ls", args, envp);
+	return (0);
+}
 */

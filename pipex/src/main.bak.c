@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 18:28:01 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/28 18:53:27 by saeby            ###   ########.fr       */
+/*   Created: 2022/12/28 15:30:47 by saeby             #+#    #+#             */
+/*   Updated: 2022/12/28 18:27:20 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,32 @@ int	main(int ac, char *av[], char *envp[])
 	(void) ac;
 	(void) av;
 	(void) envp;
-
+	int		fd[2];
+	int		fd_in;
+	int		fd_out;
+	int		pid1;
+	// char *const args1[] = {"/bin/ls", NULL};
 	// char *const args2[] = {"/bin/cat", NULL};
-
-	int	fd[2];
-	int	fd_in;
-	int	fd_out;
-	int	pid1;
-	int	pid2;
+	int		pid2;
+	char	**args1;
+	char	*line;
 
 	fd_in = open("infile", O_RDONLY);
 	fd_out = open("outfile", O_WRONLY);
+
+	//if (ac != 5)
+	//	exit(1);
+	// if (access(av[1], R_OK) == 0)
+		// fd_in = open(av[1], O_RDONLY);
+	// else
+		// pip_error("No read access on the infile.");
+	//if (access(av[4], W_OK) == 0)
+	//	fd_out = open(av[4], O_WRONLY);
+	// else
+		// pip_error("No write access on the outfile.");
+
+	//args1 = ft_split(av[2], ' ');
+	// args2 = ft_split(av[3], ' ');
 
 	if (pipe(fd) == -1)
 		pip_error("Error creating the pipe.");
@@ -39,11 +54,11 @@ int	main(int ac, char *av[], char *envp[])
 	if (pid1 == 0)
 	{
 		// first child process
-		ft_printf("wut\n");
 		dup2(fd[1], STDOUT_FILENO);
 		close(fd[0]);
 		close(fd[1]);
-		//execve("/bin/cat", args2, envp);
+		execve("/bin/ls", (char *const *)args1, envp);
+
 	}
 
 	pid2 = fork();
@@ -52,7 +67,6 @@ int	main(int ac, char *av[], char *envp[])
 
 	if (pid2 == 0)
 	{
-		ft_printf("wat\n");
 		// second child process
 		dup2(fd[0], STDIN_FILENO);
 		close(fd[0]);
@@ -60,19 +74,21 @@ int	main(int ac, char *av[], char *envp[])
 		//execve("/bin/cat", args2, envp);
 	}
 
-
 	close(fd[0]);
 	close(fd[1]);
 	waitpid(pid1, NULL, 0);
 	waitpid(pid2, NULL, 0);
-	ft_printf("fd_in: %d\nfd_out: %d\n", fd_in, fd_out);
 	return (0);
 }
 
-/* 
-1. put the content of the infile into the stdin
-2. the first command read from the stdin
-3. redirect the output of the first command into the input of the second command via the pipe
-4. second command reads from the input coming from the pipe
-5. second command output is written in the outfile
+/*
+./pipex infile "cmd1" "cmd2" outfile
+should do the same thing as
+< infile cmd1 | cmd2 > outfile
+
+< : takes the content of the infile and put it on the stdin
+cmd1 : reads from stdin and outputs on the stdout
+| : redirects the output of cmd1 to the input of cmd2
+cmd2 : reads from its own input
+> : writes the output of cmd2 in the oufile
 */
