@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:18:54 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/27 16:33:16 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/28 13:16:41 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int	main(int ac, char *av[])
 	stacks = parse_args(stacks, ac, av);
 	stacks = ps_normalize(stacks);
 	stacks = sort(stacks);
+	if (ps_lstsize(stacks->a) > 0)
+		ps_lstclear(stacks->a);
+	if (ps_lstsize(stacks->b) > 0)
+		ps_lstclear(stacks->b);
+	free(stacks);
 	return (0);
 }
 
@@ -38,7 +43,7 @@ t_lists	*sort(t_lists *stacks)
 	if (i <= 5)
 		stacks = ps_small_sort(stacks);
 	else
-		stacks = ps_med_sort(stacks);
+		stacks = ps_big_sort(stacks);
 	return (stacks);
 }
 

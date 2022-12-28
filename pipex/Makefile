@@ -1,6 +1,7 @@
 NAME = pipex
 
 SRC = $(addprefix src/, main.c \
+						utils.c \
 						)
 OBJ := $(SRC:%.c=%.o)
 

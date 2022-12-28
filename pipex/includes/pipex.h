@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 16:37:43 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/27 20:48:47 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/28 17:37:20 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,8 @@
 # include <stdlib.h>
 # include <sys/wait.h>
 # include "libft.h"
+
+// utils.c
+void	pip_error(char *s);
 
 #endif

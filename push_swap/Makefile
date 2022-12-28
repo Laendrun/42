@@ -1,5 +1,4 @@
 NAME = push_swap
-OBJ_DIR = objs/
 
 SRC = $(addprefix src/, main.c \
 						ps_list_1.c \
@@ -13,7 +12,7 @@ SRC = $(addprefix src/, main.c \
 						ps_rotate.c \
 						ps_rev_rotate.c \
 						small_sort.c \
-						med_sort.c \
+						big_sort.c \
 						check.c \
 						normalize.c \
 						sort_utils.c \
