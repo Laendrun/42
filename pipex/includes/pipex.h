@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 16:37:43 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/28 17:37:20 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/29 18:52:58 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@
 
 // utils.c
 void	pip_error(char *s);
+char	*pip_get_path(char *cmd);
 
 #endif

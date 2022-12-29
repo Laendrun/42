@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:28:01 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/29 17:30:34 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/29 19:35:45 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,45 +27,58 @@ int	main(int ac, char *av[], char *envp[])
 	int	pid1;
 	int	pid2;
 
+	if (ac != 5)
+		pip_error("Wrong number of argument.");
+	if (access("infile", R_OK) != 0)
+		pip_error("infile not accessible in read mode.");
+	if (access("outfile", W_OK) != 0)
+		pip_error("outfile not accessible in write mode.");
+
 	fd_in = open("infile", O_RDONLY);
 	fd_out = open("outfile", O_WRONLY);
-
 	if (pipe(fd) == -1)
 		pip_error("Error creating the pipe (1).");
-
 	pid1 = fork();
 	if (pid1 < 0)
-		pip_error("Error when forking (1).");
-
+		pip_error("Error when forking (2).");
 	if (pid1 == 0)
 	{
-		// child get here and handles first command
+		// first child process handling cmd1
 
 		// replace standard input with input file fd
 		dup2(fd_in, STDIN_FILENO);
 		// replace standard output with output part of pipe
 		dup2(fd[1], STDOUT_FILENO);
-		// close the unused part of the pipes
+		// close the unused fds
 		close(fd[0]);
+		close(fd[1]);
+		close(fd_in);
+		close(fd_out);
 		execve("/usr/bin/grep", args1, envp);
 	}
 	
 	pid2 = fork();
 	if (pid2 < 0)
-		pip_error("Error when forking (2).");
+		pip_error("Error when forking (3).");
 	if (pid2 == 0)
 	{
-		// child process to handle second command
+		// second child process handling cmd2
+		
 		// replace standard input with input part of the pipe
 		dup2(fd[0], STDIN_FILENO);
 		// replace standard output with output file fd
 		dup2(fd_out, STDOUT_FILENO);
+		close(fd[0]);
 		close(fd[1]);
+		close(fd_in);
+		close(fd_out);
 		execve("/bin/cat", args2, envp);
 	}
 
 	close(fd[0]);
 	close(fd[1]);
+	close(fd_in);
+	close(fd_out);
 	waitpid(pid1, NULL, 0);
 	waitpid(pid2, NULL, 0);
 	ft_printf("fd_in: %d\nfd_out: %d\n", fd_in, fd_out);
