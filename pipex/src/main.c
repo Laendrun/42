@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:28:01 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/29 19:35:45 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/29 20:45:06 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	main(int ac, char *av[], char *envp[])
 	(void) av;
 	(void) envp;
 
-	char *const args1[] = {"/usr/bin/grep", "u", NULL};
+	//char *const args1[] = {"/usr/bin/grep", "o", NULL};
+	char	**args1;
 	char *const args2[] = {"/bin/cat", NULL};
 
 	int	fd[2];
@@ -44,15 +45,19 @@ int	main(int ac, char *av[], char *envp[])
 	if (pid1 == 0)
 	{
 		// first child process handling cmd1
-
 		// replace standard input with input file fd
+		args1 = ft_split(av[2], ' ');
+		args1[0] = pip_get_path(args1[0]);
+		while (*args1)
+		{
+			ft_printf("args1: %s\n", *args1);
+			args1++;
+		}
 		dup2(fd_in, STDIN_FILENO);
 		// replace standard output with output part of pipe
 		dup2(fd[1], STDOUT_FILENO);
 		// close the unused fds
 		close(fd[0]);
-		close(fd[1]);
-		close(fd_in);
 		close(fd_out);
 		execve("/usr/bin/grep", args1, envp);
 	}
@@ -68,20 +73,18 @@ int	main(int ac, char *av[], char *envp[])
 		dup2(fd[0], STDIN_FILENO);
 		// replace standard output with output file fd
 		dup2(fd_out, STDOUT_FILENO);
-		close(fd[0]);
 		close(fd[1]);
-		close(fd_in);
 		close(fd_out);
 		execve("/bin/cat", args2, envp);
 	}
 
 	close(fd[0]);
 	close(fd[1]);
-	close(fd_in);
-	close(fd_out);
 	waitpid(pid1, NULL, 0);
 	waitpid(pid2, NULL, 0);
-	ft_printf("fd_in: %d\nfd_out: %d\n", fd_in, fd_out);
+	close(fd_in);
+	close(fd_out);
+	//ft_printf("fd_in: %d\nfd_out: %d\n", fd_in, fd_out);
 	return (0);
 }
 
