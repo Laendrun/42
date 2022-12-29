@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:28:01 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/28 18:53:27 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/29 17:30:34 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	main(int ac, char *av[], char *envp[])
 	(void) av;
 	(void) envp;
 
-	// char *const args2[] = {"/bin/cat", NULL};
+	char *const args1[] = {"/usr/bin/grep", "u", NULL};
+	char *const args2[] = {"/bin/cat", NULL};
 
 	int	fd[2];
 	int	fd_in;
@@ -30,7 +31,7 @@ int	main(int ac, char *av[], char *envp[])
 	fd_out = open("outfile", O_WRONLY);
 
 	if (pipe(fd) == -1)
-		pip_error("Error creating the pipe.");
+		pip_error("Error creating the pipe (1).");
 
 	pid1 = fork();
 	if (pid1 < 0)
@@ -38,28 +39,30 @@ int	main(int ac, char *av[], char *envp[])
 
 	if (pid1 == 0)
 	{
-		// first child process
-		ft_printf("wut\n");
-		dup2(fd[1], STDOUT_FILENO);
-		close(fd[0]);
-		close(fd[1]);
-		//execve("/bin/cat", args2, envp);
-	}
+		// child get here and handles first command
 
+		// replace standard input with input file fd
+		dup2(fd_in, STDIN_FILENO);
+		// replace standard output with output part of pipe
+		dup2(fd[1], STDOUT_FILENO);
+		// close the unused part of the pipes
+		close(fd[0]);
+		execve("/usr/bin/grep", args1, envp);
+	}
+	
 	pid2 = fork();
 	if (pid2 < 0)
 		pip_error("Error when forking (2).");
-
 	if (pid2 == 0)
 	{
-		ft_printf("wat\n");
-		// second child process
+		// child process to handle second command
+		// replace standard input with input part of the pipe
 		dup2(fd[0], STDIN_FILENO);
-		close(fd[0]);
+		// replace standard output with output file fd
+		dup2(fd_out, STDOUT_FILENO);
 		close(fd[1]);
-		//execve("/bin/cat", args2, envp);
+		execve("/bin/cat", args2, envp);
 	}
-
 
 	close(fd[0]);
 	close(fd[1]);
