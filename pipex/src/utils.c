@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:35:28 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/29 20:43:47 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/30 12:29:08 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,42 @@ void	pip_error(char *s)
 	exit(1);
 }
 
-char	*pip_get_path(char *s)
+char	*pip_get_exec(char *cmd, char **paths)
 {
-	char *tmp;
+	char *path;
 
-	tmp = ft_strjoin("/bin/", s);
-	if (access(tmp, X_OK) == 0)
-		return (tmp);
-	tmp = ft_strjoin("/usr/bin/", s);
-	if (access(tmp, X_OK) == 0)
-		return (tmp);
+	/*path = ft_strjoin("/bin/", cmd);
+	if (access(path, X_OK) == 0)
+		return (path);
+	path = ft_strjoin("/usr/bin/", path);
+	if (access(path, X_OK) == 0)
+		return (path);*/
+	while (*paths)
+	{
+		path = ft_strjoin(*paths, "/");
+		path = ft_strjoin(path, cmd);
+		if (access(path, X_OK) == 0)
+			return (path);
+		paths++;
+	}
+	return (NULL);
+}
 
-	return (tmp);
+char	**pip_get_path(char **env)
+{
+	char	**paths;
+	char	**path;
+
+	while (*env)
+	{
+		if (ft_strncmp(*env, "PATH", 4) == 0)
+			break ;
+		env++;
+	}
+	path = ft_split(*env, '=');
+	paths = ft_split(path[1], ':');
+	free(path[0]);
+	free(path[1]);
+	free(path);
+	return (paths);
 }

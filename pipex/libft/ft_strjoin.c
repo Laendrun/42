@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:32:15 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/18 11:33:03 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/30 11:03:28 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		res[j++] = s1[i++];
 	i = 0;
 	while (s2[i])
-		res[j++] = s2[i];
+		res[j++] = s2[i++];
 	res[j] = 0;
 	return (res);
 }

@@ -32,4 +32,4 @@ re: fclean all
 debug: $(OBJ)
 	$(CC) $(CCFLAGS) -fsanitize=address -Llibft -lft $^ -o $(NAME)
 
-.PHONY: libft
+.PHONY: libft test
