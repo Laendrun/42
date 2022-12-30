@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:35:28 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/30 12:29:08 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/30 17:34:58 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,6 @@ void	pip_error(char *s)
 char	*pip_get_exec(char *cmd, char **paths)
 {
 	char *path;
-
-	/*path = ft_strjoin("/bin/", cmd);
-	if (access(path, X_OK) == 0)
-		return (path);
-	path = ft_strjoin("/usr/bin/", path);
-	if (access(path, X_OK) == 0)
-		return (path);*/
 	while (*paths)
 	{
 		path = ft_strjoin(*paths, "/");
@@ -42,7 +35,6 @@ char	*pip_get_exec(char *cmd, char **paths)
 char	**pip_get_path(char **env)
 {
 	char	**paths;
-	char	**path;
 
 	while (*env)
 	{
@@ -50,10 +42,6 @@ char	**pip_get_path(char **env)
 			break ;
 		env++;
 	}
-	path = ft_split(*env, '=');
-	paths = ft_split(path[1], ':');
-	free(path[0]);
-	free(path[1]);
-	free(path);
+	paths = ft_split(*env + 5, ':');
 	return (paths);
 }
