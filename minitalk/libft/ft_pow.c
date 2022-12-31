@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/31 16:03:39 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/31 18:14:35 by saeby            ###   ########.fr       */
+/*   Created: 2022/12/31 17:58:00 by saeby             #+#    #+#             */
+/*   Updated: 2022/12/31 17:58:13 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include <limits.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "libft.h"
+#include "libft.h"
 
-// client.c
-void	mt_c_send_message(int pid, char *message);
-
-// server.c
-void	mt_s_sighand(int signum);
-void	mt_s_receive_message(int signum);
-
-//mt_utils.c
-char	*mt_strjoin(char *s, char c);
-
-#endif
+int	ft_pow(int nb, int power)
+{
+	if (power != 0 && power >= 0)
+		return (nb * (ft_pow(nb, power - 1)));
+	else if (power < 0)
+		return (0);
+	else
+		return (1);
+}

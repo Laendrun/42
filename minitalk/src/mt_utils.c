@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   mt_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/31 16:03:39 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/31 18:14:35 by saeby            ###   ########.fr       */
+/*   Created: 2022/12/31 18:12:30 by saeby             #+#    #+#             */
+/*   Updated: 2022/12/31 18:25:56 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include <limits.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "libft.h"
+#include "minitalk.h"
 
-// client.c
-void	mt_c_send_message(int pid, char *message);
+char	*mt_strjoin(char *s, char c)
+{
+	char	*res;
+	int		i;
 
-// server.c
-void	mt_s_sighand(int signum);
-void	mt_s_receive_message(int signum);
-
-//mt_utils.c
-char	*mt_strjoin(char *s, char c);
-
-#endif
+	i = 0;
+	res = (char *) malloc((ft_strlen(s) + 2 * sizeof(char)));
+	if (!res)
+		return (NULL);
+	while (s[i++])
+		res[i] = s[i];
+	res[i++] = c;
+	res[i] = 0;
+	return (res);
+}
