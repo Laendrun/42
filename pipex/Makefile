@@ -6,8 +6,15 @@ SRC = $(addprefix src/, main.c \
 						pipex_utils3.c \
 						checks.c \
 						)
-						
+
+SRC_BON = $(addprefix src/, main_bonus.c \
+						pipex_utils_bonus.c \
+						pipex_utils2_bonus.c \
+						pipex_utils3_bonus.c \
+						checks_bonus.c \
+						)
 OBJ := $(SRC:%.c=%.o)
+OBJ_BON := $(SRC_BON:%.c=%.o)
 
 CC = gcc
 CCFLAGS = -Werror -Wall -Wextra
@@ -21,11 +28,15 @@ $(NAME): $(OBJ)
 	@make -C libft
 	$(CC) $^ -Llibft -lft -o $(NAME)
 
+bonus: $(OBJ_BON)
+	@make -C libft
+	$(CC) $^ -Llibft -lft -o $(NAME)
+
 %.o: %.c
 	$(CC) $(CCFLAGS) -Iincludes -Ilibft -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_BON)
 
 fclean: clean
 	rm -f $(NAME)
