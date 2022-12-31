@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 16:37:43 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/31 14:12:43 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/31 15:11:36 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	pip_write_result(int ac, char **av, int (*p1)[2], int (*p2)[2]);
 
 // checks.c
 void	pip_check_ac(int ac);
-void	pip_check_here_doc(char **av, int (*p)[2]);
+int		pip_check_here_doc(char **av, int (*p)[2]);
+void	pip_read_here_d(char *limiter, int fd_in, int fd_out);
 
 #endif

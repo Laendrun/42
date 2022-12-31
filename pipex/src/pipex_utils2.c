@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 20:40:06 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/31 14:21:10 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/31 15:32:44 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,31 @@ void	pip_error(char *s)
 	exit(1);
 }
 
+/*
+ * S_IRWXU : 00700
+ * S_IRWXG : 00070
+ * S_IRWXO : 00007
+ * Flags for O_CREAT : 00777
+ */
+
 void	pip_write(char *name, int fd_in, int hd)
 {
 	int		fd_out;
 	int		b_read;
 	char	buff[1];
-	(void) hd; // hd => 1 when here doc; hd => 0 when not here_doc
-	if (access(name, F_OK) == 0)
-		unlink(name);
-	fd_out = open(name, O_WRONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+
+	if (hd)
+		fd_out = open(name, O_RDWR | O_CREAT | O_APPEND, 00777);
+	else
+	{
+		if (access(name, F_OK) == 0)
+			unlink(name);
+		fd_out = open(name, O_WRONLY | O_CREAT, 00777);
+	}
 	if (fd_out < 0)
-		pip_error("pip_write: unable to open outfile.");
+		pip_error("pip_write: fd_out error.");
+	if (fd_in < 0)
+		pip_error("pip_write: fd_in error.");
 	b_read = read(fd_in, &buff, sizeof(char));
 	while (b_read > 0)
 	{
