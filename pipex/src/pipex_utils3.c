@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   pipex_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 16:15:03 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/30 20:42:26 by saeby            ###   ########.fr       */
+/*   Created: 2022/12/30 21:07:28 by saeby             #+#    #+#             */
+/*   Updated: 2022/12/31 14:20:30 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex.h"
 
-int	ft_lstsize(t_list *lst)
+void	pip_write_result(int ac, char **av, int (*op)[2], int (*ip)[2])
 {
-	t_list	*tmp;
-	int		i;
-
-	tmp = lst;
-	i = 0;
-	while (tmp)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	return (i);
+	// check for here_doc before writing out
+	if ((ac % 2) == 0)
+		pip_write(av[ac - 1], (*op)[0], 0);
+	else
+		pip_write(av[ac - 1], (*ip)[0], 0);
 }
