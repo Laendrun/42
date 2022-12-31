@@ -7,7 +7,7 @@ CLT_SRC = $(addprefix src/, client.c \
 							mt_utils.c \
 							)
 SRV_OBJ := $(SRV_SRC:%.c=%.o)
-CLT_SRC := $(CLT_SRC:%.c=%.o)
+CLT_OBJ := $(CLT_SRC:%.c=%.o)
 
 CC = gcc
 CCFLAGS = -Werror -Wall -Wextra

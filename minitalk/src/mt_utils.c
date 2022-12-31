@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 18:12:30 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/31 18:25:56 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/31 19:04:52 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,25 @@ char	*mt_strjoin(char *s, char c)
 	res = (char *) malloc((ft_strlen(s) + 2 * sizeof(char)));
 	if (!res)
 		return (NULL);
-	while (s[i++])
+	while (s[i])
+	{
 		res[i] = s[i];
-	res[i++] = c;
-	res[i] = 0;
+		i++;
+	}
+	res[i] = c;
+	res[i + 1] = 0;
 	return (res);
+}
+
+void	mt_c_send_endmess(int pid)
+{
+	unsigned long	i;
+
+	i = 0;
+	while (i < 8 * sizeof(char))
+	{
+		kill(pid, SIGUSR2);
+		usleep(50);
+		i++;
+	}
 }
