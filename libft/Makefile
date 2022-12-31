@@ -65,7 +65,8 @@ SRC = ft_isalpha.c \
 		ft_memccpy.c \
 		ft_strchr.c \
 		ft_strisdigit.c \
-		ft_atol.c
+		ft_atol.c \
+		ft_pow.c
 
 OBJS := $(SRC:%.c=%.o)
 

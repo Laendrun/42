@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 23:36:53 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/23 17:29:19 by saeby            ###   ########.fr       */
+/*   Updated: 2022/12/31 17:58:37 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ char	*ft_strncat(char *s1, const char *s2, size_t n);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
 int		ft_strisdigit(char *s);
 long	ft_atol(const char *s);
+int		ft_pow(int nb, int power);
 
 // Printf
 
