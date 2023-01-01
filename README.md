@@ -14,13 +14,12 @@ This repo will (if I don't forget) save all my projects during the 42 cursus at 
 | 2 | [FdF](https://github.com/Laendrun/42/tree/main/fdf) | :white_check_mark: | :lock:<sup>1</sup> |
 | 2 | [push_swap](https://github.com/Laendrun/42/tree/main/push_swap) | :white_check_mark: | 84/100 |
 | 2 | [pipex](https://github.com/Laendrun/42/tree/main/pipex) | :white_check_mark: | :x: |
-| 2 | [minitalk](https://github.com/Laendrun/42/tree/main/minitalk) | :white_check_mark:<sup>2</sup> | :x:<sup>3</sup> |
+| 2 | [minitalk](https://github.com/Laendrun/42/tree/main/minitalk) | :white_check_mark: | :lock:<sup>2</sup> |
+| 3 | [Philosophers](https://github.com/Laendrun/42/tree/main/philosophers) | :soon: | :x: |
 
 <sup>1</sup> I won't be able to correct it since I validated `so_long`, if someone can send me the evaluation question for `FdF` I will check mine against it and determine which mark I would have got. :warning: Also note that I didn't do any error handling on it.
 
-<sup>2</sup> finished, it supports unicode and I think it works pretty good even with large messages, I'll take a look at it on Monday and try to send a message back to the client.
-
-<sup>3</sup> I'm doing this project only because it's interesting to me, I won't be able to correct it since I will validate `pipex`. I heard that pipex is very useful for `minishell` so I decided to do it first, and to validate it instead of `minitalk` which is easier as per what some people told me.
+<sup>2</sup> I did this project only because it's interesting to me, I won't be able to correct it since I will validate `pipex`. I heard that pipex is very useful for `minishell` so I decided to do it first, and to validate it instead of `minitalk` which is easier as per what some people told me.It supports unicode characters and sends a confirmation message to the client after having wrote the message on the server side. 
 
 ## Unfinished
 
