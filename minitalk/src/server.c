@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 16:00:33 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/31 19:06:23 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/01 19:19:11 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	s_action.sa_handler = mt_s_sighand;
 	s_action.sa_flags = 0;
 	pid = getpid();
-	ft_printf("Welcome to this little world.\n");
+	ft_printf("Welcome my this little UNIX world.\n");
 	ft_printf("Server PID: %d\n", pid);
 	sigaction(SIGINT, &s_action, NULL);
 	sigaction(SIGTERM, &s_action, NULL);
@@ -33,10 +33,7 @@ int	main(void)
 void	mt_s_sighand(int signum)
 {
 	if (signum == SIGINT || signum == SIGTERM)
-	{
-		ft_printf("\nKilling the server.\n");
 		exit(0);
-	}
 	if (signum == SIGUSR1 || signum == SIGUSR2)
 		mt_s_receive_message(signum);
 	else
@@ -49,24 +46,46 @@ void	mt_s_receive_message(int signum)
 	static char	*message;
 	static int	counter = 0;
 	static char	c;
+	static int	endmess = 0;
 
 	if (!message)
 		message = ft_strdup("");
-	if (signum == SIGUSR1)
-		c |= 1 << (7 - counter);
-	else if (signum == SIGUSR2)
-		c |= 0 << (7 - counter);
+	c = mt_s_handle_bit(c, signum, counter);
 	counter++;
 	if (counter == 8)
 	{
 		message = mt_strjoin(message, c);
-		if (!c)
+		if (!c && !endmess)
 		{
+			endmess++;
 			ft_printf("%s", message);
 			free(message);
 			message = NULL;
 		}
+		else if (!c && endmess)
+		{
+			mt_s_send_receipt(ft_atoi(message), "Message Received.");
+			free(message);
+			message = NULL;
+			endmess = 0;
+		}
 		counter = 0;
 		c = 0;
 	}
+}
+
+void	mt_s_send_receipt(int c_pid, char *message)
+{
+	mt_send_message(c_pid, message);
+	mt_send_endmess(c_pid);
+	kill(c_pid, SIGINT);
+}
+
+char	mt_s_handle_bit(char c, int signum, int counter)
+{
+	if (signum == SIGUSR1)
+		c |= 1 << (7 - counter);
+	else if (signum == SIGUSR2)
+		c |= 0 << (7 - counter);
+	return (c);
 }

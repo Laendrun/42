@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:55:22 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/31 19:04:35 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/01 18:53:19 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	main(int ac, char **av)
 {
-	int	s_pid;
+	struct sigaction	s_action;
+	char				*c_pid;
+	int					s_pid;
 
 	if (ac < 3)
 	{
@@ -22,38 +24,56 @@ int	main(int ac, char **av)
 		ft_printf("Should be ./client <server pid> <message>.\n");
 		exit(1);
 	}
+	s_action.sa_handler = mt_c_sighand;
+	s_action.sa_flags = 0;
 	s_pid = ft_atoi(av[1]);
-	mt_c_send_message(s_pid, av[2]);
-	return (0);
+	c_pid = ft_itoa(getpid());
+	sigaction(SIGINT, &s_action, NULL);
+	sigaction(SIGTERM, &s_action, NULL);
+	sigaction(SIGUSR1, &s_action, NULL);
+	sigaction(SIGUSR2, &s_action, NULL);
+	mt_send_message(s_pid, av[2]);
+	mt_send_endmess(s_pid);
+	mt_send_message(s_pid, c_pid);
+	mt_send_endmess(s_pid);
+	while (1)
+		pause();
 }
 
-/* \e[1;1H\e[2J => printing this to the console will clear it
- * SIGUSR1 => sending 1
- * SIGUSR2 => sending 0
- * end of message condition is done by sending eight SIGUSR2
-*/
-void	mt_c_send_message(int pid, char *message)
+void	mt_c_sighand(int signum)
 {
-	int				i;
-	unsigned long	j;
+	if (signum == SIGINT || signum == SIGTERM)
+		exit(0);
+	if (signum == SIGUSR1 || signum == SIGUSR2)
+		mt_c_receive_message(signum);
+	else
+		ft_printf("\nNon-supported signal received.\n");
+}
 
-	if (ft_strncmp(message, "CLR", 3) == 0)
-		message = "\e[1;1H\e[2J";
-	i = 0;
-	j = 0;
-	while (message[i])
+// https://stackoverflow.com/questions/47981/
+void	mt_c_receive_message(int signum)
+{
+	static char	*message;
+	static int	counter = 0;
+	static char	c;
+
+	if (!message)
+		message = ft_strdup("");
+	if (signum == SIGUSR1)
+		c |= 1 << (7 - counter);
+	else if (signum == SIGUSR2)
+		c |= 0 << (7 - counter);
+	counter++;
+	if (counter == 8)
 	{
-		while (j < 8 * sizeof(char))
+		message = mt_strjoin(message, c);
+		if (!c)
 		{
-			if ((message[i] >> (7 - j)) & 1)
-				kill(pid, SIGUSR1);
-			else
-				kill(pid, SIGUSR2);
-			j++;
-			usleep(50);
+			ft_printf("%s", message);
+			free(message);
+			message = NULL;
 		}
-		j = 0;
-		i++;
+		counter = 0;
+		c = 0;
 	}
-	mt_c_send_endmess(pid);
 }

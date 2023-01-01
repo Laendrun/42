@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 18:12:30 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/31 19:04:52 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/01 19:01:33 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*mt_strjoin(char *s, char c)
 	return (res);
 }
 
-void	mt_c_send_endmess(int pid)
+void	mt_send_endmess(int pid)
 {
 	unsigned long	i;
 
@@ -40,6 +40,36 @@ void	mt_c_send_endmess(int pid)
 	{
 		kill(pid, SIGUSR2);
 		usleep(50);
+		i++;
+	}
+}
+
+/* \e[1;1H\e[2J => printing this to the console will clear it
+ * SIGUSR1 => sending 1
+ * SIGUSR2 => sending 0
+ * end of message condition is done by sending eight SIGUSR2
+*/
+void	mt_send_message(int pid, char *message)
+{
+	int				i;
+	unsigned long	j;
+
+	if (ft_strncmp(message, "CLR", 3) == 0)
+		message = "\e[1;1H\e[2J";
+	i = 0;
+	j = 0;
+	while (message[i])
+	{
+		while (j < 8 * sizeof(char))
+		{
+			if ((message[i] >> (7 - j)) & 1)
+				kill(pid, SIGUSR1);
+			else
+				kill(pid, SIGUSR2);
+			j++;
+			usleep(50);
+		}
+		j = 0;
 		i++;
 	}
 }
