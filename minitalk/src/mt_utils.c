@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 18:12:30 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/01 19:01:33 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/01 19:43:05 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,20 @@ void	mt_send_message(int pid, char *message)
 		j = 0;
 		i++;
 	}
+}
+
+char	mt_s_handle_bit(char c, int signum, int counter)
+{
+	if (signum == SIGUSR1)
+		c |= 1 << (7 - counter);
+	else if (signum == SIGUSR2)
+		c |= 0 << (7 - counter);
+	return (c);
+}
+
+void	mt_s_send_receipt(int c_pid, char *message)
+{
+	mt_send_message(c_pid, message);
+	mt_send_endmess(c_pid);
+	kill(c_pid, SIGINT);
 }

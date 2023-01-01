@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 16:00:33 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/01 19:19:11 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/01 19:45:11 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,36 +56,28 @@ void	mt_s_receive_message(int signum)
 	{
 		message = mt_strjoin(message, c);
 		if (!c && !endmess)
-		{
-			endmess++;
-			ft_printf("%s", message);
-			free(message);
-			message = NULL;
-		}
+			message = mt_s_handle_mess(&message, &endmess);
 		else if (!c && endmess)
-		{
-			mt_s_send_receipt(ft_atoi(message), "Message Received.");
-			free(message);
-			message = NULL;
-			endmess = 0;
-		}
+			message = mt_s_handle_rece(&message, &endmess);
 		counter = 0;
 		c = 0;
 	}
 }
 
-void	mt_s_send_receipt(int c_pid, char *message)
+char	*mt_s_handle_mess(char **message, int *endmess)
 {
-	mt_send_message(c_pid, message);
-	mt_send_endmess(c_pid);
-	kill(c_pid, SIGINT);
+	*endmess += 1;
+	ft_printf("%s", *message);
+	free(*message);
+	*message = NULL;
+	return (*message);
 }
 
-char	mt_s_handle_bit(char c, int signum, int counter)
+char	*mt_s_handle_rece(char **message, int *endmess)
 {
-	if (signum == SIGUSR1)
-		c |= 1 << (7 - counter);
-	else if (signum == SIGUSR2)
-		c |= 0 << (7 - counter);
-	return (c);
+	mt_s_send_receipt(ft_atoi(*message), "Message Received.");
+	free(*message);
+	*message = NULL;
+	*endmess = 0;
+	return (*message);
 }
