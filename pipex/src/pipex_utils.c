@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:35:28 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/31 15:44:35 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/01 17:03:54 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ void	pip_exec(char *bin, int fd_in, int fd_out, char **env)
 	paths = pip_get_path(env);
 	args = ft_split(bin, ' ');
 	args[0] = pip_get_exec(args[0], paths);
-	if (args[0])
-		execve(args[0], args, env);
-	pip_error("No bin file.");
+	execve(args[0], args, env);
 }
 
 void	pip_new_f_process(char *cmd, int (*p1)[2], int (*p2)[2], char **env)
@@ -86,5 +84,6 @@ char	*pip_get_exec(char *cmd, char **paths)
 			return (path);
 		paths++;
 	}
+	pip_no_exec(cmd);
 	return (NULL);
 }

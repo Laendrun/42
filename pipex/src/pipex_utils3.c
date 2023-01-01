@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 21:07:28 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/31 16:18:41 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/01 17:02:29 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,12 @@ void	pip_write_result(int ac, char **av, int (*op)[2], int (*ip)[2])
 		pip_write(av[ac - 1], (*op)[0], here_d);
 	else
 		pip_write(av[ac - 1], (*ip)[0], here_d);
+}
+
+void	pip_no_exec(char *s)
+{
+	ft_putstr_fd("pipex: ", STDERR_FILENO);
+	ft_putstr_fd(s, STDERR_FILENO);
+	ft_putstr_fd(" : command not found.", STDERR_FILENO);
+	exit(1);
 }
