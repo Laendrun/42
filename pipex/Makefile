@@ -7,14 +7,7 @@ SRC = $(addprefix src/, main.c \
 						checks.c \
 						)
 
-SRC_BON = $(addprefix src/, main_bonus.c \
-						pipex_utils_bonus.c \
-						pipex_utils2_bonus.c \
-						pipex_utils3_bonus.c \
-						checks_bonus.c \
-						)
 OBJ := $(SRC:%.c=%.o)
-OBJ_BON := $(SRC_BON:%.c=%.o)
 
 CC = gcc
 CCFLAGS = -Werror -Wall -Wextra
@@ -25,10 +18,6 @@ libft:
 	@make -C libft/
 
 $(NAME): $(OBJ)
-	@make -C libft
-	$(CC) $^ -Llibft -lft -o $(NAME)
-
-bonus: $(OBJ_BON)
 	@make -C libft
 	$(CC) $^ -Llibft -lft -o $(NAME)
 
