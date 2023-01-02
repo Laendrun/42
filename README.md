@@ -15,7 +15,7 @@ This repo will (if I don't forget) save all my projects during the 42 cursus at 
 | 2 | [push_swap](https://github.com/Laendrun/42/tree/main/push_swap) | :white_check_mark: | 84/100 |
 | 2 | [pipex](https://github.com/Laendrun/42/tree/main/pipex) | :white_check_mark: | 125/100 |
 | 2 | [minitalk](https://github.com/Laendrun/42/tree/main/minitalk) | :white_check_mark: | :lock:<sup>2</sup> |
-| 3 | [Philosophers](https://github.com/Laendrun/42/tree/main/philosophers) | :soon: | :x: |
+| 3 | [Philosophers](https://github.com/Laendrun/42/tree/main/philosophers) | :construction: | :x: |
 
 <sup>1</sup> 
 > I won't be able to correct it since I validated `so_long`, if someone can send me the evaluation question for `FdF` I will check
