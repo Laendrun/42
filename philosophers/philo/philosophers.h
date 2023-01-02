@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 23:28:27 by saeby             #+#    #+#             */
-/*   Updated: 2022/09/26 23:28:54 by saeby            ###   ########.fr       */
+/*   Created: 2023/01/01 19:51:30 by saeby             #+#    #+#             */
+/*   Updated: 2023/01/02 16:32:53 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PHILOSOPHERS_H
+# define PHILOSOPHERS_H
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <pthread.h>
+# include <sys/time.h>
 
-void	*ft_memset(void *b, int c, size_t len)
-{
-	unsigned char	*tmp_ptr;
+// main.c
 
-	tmp_ptr = (unsigned char *) b;
-	while (len > 0)
-	{
-		*(tmp_ptr++) = (unsigned char) c;
-		len--;
-	}
-	return (b);
-}
+// libft.c
+size_t	ft_strlen(const char *s);
+void	ft_putstr_fd(char *str, int fd);
+int		ft_atoi(const char *str);
+
+// libft_utils.c
+int		ft_isspace(int c);
+
+// utils.c
+int		ph_error(char *s);
+
+#endif

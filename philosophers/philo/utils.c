@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 22:48:24 by saeby             #+#    #+#             */
-/*   Updated: 2022/09/26 22:48:50 by saeby            ###   ########.fr       */
+/*   Created: 2023/01/02 13:04:41 by saeby             #+#    #+#             */
+/*   Updated: 2023/01/02 13:07:55 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "philosophers.h"
 
-int	strcmp(const char *s1, const char *s2)
+int	ph_error(char *s)
 {
-	int	i;
-
-	i = 0;
-	while ((s1[i] || s2[i]) && s1[i] == s2[i])
-		i++;
-	return (s1[i] - s2[i]);
+	ft_putstr_fd(s, 2);
+	return (1);
 }

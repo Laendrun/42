@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 23:07:19 by saeby             #+#    #+#             */
-/*   Updated: 2022/10/29 08:55:54 by saeby            ###   ########.fr       */
+/*   Created: 2023/01/02 13:05:33 by saeby             #+#    #+#             */
+/*   Updated: 2023/01/02 15:20:38 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file ft_atoi.c
- * @author saeby (saeby@42lausanne.ch)
- * @version 1.0
- * @date 2022-10-28
- */
-#include "libft.h"
+#include "philosophers.h"
 
-static int	ft_isspace(int c);
+size_t	ft_strlen(const char *s)
+{
+	int	i;
 
-/**
- * @fn int	ft_atoi(const char *str)
- * The ft_atoi() function converts the inital portion of the string
- * pointed to by str to int representation.
- * @brief Converts a string to an int.
- * @param str string to convert.
- * @retval int representation of the string
- */
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+void	ft_putstr_fd(char *str, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(fd, &str[i], 1);
+		i++;
+	}
+}
+
 int	ft_atoi(const char *str)
 {
 	int	result;
@@ -54,11 +60,4 @@ int	ft_atoi(const char *str)
 	}
 	result *= sign;
 	return (result);
-}
-
-static int	ft_isspace(int c)
-{
-	if (c == 9 || c == 10 || c == 11 || c == 12 || c == 13 || c == 32)
-		return (1);
-	return (0);
 }
