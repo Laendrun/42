@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 13:27:36 by saeby             #+#    #+#             */
-/*   Updated: 2022/12/31 15:33:37 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/02 09:47:28 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,23 @@ int	pip_check_here_doc(char **av, int (*p)[2])
 {
 	int	fd_tmp;
 
+	fd_tmp = open(av[1], O_RDWR);
+	if (fd_tmp < 0)
+	{
+		ft_putstr_fd("pipex: ", 2);
+		ft_putstr_fd(av[1], 2);
+		ft_putstr_fd(" : file not found.", 2);
+	}
 	if (ft_strncmp(av[1], "here_doc", 8) == 0)
 	{
-		fd_tmp = STDIN_FILENO;
 		if (fd_tmp >= 0)
 			pip_read_here_d(av[2], fd_tmp, (*p)[1]);
 		return (1);
 	}
 	else
 	{
-		(*p)[0] = open(av[1], O_RDONLY);
+		if (fd_tmp >= 0)
+			(*p)[0] = fd_tmp;
 		return (0);
 	}
 }
