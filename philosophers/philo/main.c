@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 19:56:56 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/02 16:41:50 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/05 10:18:02 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,26 @@ int	main(int ac, char **av)
 {
 	(void) ac;
 	(void) av;
-	pthread_t	th[4];
+	pthread_t	*forks;
+	int			nbr_philo;
+
+	nbr_philo = ft_atoi(av[1]);
+	forks = malloc(nbr_philo * sizeof(pthread_t));
 	//struct timeval tp;
 	pthread_mutex_init(&mutex, NULL);
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < nbr_philo; i++)
 	{
-		if (pthread_create(&th[i], NULL, routine, NULL) != 0)
+		if (pthread_create(&forks[i], NULL, routine, NULL) != 0)
 			return (1);
 		printf("Thread %d started\n", i);
 	}
 
 	//gettimeofday(&tp, NULL);
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < nbr_philo; i++)
 	{
-		if (pthread_join(th[i], NULL) != 0) // => equivalent to the wait function for the processes
+		if (pthread_join(forks[i], NULL) != 0) // => equivalent to the wait function for the processes
 			return (11);
 		printf("Thread %d finished\n", i);
 	}
