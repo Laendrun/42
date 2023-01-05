@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 19:51:30 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/02 16:32:53 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/05 10:27:03 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
+
+typedef struct	s_philo
+{
+	pthread_mutex_t	fork;
+	int				status; // 0 => sleeping, 1 => eating, 2 => thinking
+}	t_philo;
 
 // main.c
 
