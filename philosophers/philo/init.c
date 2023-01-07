@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:47:41 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/07 19:30:14 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/07 21:08:07 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	ph_init(t_philo *philos, char **av, int ac, int *stop)
 	{
 		philos[i].ph_id = i + 1;
 		philos[i].ph_status = 2;
-		philos[i].ph_meals = 0;
 		philos[i].ph_goal = goal;
 		philos[i].ph_total = ft_atoi(av[1]);
 		philos[i].fork = 1;

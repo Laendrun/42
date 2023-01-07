@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:04:41 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/07 18:31:45 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/07 21:07:52 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ph_print(t_philo *philos, int nbr)
 		printf("Time to sleep: %d\n", philos[i].ph_sleep);
 		printf("Last meal    : %d\n", philos[i].ph_last_meal);
 		printf("Goal         : %d\n", philos[i].ph_goal);
-		printf("Meals        : %d\n", philos[i].ph_meals);
 		i++;
 	}
 }

@@ -8,7 +8,6 @@ SRC = 	main.c \
 
 HELPERS = $(addprefix helpers/,	ft_atoi.c \
 								ft_isspace.c \
-								ft_putstr_fd.c \
 								ft_strlen.c \
 								)
 
