@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:55:50 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/07 18:33:48 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/07 19:30:47 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*routine(void *arguments)
 	t_args	*args;
 
 	args = (t_args *) arguments;
+	if (args->ph1->ph_id % 2)
+		usleep(3000);
 	while (!*(args->ph1->stop))
 	{
 		ph_goal(args->ph1);
@@ -49,8 +51,8 @@ void	ph_eat(t_philo *philo, t_philo *other)
 	philo->ph_last_meal = ph_time();
 	while (!*(philo->stop) && ph_time() < philo->ph_last_meal + philo->ph_eat)
 		ph_die(philo);
-	philo->ph_goal -= 1;
 	ph_drop_forks(philo, other);
+	philo->ph_goal -= 1;
 	philo->ph_status = 1;
 }
 
@@ -72,7 +74,7 @@ void	ph_think(t_philo *philo, t_philo *other)
 	if (*(philo->stop) || *(other->stop))
 		return ;
 	printf("%d %d is thinking\n", ph_time(), philo->ph_id);
-	while (!*(philo->stop) && philo->forks != 2)
+	while (!*(philo->stop) && philo->forks < 2)
 	{
 		ph_take_forks(philo, other);
 		ph_die(philo);

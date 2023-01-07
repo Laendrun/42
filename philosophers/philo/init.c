@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:47:41 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/07 18:35:05 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/07 19:30:14 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ int	ph_t_init(pthread_t *th, int nbr, t_philo *philos)
 			args->ph2 = &philos[nbr - 1];
 		else
 			args->ph2 = &philos[i - 1];
-		if (i % 2)
-			usleep(3000);
 		if (pthread_create(&th[i], NULL, routine, (void *) args) != 0)
 			return (1);
 		i++;

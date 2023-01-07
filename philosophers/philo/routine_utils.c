@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 18:32:30 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/07 18:33:52 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/07 19:05:06 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ph_take_forks(t_philo *philo, t_philo *other)
 		philo->forks += 1;
 	}
 	pthread_mutex_unlock(philo->fork_m);
+	if (philo->forks == 2)
+		return ;
 	pthread_mutex_lock(other->fork_m);
 	if (other->fork)
 	{
