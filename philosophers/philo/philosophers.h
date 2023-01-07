@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 19:51:30 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/07 13:35:43 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/07 17:53:05 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,14 @@ typedef struct s_philo
 	int				ph_sleep;
 	int				ph_last_meal;
 	int				ph_status;
-	int				ph_dead;
 	int				ph_goal;
 	int				ph_meals;
-	int				ph_eating;
-	pthread_mutex_t	*fork;
+	int				ph_total;
+	int				fork;
+	int				forks;
+	int				*stop;
+	int				*goal_reached;
+	pthread_mutex_t	*fork_m;
 }	t_philo;
 
 typedef struct s_args
@@ -56,7 +59,7 @@ typedef struct s_args
  * @retval 1 on error
  * @retval 0 on success
  */
-int		ph_init(t_philo *philos, char **av, int ac);
+int		ph_init(t_philo *philos, char **av, int ac, int *stop);
 
 /* ph_t_init() initiate the correct number of threads
  * => basically one per philosophers
@@ -67,6 +70,8 @@ int		ph_init(t_philo *philos, char **av, int ac);
  * @retval 0 on success
  */
 int		ph_t_init(pthread_t *th, int nbr, t_philo *philos);
+
+void	ph_set_goal(t_philo *philos, int *goal_reached);
 
 // =====================
 // utils.c
@@ -106,11 +111,13 @@ int		ph_time(void);
  * @param philo is the corresponding philo (i.e. philos[1])
  */
 void	*routine(void *philo);
-
 void	ph_die(t_philo *philo);
 void	ph_eat(t_philo *philo, t_philo *other);
 void	ph_sleep(t_philo *philo);
-void	ph_think(t_philo *philo);
+void	ph_think(t_philo *philo, t_philo *other);
+void	ph_take_forks(t_philo *philo, t_philo *other);
+void	ph_drop_forks(t_philo *philo, t_philo *other);
+void	ph_goal(t_philo *philo);
 
 // =====================
 // helpers/
