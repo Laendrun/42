@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:47:41 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/05 16:02:27 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/05 16:33:24 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	ph_init(t_philo *philos, char **av)
 		philos[i].ph_die = ft_atoi(av[2]);
 		philos[i].ph_eat = ft_atoi(av[3]);
 		philos[i].ph_sleep = ft_atoi(av[4]);
+		philos[i].ph_last_meal = ph_time();
 		philos[i].fork = malloc(sizeof(pthread_mutex_t));
 		if (!philos[i].fork)
 			return (1);

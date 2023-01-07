@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 19:51:30 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/05 16:04:17 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/05 16:33:06 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_philo
 	int				ph_die;
 	int				ph_eat;
 	int				ph_sleep;
+	int				ph_last_meal;
 	pthread_mutex_t	*fork;
 }	t_philo;
 
@@ -39,6 +40,7 @@ int		ph_t_init(pthread_t *th, int nbr, t_philo *philos);
 void	ph_free(t_philo *philos, int nbr);
 void	ph_print(t_philo *philos, int nbr);
 void	ph_terminate(t_philo *philos, pthread_t *threads, int nbr);
+int		ph_time(void);
 
 // routine.c
 void	*routine(void *philo);
