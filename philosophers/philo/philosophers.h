@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 19:51:30 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/07 17:53:05 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/07 18:33:03 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
-
-// ./philo 800 200 200 => will run int_max milliseconds
 
 // status: 0 => needs to eat, 1 => needs to sleep, 2 => needs to think
 typedef struct s_philo
@@ -72,6 +70,7 @@ int		ph_init(t_philo *philos, char **av, int ac, int *stop);
 int		ph_t_init(pthread_t *th, int nbr, t_philo *philos);
 
 void	ph_set_goal(t_philo *philos, int *goal_reached);
+void	ph_set_times(t_philo *philos, char **av);
 
 // =====================
 // utils.c
@@ -115,6 +114,11 @@ void	ph_die(t_philo *philo);
 void	ph_eat(t_philo *philo, t_philo *other);
 void	ph_sleep(t_philo *philo);
 void	ph_think(t_philo *philo, t_philo *other);
+
+// =====================
+// routine_utils.c
+// =====================
+
 void	ph_take_forks(t_philo *philo, t_philo *other);
 void	ph_drop_forks(t_philo *philo, t_philo *other);
 void	ph_goal(t_philo *philo);

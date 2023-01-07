@@ -3,7 +3,8 @@ NAME = philo
 SRC = 	main.c \
 		utils.c \
 		init.c \
-		routine.c
+		routine.c \
+		routine_utils.c
 
 HELPERS = $(addprefix helpers/,	ft_atoi.c \
 								ft_isspace.c \

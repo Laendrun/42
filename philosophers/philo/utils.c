@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:04:41 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/07 17:26:55 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/07 18:31:45 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ph_print(t_philo *philos, int nbr)
 {
 	int	i;
+
 	i = 0;
 	while (i < nbr)
 	{
@@ -60,14 +61,11 @@ void	ph_terminate(t_philo *philos, pthread_t *threads, int nbr)
 
 int	ph_time(void)
 {
-	struct timeval time;
-	//int		curr_time;
-	static int	t = 0;
+	struct timeval	time;
+	static int		t = 0;
 
 	gettimeofday(&time, NULL);
 	if (t == 0)
 		t = time.tv_sec;
-	// curr_time = (time.tv_sec - t) * 1000;
-	// curr_time += time.tv_usec / 1000;
 	return (((time.tv_sec - t) * 1000) + (time.tv_usec / 1000));
 }
