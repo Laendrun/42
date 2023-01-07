@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:55:50 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/07 19:30:47 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/07 20:30:41 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*routine(void *arguments)
 		usleep(3000);
 	while (!*(args->ph1->stop))
 	{
+		if (!args->ph1->ph_goal)
+			break ;
 		ph_goal(args->ph1);
 		ph_die(args->ph1);
 		if (args->ph1->ph_status == 0 && !*(args->ph1->stop))
