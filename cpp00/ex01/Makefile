@@ -14,16 +14,20 @@ C++FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	c++ $(C++FLAGS) $^ -o $@
+$(NAME): $(OBJ_DIR) $(OBJS)
+	c++ $(C++FLAGS) $(OBJS) -o $@
 
 $(OBJ_DIR)%.o: %.cpp
 	c++ $(C++FLAGS) $< -c -o $@
 
 clean:
 	rm -f $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+$(OBJ_DIR):
+	@mkdir $(OBJ_DIR)

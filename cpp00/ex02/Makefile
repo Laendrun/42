@@ -1,14 +1,16 @@
-NAME = megaphone
+NAME = account
 
 # Directories
 OBJ_DIR = objs/
 
-SRC = main.cpp
+SRC =	tests.cpp \
+		Account.cpp
 
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ))
 OBJ := $(SRC:%.cpp=%.o)
 
 C++FLAGS = -Wall -Wextra -Werror -std=c++98
+#
 
 all: $(NAME)
 
