@@ -6,7 +6,7 @@
 /*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 22:52:23 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/08 14:28:18 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/08 15:59:38 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	Contact::save
 void	Contact::print_short(int index)
 {
 	// "|   Index    | First Name | Last Name  | Nick Name  |"
-	std::cout << "|     " << index + 1 << "      | ";
+	std::cout << "| " << std::setw(10) << index + 1 << " | ";
 	if (this->_firstName.length() > 10)
 		std::cout << std::setw(10) << this->_firstName.substr(0, 9) + '.' << " | ";
 	else
