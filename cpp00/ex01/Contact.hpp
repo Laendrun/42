@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 22:50:15 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/07 23:46:58 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/08 14:23:09 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Contact
 	public:
 		Contact(void);
 		~Contact(void);
-		void save
+		void	save
 		(
 			std::string firstName,
 			std::string lastName,
@@ -29,7 +29,8 @@ class Contact
 			std::string phoneNum,
 			std::string secret
 		);
-		void printShort(int index);
+		void	print_short(int index);
+		void	print_long(int index);
 	
 	private:
 		std::string	_firstName;

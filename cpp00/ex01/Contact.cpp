@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 22:52:23 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/08 12:34:18 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/08 14:28:18 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Contact::~Contact(void)
 	return ;
 }
 
-void Contact::save
+void	Contact::save
 (
 	std::string firstName,
 	std::string lastName,
@@ -42,12 +42,37 @@ void Contact::save
 	this->_secret = secret;
 };
 
-void Contact::printShort(int index)
+void	Contact::print_short(int index)
 {
 	// "|   Index    | First Name | Last Name  | Nick Name  |"
-	std::cout << "|     " << index << "      | ";
-	std::cout << std::setw(10) << this->_firstName.substr(0, 9) + '.' << " | ";
-	std::cout << std::setw(11) << this->_lastName.substr(0, 9) + '.' << " | ";
-	std::cout << std::setw(11) << this->_nickName.substr(0, 9) + '.' << " |";
+	std::cout << "|     " << index + 1 << "      | ";
+	if (this->_firstName.length() > 10)
+		std::cout << std::setw(10) << this->_firstName.substr(0, 9) + '.' << " | ";
+	else
+		std::cout << std::setw(10) << this->_firstName << " | ";
+	if (this->_lastName.length() > 10)
+		std::cout << std::setw(10) << this->_lastName.substr(0, 9) + '.' << " | ";
+	else
+		std::cout << std::setw(10) << this->_lastName << " | ";
+	if (this->_lastName.length() > 10)
+		std::cout << std::setw(10) << this->_nickName.substr(0, 9) + '.' << " | ";
+	else
+		std::cout << std::setw(10) << this->_nickName << " | ";
 	std::cout << std::endl;
+}
+
+void	Contact::print_long(int index)
+{
+	// Index: 
+	// Firstname: 
+	// Lastname:
+	// Nickname:
+	// Phonenum:
+	// Darkest secret:
+	std::cout << "Index: " << index + 1 << std::endl;
+	std::cout << "First name: " << this->_firstName << std::endl;
+	std::cout << "Last name: " << this->_lastName << std::endl;
+	std::cout << "Nick name: " << this->_nickName << std::endl;
+	std::cout << "Phone Num.: " << this->_phoneNum << std::endl;
+	std::cout << "Darkest Secret: " << this->_secret << std::endl;
 }

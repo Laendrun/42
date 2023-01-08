@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 22:41:04 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/08 12:17:53 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/08 14:25:20 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,15 @@ void	manage_input(std::string *destination)
 	}
 }
 
+void	contact_information(PhoneBook &pb, int i)
+{
+	pb.print_index_long(i);
+}
+
 void	search_prompt(PhoneBook &pb)
 {
-	int	i;
+	int			i;
+	std::string in;
 
 	std::cout << CLRSCR;
 	std::cout << PH_HEADER_0 << std::endl;
@@ -52,6 +58,18 @@ void	search_prompt(PhoneBook &pb)
 		i++;
 	}
 	std::cout << PH_HEADER_0 << std::endl;
+	std::cout << "Enter contact index: ";
+	while (1)
+	{
+		std::getline(std::cin, in);
+		if (in == "EXIT")
+			return ;
+		else if ((in.length() != 1) || !(in[0] >= 49 && in[0] <= 58))
+			std::cout << "Index is one digit between 1 - 8" << std::endl << "PhoneBook> ";
+		else
+			break ;
+	}
+	contact_information(pb, in[0] - 48 - 1);
 }
 
 void	add_prompt(PhoneBook &pb)
@@ -81,19 +99,19 @@ int	main(void)
 {
 	PhoneBook	pb;
 	std::string	input;
-	std::cout << CLRSCR;
-	std::cout << "Enter one of the following instruction (ALL CAPS)." << std::endl;
-	std::cout << "ADD, SEARCH or EXIT" << std::endl;
-	std::cout << "PhoneBook> ";
 	while (1)
 	{
+		std::cout << CLRSCR;
+		std::cout << "Enter one of the following instruction (ALL CAPS)." << std::endl;
+		std::cout << "ADD, SEARCH or EXIT" << std::endl;
+		std::cout << "PhoneBook> ";
 		std::getline(std::cin, input);
 		if (input == "ADD")
 			add_prompt(pb);
 		else if (input == "SEARCH")
 			search_prompt(pb);
 		else if (input == "EXIT")
-			break ;
+			return (0);
 		std::cout << "PhoneBook> ";
 	}
 	return (0);

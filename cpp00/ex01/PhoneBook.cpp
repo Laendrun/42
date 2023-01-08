@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 23:04:27 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/08 12:12:38 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/08 14:22:40 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,6 @@ void PhoneBook::createCT
 }
 //this->_oldest = this->_oldest + 1; this would work only if we don't add more than 8 contacts
 
-void	PhoneBook::print(void)
-{
-	for (int i = 0; i < this->_size; i++)
-		this->_contacts[i].printShort(i);
-}
-
 int	PhoneBook::get_size(void)
 {
 	return (this->_size);
@@ -74,5 +68,10 @@ int	PhoneBook::get_size(void)
 
 void	PhoneBook::print_index_short(int index)
 {
-	this->_contacts[index].printShort(index);
+	this->_contacts[index].print_short(index);
+}
+
+void	PhoneBook::print_index_long(int index)
+{
+	this->_contacts[index].print_long(index);
 }

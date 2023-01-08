@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 23:03:28 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/08 12:12:00 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/08 14:22:07 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ class PhoneBook
 			std::string phoneNum,
 			std::string secret
 		);
-		void	print(void);
 		void	print_index_short(int index);
+		void	print_index_long(int index);
 		int		get_size(void);
 
 	private:
