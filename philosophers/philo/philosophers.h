@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 19:51:30 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/07 21:11:47 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/08 15:28:23 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_args
 // main.c
 
 // =====================
-// init.c
+// init.c - 4
 // =====================
 
 /** @fn int	ph_init(t_philo *philos, char **av, int ac);
@@ -121,7 +121,7 @@ void	ph_set_goal(t_philo *philos, int *goal_reached);
 void	ph_set_times(t_philo *philos, char **av);
 
 // =====================
-// utils.c
+// utils.c - 4
 // =====================
 
 /** @fn void	ph_free(t_philo *philos, int nbr);
@@ -146,7 +146,7 @@ void	ph_print(t_philo *philos, int nbr);
  *  @param threads is the array of all threads
  *  @param nbr is the number of philosophers
  */
-void	ph_terminate(t_philo *philos, pthread_t *threads, int nbr);
+int		ph_terminate(t_philo *philos, pthread_t *threads, int nbr);
 
 /** @fn int	ph_time(void);
  *  @brief ph_time() gives back the current time in ms of the running program
@@ -155,7 +155,7 @@ void	ph_terminate(t_philo *philos, pthread_t *threads, int nbr);
 int		ph_time(void);
 
 // =====================
-// routine.c
+// routine.c - 5
 // =====================
 
 /** @fn void	*routine(void *philo);
@@ -193,7 +193,7 @@ void	ph_sleep(t_philo *philo);
 void	ph_think(t_philo *philo, t_philo *other);
 
 // =====================
-// routine_utils.c
+// routine_utils.c - 3
 // =====================
 
 /** @fn void	ph_take_forks(t_philo *philo, t_philo *other);
@@ -218,7 +218,7 @@ void	ph_drop_forks(t_philo *philo, t_philo *other);
 void	ph_goal(t_philo *philo);
 
 // =====================
-// helpers/
+// helpers/ - 3
 // =====================
 
 /** @fn size_t	ft_strlen(const char *s);

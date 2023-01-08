@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:04:41 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/07 21:07:52 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/08 15:22:14 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,23 @@ void	ph_free(t_philo *philos, int nbr)
 	free(philos);
 }
 
-void	ph_terminate(t_philo *philos, pthread_t *threads, int nbr)
+int	ph_terminate(t_philo *philos, pthread_t *threads, int nbr)
 {
 	int	i;
 
 	i = 0;
-	while (i < nbr)
+	if (threads)
 	{
-		pthread_join(threads[i], NULL);
-		i++;
+		while (i < nbr)
+		{
+			pthread_join(threads[i], NULL);
+			i++;
+		}
+		free(threads);
 	}
-	free(threads);
-	ph_free(philos, nbr);
+	if (philos)
+		ph_free(philos, nbr);
+	return (1);
 }
 
 int	ph_time(void)

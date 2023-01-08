@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby>                              +#+  +:+       +#+        */
+/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:47:41 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/07 21:08:07 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/08 15:27:52 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int	ph_t_init(pthread_t *th, int nbr, t_philo *philos)
 	while (i < nbr)
 	{
 		args = malloc(sizeof(t_args));
+		if (!args)
+			return (1);
 		args->ph1 = &philos[i];
 		if (i == 0)
 			args->ph2 = &philos[nbr - 1];
