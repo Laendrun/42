@@ -1,10 +1,12 @@
-NAME = BraiiiiiiinnnzzzZ
+NAME = ex00
 
 # Directories
 OBJ_DIR = objs/
 
 SRC =	main.cpp \
-		Zombie.cpp
+		Zombie.cpp \
+		newZombie.cpp \
+		randomChump.cpp
 
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ))
 OBJ := $(SRC:%.cpp=%.o)

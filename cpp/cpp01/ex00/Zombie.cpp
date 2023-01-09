@@ -3,25 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saeby <saeby@student.42.fr>                +#+  +:+       +#+        */
+/*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:54:08 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/08 17:55:44 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/09 12:43:36 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 #include <iostream>
 
-Zombie::Zombie(void)
+// Constructor function
+Zombie::Zombie(std::string name) : name(name)
 {
-	std::cout << "Contact Constructor called" << std::endl;
+	std::cout << _GREEN << "Zombie \"" << _RESET << this->name << _GREEN << "\" Constructor called" << _RESET << std::endl;
 
 	return ;
 }
 
+// Destructor
 Zombie::~Zombie(void)
 {
-	std::cout << "Contact Destructor called" << std::endl;
+	std::cout << _RED << "Zombie \"" << _RESET << this->name << _RED << "\" Destructor called" << _RESET << std::endl;
 	return ;
+}
+
+void	Zombie::announce(void)
+{
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
