@@ -18,6 +18,7 @@ This repo will (if I don't forget) save all my projects during the 42 cursus at 
 | 3 | [Philosophers](https://github.com/Laendrun/42/tree/main/philosophers) | :construction: | :x: |
 | 3 | [Minishell](https://github.com/Laendrun/42/tree/main/minishell) | :x: | :x: |
 | 4 | [cpp00](https://github.com/Laendrun/42/tree/main/cpp/cpp00) | :white_check_mark: | :x: |
+| 4 | [cpp01](https:://github.com/Laendrun/42/tree/main/cpp/cpp01) | :construction: | :x: |
 
 <sup>1</sup> 
 > I won't be able to correct it since I validated `so_long`, if someone can send me the evaluation question for `FdF` I will check
