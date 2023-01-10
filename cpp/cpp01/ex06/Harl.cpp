@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 23:07:40 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/10 08:32:41 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/10 12:38:52 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,28 @@ void	Harl::complain(std::string level, std::string filter)
 	func[2] = &Harl::warning;
 	func[3] = &Harl::error;
 
-	for (size_t i = 0; i < levels->length(); i++)
+	if (get_level(filter) < 0)
 	{
-		if (level == levels[i] && get_level(level) >= get_level(filter))
+		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+		return ;
+	}
+
+	if (get_level(level) >= get_level(filter))
+	{
+		switch(get_level(level))
 		{
-			(this->*func[i])();
-			return ;
+			case 0:
+				(this->*func[0])();
+				break ;
+			case 1:
+				(this->*func[1])();
+				break ;
+			case 2:
+				(this->*func[2])();
+				break ;
+			case 3:
+				(this->*func[3])();
+				break ;
 		}
 	}
 }

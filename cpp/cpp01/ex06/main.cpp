@@ -6,7 +6,7 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 08:06:54 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/10 08:33:03 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/10 12:37:38 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int ac, char **av)
 	harl.complain("DEBUG", filter);
 	harl.complain("INFO", filter);
 	harl.complain("WARNING", filter);
+	harl.complain("ERROR", filter);
 	harl.complain("ERROR", filter);
 	return (0);
 }
