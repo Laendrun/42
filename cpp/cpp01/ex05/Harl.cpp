@@ -6,22 +6,22 @@
 /*   By: saeby <saeby>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 23:07:40 by saeby             #+#    #+#             */
-/*   Updated: 2023/01/09 23:32:37 by saeby            ###   ########.fr       */
+/*   Updated: 2023/01/10 12:44:49 by saeby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Harl.hpp"
 
+// Constructor
 Harl::Harl(void)
 {
-	std::cout << "Harl constructor called" << std::endl;
 	return ;
 }
 
+// Destructor
 Harl::~Harl(void)
 {
-	std::cout << "Harl destructor called" << std::endl;
 	return ;
 }
 
